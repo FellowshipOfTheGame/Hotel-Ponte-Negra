@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=4 format=3 uid="uid://csmmjcndfe1ns"]
+
+[ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/moveTankPlayer.gd" id="1_7uws0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7uws0"]
 
 [node name="Node3D" type="CharacterBody3D"]
+script = ExtResource("1_7uws0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
