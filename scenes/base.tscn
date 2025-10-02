@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbwpri8lubdq6"]
+[gd_scene load_steps=4 format=3 uid="uid://bbwpri8lubdq6"]
 
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_pvqg0"]
+[ext_resource type="PackedScene" uid="uid://bbcas17fm2whi" path="res://scenes/objects/interactable_objects/suspicious_cilinder.tscn" id="2_baglu"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
 background_mode = 1
@@ -26,3 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pvqg0")
+
+[node name="SuspiciousCilinder" parent="." instance=ExtResource("2_baglu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.097397, 0, 11.752293)

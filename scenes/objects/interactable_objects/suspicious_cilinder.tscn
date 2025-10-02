@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbcas17fm2whi"]
+
+[ext_resource type="Script" uid="uid://buyltbd7fxjvk" path="res://scenes/objects/interactable_objects/suspicious_cilinder.gd" id="1_dbjly"]
+[ext_resource type="PackedScene" uid="uid://b2q3bfgj1ykyc" path="res://scenes/components/interactable_component.tscn" id="1_up2pj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbjly"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ypbdt"]
+material = SubResource("StandardMaterial3D_dbjly")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4s1qq"]
+
+[node name="SuspiciousCilinder" type="Node3D"]
+script = ExtResource("1_dbjly")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0134002, 0)
+mesh = SubResource("CylinderMesh_ypbdt")
+
+[node name="Interactable" parent="." instance=ExtResource("1_up2pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0134002, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("CylinderShape3D_4s1qq")

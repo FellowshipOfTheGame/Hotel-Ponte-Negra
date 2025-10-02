@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=9 format=3 uid="uid://csmmjcndfe1ns"]
 
-[ext_resource type="Script" uid="uid://d0r8frqmevhc2" path="res://scripts/movePlayer.gd" id="1_t61fv"]
+[ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scenes/characters/player/player.gd" id="1_686vu"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/cameraController.gd" id="2_t61fv"]
+[ext_resource type="PackedScene" uid="uid://bkbonrs1200qi" path="res://scenes/characters/player/interacting_component.tscn" id="3_hss88"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7uws0"]
 
-[node name="Node3D" type="CharacterBody3D"]
-script = ExtResource("1_t61fv")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61fv"]
+albedo_color = Color(0, 1, 0.023529412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_686vu"]
+material = SubResource("StandardMaterial3D_t61fv")
+size = Vector3(0.3, 0.5, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qd3e3"]
+size = Vector3(1, 2, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_686vu")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 script = ExtResource("2_t61fv")
@@ -27,3 +38,19 @@ shape = SubResource("CapsuleShape3D_bcx1r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_7uws0")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="FrontMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
+mesh = SubResource("BoxMesh_686vu")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="InteractingComponent" parent="." instance=ExtResource("3_hss88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2)
+
+[node name="InteractRange2" type="Area3D" parent="InteractingComponent"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractingComponent/InteractRange2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0065281, 0)
+shape = SubResource("BoxShape3D_qd3e3")
