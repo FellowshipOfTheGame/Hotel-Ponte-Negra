@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" uid="uid://d0r8frqmevhc2" path="res://scripts/movePlayer.gd" id="1_t61fv"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/cameraController.gd" id="2_t61fv"]
+[ext_resource type="ArrayMesh" uid="uid://bgbbvygu2qe2c" path="res://Arte/protagonista.obj" id="3_686vu"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7uws0"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
+height = 2.8588867
 
 [node name="Node3D" type="CharacterBody3D"]
 script = ExtResource("1_t61fv")
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera_node")]
 script = ExtResource("2_t61fv")
+camera_node = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 6, 7)
@@ -20,10 +21,10 @@ size = 13.0
 far = 2747.22
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_bcx1r")
+transform = Transform3D(1.3, 0, 0, 0, 1.2999908, -0.0049008727, 0, 0.0049008727, 1.2999908, 0, 1.7979131, 0)
+shape = SubResource("CapsuleShape3D_686vu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_7uws0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.035868406, 0)
+mesh = ExtResource("3_686vu")
 skeleton = NodePath("../CollisionShape3D")
