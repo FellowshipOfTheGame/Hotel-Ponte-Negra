@@ -7,12 +7,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
 
-[node name="Node3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_t61fv")
 
-[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera_node")]
+[node name="CameraPivot" type="Node3D" parent="."]
 script = ExtResource("2_t61fv")
-camera_node = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 6, 7)

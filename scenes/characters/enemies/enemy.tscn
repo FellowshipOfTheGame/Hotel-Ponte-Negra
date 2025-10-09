@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd83n5sdks3b0"]
+
+[ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/moveEnemy.gd" id="1_blu3w"]
+[ext_resource type="ArrayMesh" uid="uid://bst47fp705sck" path="res://Arte/prototipo.obj" id="1_w0ky3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1w50h"]
+height = 2.8588867
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_blu3w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.035868406, 0)
+mesh = ExtResource("1_w0ky3")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9999929, -0.003769902, 0, 0.003769902, 0.9999929, 0, 1.1632295, 0)
+shape = SubResource("CapsuleShape3D_1w50h")
