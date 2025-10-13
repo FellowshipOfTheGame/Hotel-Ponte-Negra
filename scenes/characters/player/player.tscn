@@ -3,22 +3,22 @@
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scenes/characters/player/player.gd" id="1_686vu"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/cameraController.gd" id="2_t61fv"]
 [ext_resource type="PackedScene" uid="uid://bkbonrs1200qi" path="res://scenes/characters/player/interacting_component.tscn" id="3_hss88"]
+[ext_resource type="ArrayMesh" uid="uid://h33klegcoldr" path="res://assets/3D_models/player/protagonista.obj" id="3_qd3e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7uws0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61fv"]
 albedo_color = Color(0, 1, 0.023529412, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_686vu"]
 material = SubResource("StandardMaterial3D_t61fv")
-size = Vector3(0.3, 0.5, 0.3)
+size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qd3e3"]
 size = Vector3(1, 2, 1)
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_686vu")
 
 [node name="CameraPivot" type="Node3D" parent="."]
@@ -34,13 +34,12 @@ far = 2747.22
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_bcx1r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_7uws0")
-skeleton = NodePath("../CollisionShape3D")
+[node name="Protagonista" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+mesh = ExtResource("3_qd3e3")
 
 [node name="FrontMarker" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
 mesh = SubResource("BoxMesh_686vu")
 skeleton = NodePath("../CollisionShape3D")
 
