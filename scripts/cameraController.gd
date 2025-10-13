@@ -1,22 +1,13 @@
-extends Node3D
+extends Camera3D
 
-@export_group("Sensibilidade")
-@export var sensibilidade_mouse: float = 0.1
-@export var sensibilidade_controle: float = 100.0 
+@export var alvo: Node3D
+@export var offset: Vector3 = Vector3(0, 10, 8)
+@export_range(0.0, 1.0) var suavizacao: float = 0.95
 
-@export_group("Controle")
-@export var deadzone_controle: float = 0.25 
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _unhandled_input(event: InputEvent):
-	if event is InputEventMouseMotion:
-		rotation_degrees.y -= event.relative.x * sensibilidade_mouse
-
-# Usamos _process para o controle, pois o analógico é uma entrada contínua
-func _process(delta: float):
-	var input_controle = Input.get_axis("olhar_esquerda", "olhar_direita")
-	
-	if abs(input_controle) > deadzone_controle:
-		rotation_degrees.y -= input_controle * sensibilidade_controle * delta
+func _physics_process(delta: float):
+	if not is_instance_valid(alvo):
+		return
+	var posicao_ideal = alvo.global_position + offset
+	global_position = global_position.lerp(posicao_ideal, 1.0 - suavizacao)
+	look_at(alvo.global_position, Vector3.UP)
