@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_pvqg0"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="2_baglu"]
-[ext_resource type="Script" uid="uid://csqeg1j6ne17v" path="res://scripts/camera/cameraControllerMovement.gd" id="3_h5ip5"]
+[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/cameraController.gd" id="3_t45w4"]
 [ext_resource type="Script" uid="uid://bnt50i4hlhfx4" path="res://scripts/obstacle.gd" id="4_h5ip5"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
@@ -28,10 +28,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.885885, -0.25369763, -4.94
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 9)
-script = ExtResource("3_h5ip5")
+script = ExtResource("3_t45w4")
 alvo_jogador = NodePath("../Player")
-distancia_da_camera = 9.0
-altura_da_camera = 6.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027899265, -1.395859, 0.5424385)
