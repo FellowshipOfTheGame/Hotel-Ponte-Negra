@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=5 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://d0r8frqmevhc2" path="res://scripts/movePlayer.gd" id="1_t61fv"]
-[ext_resource type="ArrayMesh" uid="uid://bgbbvygu2qe2c" path="res://Arte/protagonista.obj" id="3_686vu"]
+[ext_resource type="ArrayMesh" uid="uid://bgbbvygu2qe2c" path="res://assets/3D_models/player/protagonista.obj" id="3_686vu"]
+[ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="3_hss88"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -17,3 +18,6 @@ shape = SubResource("CapsuleShape3D_686vu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.035868406, 0)
 mesh = ExtResource("3_686vu")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="ActionComponent" parent="." instance=ExtResource("3_hss88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)

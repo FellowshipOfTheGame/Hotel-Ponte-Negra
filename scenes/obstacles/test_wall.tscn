@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://oxh88wgkjhat"]
+
+[ext_resource type="Script" uid="uid://bnt50i4hlhfx4" path="res://scripts/obstacle.gd" id="1_ypn4t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t45w4"]
+transparency = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_h5ip5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5ip5"]
+
+[node name="TestWall" type="StaticBody3D"]
+script = ExtResource("1_ypn4t")
+metadata/_custom_type_script = "uid://bnt50i4hlhfx4"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.752378, 0, 0, 0, 10.575853, 0, 1.3754704, 0)
+material_override = SubResource("StandardMaterial3D_t45w4")
+mesh = SubResource("BoxMesh_h5ip5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.75, 0, 0, 0, 10, 0, 1.375, 0)
+shape = SubResource("BoxShape3D_h5ip5")
