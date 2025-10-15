@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bkbonrs1200qi" path="res://scenes/characters/player/interacting_component.tscn" id="3_hss88"]
 [ext_resource type="ArrayMesh" uid="uid://h33klegcoldr" path="res://assets/3D_models/player/protagonista.obj" id="3_qd3e3"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
+height = 2.8588867
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61fv"]
 albedo_color = Color(0, 1, 0.023529412, 1)
@@ -21,18 +23,9 @@ size = Vector3(1, 2, 1)
 collision_layer = 2
 script = ExtResource("1_686vu")
 
-[node name="CameraPivot" type="Node3D" parent="."]
-script = ExtResource("2_t61fv")
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 6, 7)
-projection = 1
-size = 13.0
-far = 2747.22
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_bcx1r")
+transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
+shape = SubResource("CapsuleShape3D_686vu")
 
 [node name="Protagonista" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)

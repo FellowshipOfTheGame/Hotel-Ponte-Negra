@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1wvdjrkby2k4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lx6e5"]
+
+[node name="ActionComponent" type="ShapeCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, 0)
+shape = SubResource("BoxShape3D_lx6e5")
+target_position = Vector3(0, 0, 0)
