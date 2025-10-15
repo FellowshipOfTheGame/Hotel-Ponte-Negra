@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbwpri8lubdq6"]
+[gd_scene load_steps=4 format=3 uid="uid://bbwpri8lubdq6"]
 
-[ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_pvqg0"]
+[ext_resource type="Script" uid="uid://ckxiswhlr6vfk" path="res://scripts/main.gd" id="1_baglu"]
+[ext_resource type="PackedScene" uid="uid://cp6aq6jmvtkos" path="res://scenes/menus/menu-principal.tscn" id="3_h5ip5"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
 background_mode = 1
@@ -8,10 +9,8 @@ background_color = Color(0.186325, 2.40654e-05, 0.186323, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
 
-[node name="Node3D" type="Node3D"]
-
-[node name="Node3D" parent="." instance=ExtResource("1_pvqg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6245604, 0.4686755, 3.327259)
+[node name="Main" type="Node3D"]
+script = ExtResource("1_baglu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 30)
@@ -26,3 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pvqg0")
+
+[node name="MenuPrincipal" parent="." instance=ExtResource("3_h5ip5")]
+
+[connection signal="start" from="MenuPrincipal" to="." method="_on_start" flags=3]
