@@ -16,7 +16,6 @@ script = ExtResource("2_t61fv")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 6, 7)
 projection = 1
-current = true
 size = 13.0
 far = 2747.22
 
