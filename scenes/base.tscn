@@ -11,7 +11,7 @@ ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Node3D" parent="." instance=ExtResource("2_baglu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.065587044, 0, 0.13876748)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.563, -0.241, -16.72)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 30)
