@@ -6,7 +6,7 @@ var current_interactions := []
 var can_interact := true
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and can_interact:
+	if event.is_action_pressed("interacao") and can_interact:
 		if current_interactions:
 			can_interact = false
 			front_marker.get_active_material(0).albedo_color = Color(0, 1, 0)

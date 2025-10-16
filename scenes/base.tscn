@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbwpri8lubdq6"]
+[gd_scene load_steps=6 format=3 uid="uid://bbwpri8lubdq6"]
 
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_pvqg0"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="2_baglu"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="3_40w10"]
 [ext_resource type="PackedScene" uid="uid://oxh88wgkjhat" path="res://scenes/obstacles/test_wall.tscn" id="4_h5ip5"]
-[ext_resource type="PackedScene" uid="uid://bbcas17fm2whi" path="res://scenes/objects/suspicious_cillinder.tscn" id="5_40w10"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
 background_mode = 1
@@ -32,16 +31,6 @@ use_collision = true
 collision_mask = 3
 size = Vector3(50, 1, 50)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scenery"]
-transform = Transform3D(0.84233016, -0.5389619, 0, 0.5389619, 0.84233016, 0, 0, 0, 1, 4.985181, 0.10538912, -2.5)
-size = Vector3(13, 7, 4)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Scenery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3, -2.5)
-use_collision = true
-collision_mask = 3
-size = Vector3(13, 7, 4)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 0, 9.18064, 0)
 
@@ -49,6 +38,3 @@ transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 
 environment = SubResource("Environment_pvqg0")
 
 [node name="TestWall" parent="." instance=ExtResource("4_h5ip5")]
-
-[node name="SuspiciousCilinder" parent="." instance=ExtResource("5_40w10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.141605, 0.104142904, -7.799491)
