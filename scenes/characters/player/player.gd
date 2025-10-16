@@ -3,12 +3,19 @@ extends CharacterBody3D
 @export var velocidade : float = 10
 @onready var interaction_shapecast: ShapeCast3D = $ActionComponent
 
-func _process(delta : float)->void:
+func _physics_process(delta: float) -> void:
 	var movX : float = Input.get_axis("movimento_esquerda", "movimento_direita")
 	var movZ : float = Input.get_axis("movimento_frente", "movimento_tras")
 	
-	var movimento = Vector3(movX, 0, movZ).normalized() * (velocidade * delta) #vetor indica a nova posição e por isso é multiplicado por algo de dimensão de comprimento 
-	position += movimento
+	var direction = Vector3(movX, 0, movZ).normalized()
+	
+	velocity.x = direction.x * velocidade
+	velocity.z = direction.z * velocidade
+	
+	var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+	velocity.y -= gravity * delta
+	
+	move_and_slide()
 	check_for_interaction()
 
 func check_for_interaction() -> void:
