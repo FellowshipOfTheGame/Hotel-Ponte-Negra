@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=9 format=3 uid="uid://csmmjcndfe1ns"]
 
-[ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scenes/characters/player/player.gd" id="1_686vu"]
-[ext_resource type="PackedScene" uid="uid://bkbonrs1200qi" path="res://scenes/characters/player/interacting_component.tscn" id="3_hss88"]
+[ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_686vu"]
+[ext_resource type="PackedScene" uid="uid://5l3bqquf6kw4" path="res://scenes/characters/player/interacting_component.tscn" id="3_hss88"]
 [ext_resource type="ArrayMesh" uid="uid://h33klegcoldr" path="res://assets/3D_models/player/protagonista.obj" id="3_qd3e3"]
+[ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="4_hss88"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -18,7 +19,7 @@ size = Vector3(0.3, 0.3, 0.3)
 size = Vector3(1, 2, 1)
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1_686vu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -44,3 +45,6 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractingComponent/InteractRange2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0065281, 0)
 shape = SubResource("BoxShape3D_qd3e3")
+
+[node name="ActionComponent" parent="." instance=ExtResource("4_hss88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)

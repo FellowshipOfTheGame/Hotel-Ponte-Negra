@@ -38,3 +38,10 @@ transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 
 environment = SubResource("Environment_pvqg0")
 
 [node name="TestWall" parent="." instance=ExtResource("4_h5ip5")]
+collision_mask = 3
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.601068)
+use_collision = true
+collision_mask = 3
+size = Vector3(1, 1, 4)
