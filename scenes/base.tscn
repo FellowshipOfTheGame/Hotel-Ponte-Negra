@@ -8,7 +8,7 @@ background_color = Color(0.186325, 2.40654e-05, 0.186323, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
 
-[node name="Main" type="Node3D"]
+[node name="Node3D" type="Node3D"]
 
 [node name="Node3D" parent="." instance=ExtResource("2_baglu")]
 
