@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://csmmjcndfe1ns"]
 
-[ext_resource type="Script" uid="uid://d0r8frqmevhc2" path="res://scripts/movePlayer.gd" id="1_t61fv"]
+[ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/moveTankPlayer.gd" id="1_t61fv"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/cameraController.gd" id="2_t61fv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7uws0"]
+[sub_resource type="BoxMesh" id="BoxMesh_t61fv"]
 
 [node name="Node3D" type="CharacterBody3D"]
 script = ExtResource("1_t61fv")
@@ -25,5 +25,5 @@ shape = SubResource("CapsuleShape3D_bcx1r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_7uws0")
+mesh = SubResource("BoxMesh_t61fv")
 skeleton = NodePath("../CollisionShape3D")
