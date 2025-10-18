@@ -36,13 +36,13 @@ text = "Voltar ao jogo"
 [node name="Opcoes" type="Button" parent="Container"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Voltar ao jogo")
-focus_neighbor_bottom = NodePath("../Sair")
+focus_neighbor_bottom = NodePath("../Menu principal")
 text = "Opções"
 
-[node name="Sair" type="Button" parent="Container"]
+[node name="Menu principal" type="Button" parent="Container"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Opcoes")
-text = "Sair"
+text = "Menu principal"
 
-[connection signal="pressed" from="Container/Voltar ao jogo" to="." method="_on_jogar_pressed"]
-[connection signal="pressed" from="Container/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="Container/Voltar ao jogo" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="Container/Menu principal" to="." method="_on_menu_pressed"]

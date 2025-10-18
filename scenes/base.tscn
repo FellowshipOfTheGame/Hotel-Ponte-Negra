@@ -13,14 +13,17 @@ ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_baglu")
 
+[node name="MenuPausa" parent="." instance=ExtResource("3_t45w4")]
+visible = false
+
 [node name="Node3D" parent="." instance=ExtResource("1_pvqg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.563103, -0.24095666, -16.720064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5631, -0.240957, -16.7201)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 30)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027899265, -1.395859, 0.5424385)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278993, -1.39586, 0.542439)
 use_collision = true
 size = Vector3(50, 1, 50)
 
@@ -29,6 +32,3 @@ transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pvqg0")
-
-[node name="MenuPausa" parent="." instance=ExtResource("3_t45w4")]
-visible = false
