@@ -1,21 +1,36 @@
 extends CharacterBody3D
 
 @export var velocidade:float = 10
-@export var vel_ang:float = 3
+@export var vel_ang:float = 2
 var rad:float = 0
 
-func _process(delta:float)->void:
-	var movA:int = int(Input.is_action_pressed("movimento_esquerda")) - int(Input.is_action_pressed("movimento_direita"))
-	rad += movA * vel_ang * delta
+
+@onready var cam = $CameraPivot/Camera3D
+@onready var fig = $MeshInstance3D
+
+func modulo(rad:float)->float:
 	if rad > 2*PI:
-		rad -= 2*PI
+		return rad - 2*PI
 	elif rad < 0:
-		rad += 2*PI
-	var mov:float = float(Input.is_action_pressed("movimento_frente")) - float(Input.is_action_pressed("movimento_tras"))
-	var movimento:Vector3
-	if(mov < 0):
-		movimento = Vector3(sin(rad)*mov, 0, cos(rad)*mov).normalized()*velocidade*delta*0.3
+		return rad + 2*PI
+	return rad
+
+func _physics_process(delta: float) -> void:
+	var movA:int = int(Input.is_action_pressed("ui_left")) - int(Input.is_action_pressed("ui_right"))
+	rad += movA * delta * vel_ang
+	rad = modulo(rad)
+	if movA:
+		fig.rotation.y = lerp_angle(fig.rotation.y, rad, delta*5)
+	var move_input:float = float(Input.is_action_pressed("ui_up")) - float(Input.is_action_pressed("ui_down"))
+	var move:Vector3
+	if move_input != 0:
+		move = Vector3(sin(rad)*move_input, 0, cos(rad)*move_input).normalized()*velocidade
+		if move_input < 0:
+			move *= 0.3 
+		move.y = 0
+		velocity.x = move.x
+		velocity.z = move.z
 	else:
-		movimento = Vector3(sin(rad)*mov, 0, cos(rad)*mov).normalized()*velocidade*delta
-	position += movimento
-	 
+		velocity.x = move_toward(velocity.x, 0, velocidade*delta*3)
+		velocity.z = move_toward(velocity.z, 0, velocidade*delta*3)
+	move_and_slide() 
