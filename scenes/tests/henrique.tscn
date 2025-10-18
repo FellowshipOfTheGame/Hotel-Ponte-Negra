@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://s4b4h6snax40"]
+[gd_scene load_steps=8 format=3 uid="uid://b4qnjst8b65o2"]
 
-[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_xtaed"]
-[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="2_hk10m"]
-[ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="3_2bmp8"]
-[ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/moveTankPlayer.gd" id="4_intc6"]
-[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="5_t4ki5"]
+[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_jr35b"]
+[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="2_b8khg"]
+[ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="3_fubsr"]
+[ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/moveTankPlayer.gd" id="4_kulrq"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="5_bbknw"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
 background_mode = 1
@@ -16,18 +16,18 @@ ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
 transparency = 1
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_xtaed")
+script = ExtResource("1_jr35b")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador")]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -10.25, 27.26974, 25.507826)
-script = ExtResource("2_hk10m")
+script = ExtResource("2_b8khg")
 alvo_jogador = NodePath("../Player")
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("3_2bmp8")]
-script = ExtResource("4_intc6")
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("3_fubsr")]
+script = ExtResource("4_kulrq")
 vel_ang = 2.0
 
-[node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("5_t4ki5")]
+[node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("5_bbknw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6711674, -0.25369763, -4.9404106)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="Hotel Ponte Negra"
-run/main_scene="uid://bbwpri8lubdq6"
+run/main_scene="uid://s4b4h6snax40"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://scenes/": "yellow",
+"res://scripts/": "purple"
+}
 
 [input]
 

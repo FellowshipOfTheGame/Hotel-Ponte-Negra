@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkbonrs1200qi"]
 
-[ext_resource type="Script" uid="uid://d0vdy30g6rxld" path="res://scenes/characters/player/interacting_component.gd" id="1_yfp8o"]
+[ext_resource type="Script" uid="uid://d0vdy30g6rxld" path="res://scripts/components/interacting_component.gd" id="1_yfp8o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hxb7c"]
 size = Vector3(1, 2, 1)
