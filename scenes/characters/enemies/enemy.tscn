@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd83n5sdks3b0"]
+[gd_scene load_steps=6 format=3 uid="uid://cd83n5sdks3b0"]
 
-[ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/moveEnemy.gd" id="1_blu3w"]
+[ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/enemies/moveEnemy.gd" id="1_blu3w"]
 [ext_resource type="ArrayMesh" uid="uid://du0lx5hk30kni" path="res://assets/3D_models/monsters/prototipo.obj" id="1_w0ky3"]
 [ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="3_nwhyh"]
+[ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qj54i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1w50h"]
 height = 2.8588867
@@ -21,3 +22,7 @@ shape = SubResource("CapsuleShape3D_1w50h")
 
 [node name="ActionComponent" parent="." instance=ExtResource("3_nwhyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, -1.1166279)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_qj54i")
+metadata/_custom_type_script = "uid://bec2av6d5j3lu"

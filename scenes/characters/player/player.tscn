@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=9 format=3 uid="uid://csmmjcndfe1ns"]
 
-[ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_686vu"]
 [ext_resource type="ArrayMesh" uid="uid://h33klegcoldr" path="res://assets/3D_models/player/protagonista.obj" id="3_qd3e3"]
 [ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="4_hss88"]
+[ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
+[ext_resource type="Script" uid="uid://cyw1x178o8j75" path="res://scripts/player/concreteStates/playerWalking.gd" id="5_6avc5"]
+[ext_resource type="Script" uid="uid://bl4kalbb655ah" path="res://scripts/player/concreteStates/playerIdle.gd" id="5_qd3e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -16,7 +18,6 @@ size = Vector3(0.3, 0.3, 0.3)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
-script = ExtResource("1_686vu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
@@ -32,3 +33,15 @@ skeleton = NodePath("../CollisionShape3D")
 
 [node name="ActionComponent" parent="." instance=ExtResource("4_hss88")]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_qd3e3")
+initial_state = NodePath("PlayerIdle")
+
+[node name="PlayerIdle" type="Node" parent="State Machine"]
+script = ExtResource("5_qd3e3")
+metadata/_custom_type_script = "uid://bl4kalbb655ah"
+
+[node name="PlayerWalking" type="Node" parent="State Machine"]
+script = ExtResource("5_6avc5")
+metadata/_custom_type_script = "uid://cyw1x178o8j75"
