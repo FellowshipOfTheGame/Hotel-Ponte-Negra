@@ -1,5 +1,5 @@
 # Obstaculo.gd (CORRIGIDO)
-extends StaticBody3D
+extends CSGCombiner3D
 
 class_name Obstacle
 

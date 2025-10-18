@@ -4,10 +4,6 @@ extends CharacterBody3D
 @export var vel_ang:float = 2
 var rad:float = 0
 
-
-@onready var cam = $CameraPivot/Camera3D
-@onready var fig = $MeshInstance3D
-
 func modulo(rad:float)->float:
 	if rad > 2*PI:
 		return rad - 2*PI
@@ -20,12 +16,12 @@ func _physics_process(delta: float) -> void:
 	rad += movA * delta * vel_ang
 	rad = modulo(rad)
 	if movA:
-		fig.rotation.y = lerp_angle(fig.rotation.y, rad, delta*5)
-	var move_input:float = float(Input.is_action_pressed("ui_up")) - float(Input.is_action_pressed("ui_down"))
+		rotation.y = lerp_angle(rotation.y, rad, delta*5)
+	var move_input:float = float(Input.is_action_pressed("ui_down")) - float(Input.is_action_pressed("ui_up"))
 	var move:Vector3
 	if move_input != 0:
 		move = Vector3(sin(rad)*move_input, 0, cos(rad)*move_input).normalized()*velocidade
-		if move_input < 0:
+		if move_input > 0:
 			move *= 0.3 
 		move.y = 0
 		velocity.x = move.x
