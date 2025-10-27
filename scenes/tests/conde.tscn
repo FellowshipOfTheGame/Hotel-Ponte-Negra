@@ -25,7 +25,6 @@ alvo_jogador = NodePath("../Player")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_dki8q")]
 script = ExtResource("4_rr7u0")
-vel_ang = 2.0
 
 [node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("5_ctr4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6711674, -0.25369763, -4.9404106)

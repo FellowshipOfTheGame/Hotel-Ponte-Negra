@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerIdle
 
-@export var desaceleracao: float = 10.0
+@export var deceleration: float = 5
 
 func Enter():
 	init()
@@ -17,6 +17,9 @@ func Physics_Update(delta: float):
 	print(stamina)
 	if stamina == stamina_max:
 		tired = false
+	
+	player.velocity.x = move_toward(player.velocity.x, 0, deceleration)
+	player.velocity.z = move_toward(player.velocity.z, 0, deceleration)
 	
 	gravity_apply(delta)
 	
