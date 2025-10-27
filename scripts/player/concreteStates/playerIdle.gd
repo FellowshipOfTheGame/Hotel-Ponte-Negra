@@ -1,31 +1,25 @@
-extends State
+extends PlayerState
 class_name PlayerIdle
 
 @export var desaceleracao: float = 10.0
 
-var player: CharacterBody3D
-
 func Enter():
-	player = get_tree().get_first_node_in_group("Player")
+	init()
 
-func Physics_Update(_delta: float):
-	if not player:
-		return
-
-	# --- 1. CHECAR TRANSIÇÃO ---
-	var movX = Input.get_axis("movimento_esquerda", "movimento_direita")
-	var movZ = Input.get_axis("movimento_frente", "movimento_tras")
-	var direction = Vector3(movX, 0, movZ)
+func Physics_Update(delta: float):
+	var direction : Vector3 = input_direction()
 	
 	if direction != Vector3.ZERO:
 		Transitioned.emit(self, "playerwalking")
 		return
-
-	# --- 2. LÓGICA DO ESTADO IDLE ---
-	player.velocity.x = 0
-	player.velocity.z = 0
 	
-	var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-	player.velocity.y -= gravity * _delta
+	inc_stamina(delta)
+	print(stamina)
+	if stamina == stamina_max:
+		tired = false
 	
-	player.move_and_slide()
+	gravity_apply(delta)
+	
+	player.move_and_slide() #para a gravidade
+	
+	check_for_interaction()
