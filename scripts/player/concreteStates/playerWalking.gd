@@ -33,8 +33,8 @@ func Physics_Update(_delta: float):
 		Transitioned.emit(self, "playeridle")
 		return
 	
-	var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-	player.velocity.y -= gravity * _delta
+	#var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+	#player.velocity.y -= gravity * _delta
 	
 	player.move_and_slide()
 	check_for_interaction()

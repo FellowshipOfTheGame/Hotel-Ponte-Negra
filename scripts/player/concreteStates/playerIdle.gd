@@ -25,7 +25,7 @@ func Physics_Update(_delta: float):
 	player.velocity.x = 0
 	player.velocity.z = 0
 	
-	var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-	player.velocity.y -= gravity * _delta
+	#var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+	#player.velocity.y -= gravity * _delta
 	
 	player.move_and_slide()

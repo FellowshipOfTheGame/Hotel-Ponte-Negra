@@ -9,6 +9,8 @@
 height = 2.8588867
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 11
 script = ExtResource("1_blu3w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
