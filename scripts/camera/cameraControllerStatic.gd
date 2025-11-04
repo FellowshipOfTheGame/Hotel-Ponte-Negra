@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 
 	if resultado:
 		var colisor = resultado.collider
+		#print("RayCast atingiu: ", colisor.name)
 		if colisor.has_method("tornar_transparente"):
 			if colisor != objeto_obstruindo_atualmente:
 				limpar_obstaculo_anterior() 

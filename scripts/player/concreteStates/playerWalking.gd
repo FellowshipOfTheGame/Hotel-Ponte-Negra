@@ -8,7 +8,7 @@ var fig: MeshInstance3D
 var player : CharacterBody3D
 
 func Enter():
-	print("Entrou no walking")
+	#print("Entrou no walking")
 	player = get_tree().get_first_node_in_group("Player")
 	if not player:
 		return
