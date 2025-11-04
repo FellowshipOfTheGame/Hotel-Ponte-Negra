@@ -28,7 +28,7 @@ func isPlayerClose() -> void:
 		var collider = vision_shapecast.get_collider(0)
 		if collider and collider.is_in_group("Player") and can_attack:
 			attack(collider)
-			
+
 func attack(target):
 	print("Inimigo detectou ", target.name, " com um BOXCAST e atacou!")
 	can_attack = false
