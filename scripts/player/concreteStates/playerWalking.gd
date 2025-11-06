@@ -3,18 +3,15 @@ class_name PlayerWalking
 
 @export var velocidade : float = 10
 
-var interaction_shapecast: ShapeCast3D
-var fig: MeshInstance3D
-var player : CharacterBody3D
+@onready var interaction_shapecast: ShapeCast3D = $"../../InteractionShapecast"
+@onready var fig: MeshInstance3D = $"../../Protagonista"
+@onready var player: CharacterBody3D = $"../.."
 
 func Enter():
 	print("Entrou no walking")
 	player = get_tree().get_first_node_in_group("Player")
 	if not player:
 		return
-
-	fig = player.get_node_or_null("Protagonista")
-	interaction_shapecast = player.get_node_or_null("ActionComponent")
 
 func Physics_Update(_delta: float):
 	if not player or not fig:
@@ -28,7 +25,7 @@ func Physics_Update(_delta: float):
 	if direction != Vector3.ZERO:
 		player.velocity.x = direction.x * velocidade
 		player.velocity.z = direction.z * velocidade
-		fig.rotation.y = lerp_angle(fig.rotation.y, atan2(-direction.x, -direction.z), _delta*5)
+		player.rotation.y = lerp_angle(player.rotation.y, atan2(-direction.x, -direction.z), _delta*5)
 	else: 
 		Transitioned.emit(self, "playeridle")
 		return

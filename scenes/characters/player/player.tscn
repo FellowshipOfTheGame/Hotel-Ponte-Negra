@@ -17,7 +17,9 @@ albedo_color = Color(0, 1, 0.023529412, 1)
 material = SubResource("StandardMaterial3D_t61fv")
 size = Vector3(0.3, 0.3, 0.3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qd3e3"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6avc5"]
+height = 10.0
+radius = 5.0
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -36,17 +38,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
 mesh = SubResource("BoxMesh_686vu")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="Alarm" type="Node" parent="."]
+[node name="Alarm" type="Node3D" parent="."]
 
 [node name="AlarmArea" type="Area3D" parent="Alarm"]
 collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Alarm/AlarmArea"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_qd3e3")
+shape = SubResource("CylinderShape3D_6avc5")
 
-[node name="ActionComponent" parent="." instance=ExtResource("4_hss88")]
+[node name="InteractionShapecast" parent="." instance=ExtResource("4_hss88")]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
