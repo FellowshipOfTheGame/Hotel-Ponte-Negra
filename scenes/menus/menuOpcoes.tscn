@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://153kgjv4215n"]
+
+[node name="MenuOpcoes" type="Control"]
+layout_mode = 3
+anchors_preset = 0

@@ -1,13 +1,29 @@
 extends Control
 
 
-func _on_voltar_pressed() -> void:
+func _ready() -> void:
+	get_tree().paused=true
+	Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed():match event.keycode:
+		KEY_ESCAPE:
+			get_viewport().set_input_as_handled()
+			voltar()
+
+
+func voltar() -> void:
+	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	get_tree().paused=false
-	self.visible=false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+	queue_free()
 
 
-func _on_menu_pressed() -> void:
+func sair() -> void:
 	get_tree().paused=false
 	get_tree().change_scene_to_file("res://scenes/menus/menuPrincipal.tscn")
+
+
+func opcoes() -> void:
+	$Container.visible=false
+	add_child(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())

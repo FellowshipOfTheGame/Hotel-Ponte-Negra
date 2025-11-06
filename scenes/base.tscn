@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbwpri8lubdq6"]
+[gd_scene load_steps=4 format=3 uid="uid://bbwpri8lubdq6"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_baglu"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_pvqg0"]
-[ext_resource type="PackedScene" uid="uid://b13kmc0a4s1nf" path="res://scenes/menus/menuPausa.tscn" id="3_t45w4"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
 background_mode = 1
@@ -12,9 +11,6 @@ ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_baglu")
-
-[node name="MenuPausa" parent="." instance=ExtResource("3_t45w4")]
-visible = false
 
 [node name="Node3D" parent="." instance=ExtResource("1_pvqg0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5631, -0.240957, -16.7201)
