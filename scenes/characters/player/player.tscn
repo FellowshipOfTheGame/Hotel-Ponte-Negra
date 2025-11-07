@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=16 format=3 uid="uid://csmmjcndfe1ns"]
 
+[ext_resource type="Script" uid="uid://cn48qnt70p443" path="res://scenes/characters/player/player2.gd" id="1_xuses"]
 [ext_resource type="ArrayMesh" uid="uid://h33klegcoldr" path="res://assets/3D_models/player/protagonista.obj" id="3_qd3e3"]
 [ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="4_hss88"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
 [ext_resource type="Script" uid="uid://cyw1x178o8j75" path="res://scripts/player/concreteStates/playerWalking.gd" id="5_6avc5"]
 [ext_resource type="Script" uid="uid://bl4kalbb655ah" path="res://scripts/player/concreteStates/playerIdle.gd" id="5_qd3e3"]
 [ext_resource type="Script" uid="uid://3xqtrj44geu1" path="res://scripts/player/concreteStates/playerRunning.gd" id="6_6avc5"]
+[ext_resource type="Script" uid="uid://d46bbjbj38q" path="res://scripts/player/staminaBarUI.gd" id="8_xuses"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -17,8 +19,28 @@ albedo_color = Color(0, 1, 0.023529412, 1)
 material = SubResource("StandardMaterial3D_t61fv")
 size = Vector3(0.3, 0.3, 0.3)
 
+[sub_resource type="Gradient" id="Gradient_oohtk"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_42irl"]
+gradient = SubResource("Gradient_oohtk")
+width = 200
+height = 10
+fill_from = Vector2(1, 0)
+
+[sub_resource type="Gradient" id="Gradient_jxpou"]
+offsets = PackedFloat32Array(0, 0.014492754)
+colors = PackedColorArray(0, 0.7058824, 0, 1, 0.9254902, 0.91764706, 0.11764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3xnwo"]
+gradient = SubResource("Gradient_jxpou")
+width = 200
+height = 10
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
+script = ExtResource("1_xuses")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
@@ -50,3 +72,18 @@ metadata/_custom_type_script = "uid://cyw1x178o8j75"
 [node name="PlayerRunning" type="Node" parent="State Machine"]
 script = ExtResource("6_6avc5")
 metadata/_custom_type_script = "uid://3xqtrj44geu1"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+billboard = 1
+script = ExtResource("8_xuses")
+
+[node name="UI" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+
+[node name="Stamina" type="TextureProgressBar" parent="Sprite3D/UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 80.0
+texture_under = SubResource("GradientTexture2D_42irl")
+texture_progress = SubResource("GradientTexture2D_3xnwo")

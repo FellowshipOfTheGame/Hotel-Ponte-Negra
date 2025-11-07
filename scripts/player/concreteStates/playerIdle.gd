@@ -14,15 +14,13 @@ func Physics_Update(delta: float):
 		return
 	
 	inc_stamina(delta)
-	print(stamina)
+	dec_coldDown(delta)
+	#print("Stamina:",stamina,"; ColdDown:",cold_down_run)
 	if stamina == stamina_max:
 		tired = false
 	
 	player.velocity.x = move_toward(player.velocity.x, 0, deceleration)
 	player.velocity.z = move_toward(player.velocity.z, 0, deceleration)
 	
-	gravity_apply(delta)
-	
 	player.move_and_slide() #para a gravidade
 	
-	check_for_interaction()

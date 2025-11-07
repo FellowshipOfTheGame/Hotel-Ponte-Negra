@@ -16,3 +16,4 @@ func move(velocity : float)->void:
 	else: 
 		Transitioned.emit(self, "playeridle")
 		return
+		

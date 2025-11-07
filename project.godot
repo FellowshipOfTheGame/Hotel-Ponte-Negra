@@ -14,6 +14,10 @@ config/name="Hotel Ponte Negra"
 run/main_scene="uid://s4b4h6snax40"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+GameState="*res://scripts/gameState.gd"
+
 [file_customization]
 
 folder_colors={

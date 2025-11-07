@@ -7,16 +7,14 @@ class_name PlayerWalking
 func Physics_Update(delta: float):
 	running = Input.is_action_pressed("correr")
 	
-	if !tired && running:
+	if !tired && running && !cold_down_run:
 		Transitioned.emit(self, "playerRunning")
 	
 	move(velocity)
+	dec_coldDown(delta)
 	inc_stamina(delta/2)
-	print(stamina)
+	#print("Stamina:",stamina,"; ColdDown:",cold_down_run)
 	if stamina == stamina_max:
 		tired = false
-		
-	gravity_apply(delta)
 	
 	player.move_and_slide()
-	check_for_interaction()

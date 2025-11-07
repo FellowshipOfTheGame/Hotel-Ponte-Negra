@@ -1,13 +1,17 @@
 extends State
 class_name PlayerState
 
-const stamina_max :float = 5
+const stamina_max : float = 5
+const cold_down_run_max : float = 1.5
 static var stamina : float = stamina_max
 static var tired : bool
+static var cold_down_run : float
 
 var player : CharacterBody3D
 var fig : MeshInstance3D
 var interaction_shapecast : ShapeCast3D
+
+signal changes_stamina
 
 func init():
 	player = get_tree().get_first_node_in_group("Player")
@@ -23,24 +27,17 @@ func input_direction()->Vector3:
 	return direction
 
 func dec_stamina(dec : float)->void:
-	stamina = max(0, stamina - dec)
+	pass
+	#if stamina == 0: return
+	#changes_stamina.emit()
+	#stamina = max(0, stamina - dec)
 	
 func inc_stamina(inc : float)->void:
-	stamina = min(stamina + inc, stamina_max)
+	pass
+	#if stamina == stamina_max: return
+	#changes_stamina.emit()
+	#stamina = min(stamina + inc, stamina_max)
 	
-func check_for_interaction() -> void:
-	if not player or not interaction_shapecast:
-		return
-
-	if Input.is_action_just_pressed("interacao"):
-		interaction_shapecast.force_shapecast_update()
-
-		if interaction_shapecast.is_colliding():
-			var collider = interaction_shapecast.get_collider(0)
-			if collider is Interactable:
-				print("Player interagiu com: ", collider.name)
-				collider._on_interact(player)
-
-func gravity_apply(delta : float):
-	var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-	player.velocity.y -= gravity * delta
+func dec_coldDown(dec : float):
+	pass
+	#cold_down_run = max(cold_down_run - dec, 0)
