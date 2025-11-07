@@ -1,20 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd83n5sdks3b0"]
+[gd_scene load_steps=9 format=3 uid="uid://cd83n5sdks3b0"]
 
-[ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/enemies/moveEnemy.gd" id="1_blu3w"]
+[ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/enemies/enemy.gd" id="1_ihb4b"]
 [ext_resource type="ArrayMesh" uid="uid://du0lx5hk30kni" path="res://assets/3D_models/monsters/prototipo.obj" id="1_w0ky3"]
 [ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="3_nwhyh"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qj54i"]
+[ext_resource type="Script" uid="uid://dmg3j7vmg73y5" path="res://scripts/enemies/concreteStates/chasingState.gd" id="5_ihb4b"]
+[ext_resource type="Script" uid="uid://dkpphgix76225" path="res://scripts/enemies/concreteStates/roamingState.gd" id="5_ksqmq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1w50h"]
 height = 2.8588867
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ihb4b"]
+radius = 5.0
+
 [node name="Enemy" type="CharacterBody3D"]
-collision_layer = 8
-collision_mask = 11
-script = ExtResource("1_blu3w")
+script = ExtResource("1_ihb4b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.035868406, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.035868406, 0)
 mesh = ExtResource("1_w0ky3")
 skeleton = NodePath("../CollisionShape3D")
 
@@ -23,8 +26,29 @@ transform = Transform3D(1, 0, 0, 0, 0.9999929, -0.003769902, 0, 0.003769902, 0.9
 shape = SubResource("CapsuleShape3D_1w50h")
 
 [node name="ActionComponent" parent="." instance=ExtResource("3_nwhyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, -1.1166279)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, 1.0988836)
+visible = false
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="VisionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1202852, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea"]
+shape = SubResource("CylinderShape3D_ihb4b")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qj54i")
+initial_state = NodePath("RoamingState")
 metadata/_custom_type_script = "uid://bec2av6d5j3lu"
+
+[node name="RoamingState" type="Node" parent="StateMachine"]
+script = ExtResource("5_ksqmq")
+metadata/_custom_type_script = "uid://dkpphgix76225"
+
+[node name="ChasingState" type="Node" parent="StateMachine"]
+script = ExtResource("5_ihb4b")
+metadata/_custom_type_script = "uid://dmg3j7vmg73y5"
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
+[connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]

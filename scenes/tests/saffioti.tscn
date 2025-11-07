@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfgvlhfgkrdkf"]
+[gd_scene load_steps=10 format=3 uid="uid://bfgvlhfgkrdkf"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_n54f7"]
-[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="2_uifnq"]
+[ext_resource type="Script" uid="uid://csqeg1j6ne17v" path="res://scripts/camera/cameraControllerMovement.gd" id="2_uifnq"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="3_bda4d"]
-[ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/player/moveTankPlayer.gd" id="4_0fogg"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="5_55fq4"]
+[ext_resource type="Script" uid="uid://bnt50i4hlhfx4" path="res://scripts/obstacle.gd" id="6_uifnq"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
 background_mode = 1
@@ -12,8 +12,18 @@ background_color = Color(0.186325, 2.40654e-05, 0.186323, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5ip5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bda4d"]
 transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uifnq"]
+transparency = 1
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_n54f7"]
+vertices = PackedVector3Array(-15.472111, -0.9519676, -20.207561, -13.972111, -0.9519676, -20.207561, -14.222111, -0.9519676, -23.457561, -16.22211, -0.9519676, -19.457561, -23.97211, -0.9519676, -23.457561, -23.97211, -0.9519676, -15.9575615, -16.22211, -0.9519676, -16.207561, 13.777889, -0.9519676, -20.207561, 14.027889, -0.9519676, -23.457561, 15.277889, -0.9519676, -20.207561, 16.02789, -0.9519676, -19.457561, 24.02789, -0.9519676, -23.457561, 16.02789, -0.9519676, 11.0424385, 24.02789, -0.9519676, 11.0424385, 11.777889, 4.5480323, -15.2075615, 11.777889, 4.5480323, -13.4575615, 14.027889, 4.5480323, -13.9575615, 11.027889, 4.5480323, -15.9575615, 14.027889, 4.5480323, -18.207561, -14.222111, 0.5480324, -18.207561, -14.222111, 0.5480324, -15.9575615, -9.761585, 4.5480323, -18.207561, -9.766228, 4.5480323, -15.9575615, -16.22211, -0.9519676, -14.7075615, -15.472111, -0.9519676, -13.9575615, 12.777889, -0.9519676, 24.542439, 12.777889, -0.9519676, 12.0424385, 10.527889, -0.9519676, 12.0424385, 9.777889, -0.9519676, 11.2924385, 9.777889, -0.9519676, -13.9575615, -23.97211, -0.9519676, 24.542439, 11.777889, 4.5480323, 10.0424385, 14.027889, 4.5480323, 10.0424385, 15.277889, -0.9519676, 12.0424385, 24.02789, -0.9519676, 24.542439)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 5), PackedInt32Array(3, 6, 5), PackedInt32Array(1, 2, 7), PackedInt32Array(7, 2, 8), PackedInt32Array(9, 7, 8), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(14, 17, 16), PackedInt32Array(16, 17, 18), PackedInt32Array(20, 19, 22), PackedInt32Array(22, 19, 21), PackedInt32Array(22, 21, 17), PackedInt32Array(17, 21, 18), PackedInt32Array(5, 6, 23), PackedInt32Array(5, 23, 24), PackedInt32Array(27, 26, 25), PackedInt32Array(25, 28, 27), PackedInt32Array(24, 29, 28), PackedInt32Array(25, 30, 28), PackedInt32Array(28, 30, 24), PackedInt32Array(24, 30, 5), PackedInt32Array(31, 15, 32), PackedInt32Array(32, 15, 16), PackedInt32Array(12, 13, 33), PackedInt32Array(33, 13, 34), PackedInt32Array(33, 34, 25), PackedInt32Array(25, 26, 33)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"Cenario"
+agent_radius = 1.0
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_n54f7")
@@ -24,11 +34,9 @@ script = ExtResource("2_uifnq")
 alvo_jogador = NodePath("../Player")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_bda4d")]
-script = ExtResource("4_0fogg")
-vel_ang = 2.0
 
 [node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("5_55fq4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6711674, -0.25369763, -4.9404106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.67798, -0.25369763, -4.9404106)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 0, 9.18064, 0)
@@ -36,28 +44,27 @@ transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pvqg0")
 
-[node name="Ground" type="CSGBox3D" parent="."]
+[node name="Ground" type="CSGBox3D" parent="." groups=["Cenario"]]
 transform = Transform3D(0.99999994, -0.0002443461, 0, 0.0002443461, 0.99999994, 0, 0, 0, 1, 0.027899265, -1.395859, 0.5424385)
 use_collision = true
 collision_mask = 3
 size = Vector3(50, 0.1, 50)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-material_override = SubResource("StandardMaterial3D_h5ip5")
-use_collision = true
-collision_mask = 3
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.9, -15)
-polygon = PackedVector2Array(0, 0, 30, 0, 30, 5, 5, 5)
-depth = 4.0
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D"]
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." groups=["Cenario"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, -0.9, 11)
+use_collision = true
 polygon = PackedVector2Array(0, 0, 30, 0, 30, 5, 0, 5)
 depth = 4.0
+material = SubResource("StandardMaterial3D_bda4d")
+script = ExtResource("6_uifnq")
 
-[node name="Tunnel" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.1, 0)
-operation = 2
-size = Vector3(4.1, 3, 3)
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["Cenario"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.9, -15)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 30, 0, 30, 5, 5, 5)
+depth = 4.0
+material = SubResource("StandardMaterial3D_uifnq")
+script = ExtResource("6_uifnq")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_n54f7")
