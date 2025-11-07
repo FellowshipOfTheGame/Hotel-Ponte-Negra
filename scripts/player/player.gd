@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var alarm_area: Area3D = $Alarm/AlarmArea
+@onready var interaction_shapecast: ShapeCast3D = $"InteractionShapecast"
 
 var monsters_nearby := {}
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -11,11 +12,24 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	move_and_slide()
-	
+	check_for_interaction()
 	#if Input.is_key_pressed(KEY_CTRL):
 		#awaiting_rebind = "movimento_frente"
 		# #set_new_key("movimento_frente", KEY_Z)
 	
+func check_for_interaction() -> void:
+	if not interaction_shapecast:
+		return
+
+	if Input.is_action_just_pressed("interacao"):
+		print("teste")
+		interaction_shapecast.force_shapecast_update()
+
+		if interaction_shapecast.is_colliding():
+			var collider = interaction_shapecast.get_collider(0)
+			if collider is Interactable:
+				print("Player interagiu com: ", collider.name)
+				collider._on_interact(self)
 
 func _on_alarm_area_body_entered(body: Node3D) -> void:
 	monsters_nearby[body.get_instance_id()] = body

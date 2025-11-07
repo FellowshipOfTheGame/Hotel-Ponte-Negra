@@ -3,7 +3,6 @@ class_name PlayerWalking
 
 @export var velocidade : float = 10
 
-@onready var interaction_shapecast: ShapeCast3D = $"../../InteractionShapecast"
 @onready var fig: Node3D = $"../../Protagonista"
 @onready var player: CharacterBody3D = $"../.."
 
@@ -31,17 +30,3 @@ func Physics_Update(_delta: float):
 		return
 	
 	player.move_and_slide()
-	check_for_interaction()
-
-func check_for_interaction() -> void:
-	if not player or not interaction_shapecast:
-		return
-
-	if Input.is_action_just_pressed("interacao"):
-		interaction_shapecast.force_shapecast_update()
-
-		if interaction_shapecast.is_colliding():
-			var collider = interaction_shapecast.get_collider(0)
-			if collider is Interactable:
-				print("Player interagiu com: ", collider.name)
-				collider._on_interact(player)
