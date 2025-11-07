@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
 [ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="4_hss88"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
-[ext_resource type="Script" uid="uid://cyw1x178o8j75" path="res://scripts/player/concreteStates/playerWalking.gd" id="5_6avc5"]
-[ext_resource type="Script" uid="uid://bl4kalbb655ah" path="res://scripts/player/concreteStates/playerIdle.gd" id="5_qd3e3"]
+[ext_resource type="Script" uid="uid://cyw1x178o8j75" path="res://scripts/objects/concreteStates/playerWalking.gd" id="5_6avc5"]
+[ext_resource type="Script" uid="uid://bl4kalbb655ah" path="res://scripts/objects/concreteStates/playerIdle.gd" id="5_qd3e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
