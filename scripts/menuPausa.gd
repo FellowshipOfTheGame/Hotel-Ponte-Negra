@@ -5,8 +5,8 @@ func _ready() -> void:
 	Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed():match event.keycode:
-		KEY_ESCAPE:
+	if event is InputEventAction:if event.is_pressed():match event.action:
+		"ui_cancel":
 			get_viewport().set_input_as_handled()
 			voltar()
 
@@ -19,9 +19,9 @@ func menuPrincipal() -> void:
 	get_tree().paused=false
 	get_tree().change_scene_to_file("res://scenes/menus/menuPrincipal.tscn")
 
-func opcoes() -> void:
-	add_child(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
-	$Container.visible=false
+func opcoes() -> void:pass
+	#add_child(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
+	#$Container.visible=false
 
 
 func sair() -> void:
