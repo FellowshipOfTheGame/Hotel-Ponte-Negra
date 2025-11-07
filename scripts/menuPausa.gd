@@ -25,5 +25,4 @@ func sair() -> void:
 
 
 func opcoes() -> void:
-	$Container.visible=false
-	add_child(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
+	self.replace_by(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
