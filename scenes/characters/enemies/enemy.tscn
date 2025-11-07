@@ -1,14 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://cd83n5sdks3b0"]
 
 [ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/enemies/enemy.gd" id="1_ihb4b"]
-[ext_resource type="ArrayMesh" uid="uid://du0lx5hk30kni" path="res://assets/3D_models/monsters/prototipo.obj" id="1_w0ky3"]
+[ext_resource type="PackedScene" uid="uid://chv0ww3wiepdx" path="res://assets/3D_models/monsters/wolfy1.glb" id="2_ksqmq"]
 [ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="3_nwhyh"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qj54i"]
 [ext_resource type="Script" uid="uid://dmg3j7vmg73y5" path="res://scripts/enemies/concreteStates/chasingState.gd" id="5_ihb4b"]
 [ext_resource type="Script" uid="uid://dkpphgix76225" path="res://scripts/enemies/concreteStates/roamingState.gd" id="5_ksqmq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1w50h"]
-height = 2.8588867
+radius = 0.95703125
+height = 2.0622559
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ihb4b"]
 radius = 5.0
@@ -16,17 +17,14 @@ radius = 5.0
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_ihb4b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.035868406, 0)
-mesh = ExtResource("1_w0ky3")
-skeleton = NodePath("../CollisionShape3D")
+[node name="wolfy1" parent="." instance=ExtResource("2_ksqmq")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9999929, -0.003769902, 0, 0.003769902, 0.9999929, 0, 1.1632295, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999929, -0.003769902, 0, 0.003769902, 0.9999929, 0, 0.9443333, -0.0015016102)
 shape = SubResource("CapsuleShape3D_1w50h")
 
 [node name="ActionComponent" parent="." instance=ExtResource("3_nwhyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, 1.0988836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86754334, 1.0988836)
 
 [node name="VisionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1202852, 0)

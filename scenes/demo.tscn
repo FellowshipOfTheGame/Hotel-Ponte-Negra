@@ -6838,4 +6838,12 @@ navigation_mesh = SubResource("NavigationMesh_5fme1")
 [node name="Enemy" parent="." instance=ExtResource("8_e66cg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1173725, 0, 17.979916)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.43365905, 0.90107703, 0, -0.90107703, 0.43365905, -1.7372633, 9.788852, 21.107513)
+light_color = Color(0.59313357, 0.5931336, 0.5931334, 1)
+light_energy = 0.6
+light_indirect_energy = 0.34
+shadow_enabled = true
+sky_mode = 1
+
 [connection signal="body_entered" from="WorldTrigger" to="WorldTrigger" method="_on_body_entered"]
