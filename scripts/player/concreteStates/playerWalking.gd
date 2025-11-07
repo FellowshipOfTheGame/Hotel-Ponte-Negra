@@ -4,7 +4,7 @@ class_name PlayerWalking
 @export var velocidade : float = 10
 
 @onready var interaction_shapecast: ShapeCast3D = $"../../InteractionShapecast"
-@onready var fig: MeshInstance3D = $"../../Protagonista"
+@onready var fig: Node3D = $"../../Protagonista"
 @onready var player: CharacterBody3D = $"../.."
 
 func Enter():

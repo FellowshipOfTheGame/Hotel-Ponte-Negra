@@ -4,7 +4,7 @@ extends Camera3D
 @export_group("Alvo e Configurações")
 @export var alvo_jogador: Node3D
 
-@export var offset_isometrico: Vector3 = Vector3(0, 8, 10)
+@export var offset_isometrico: Vector3 = Vector3(0, 2, 5) #(0, 8, 10)
 
 
 @export var suavidade: float = 5.0

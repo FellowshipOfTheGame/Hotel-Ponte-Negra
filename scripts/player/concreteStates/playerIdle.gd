@@ -9,9 +9,10 @@ func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 
 func Physics_Update(_delta: float):
+	
 	if not player:
 		return
-
+	
 	# --- 1. CHECAR TRANSIÇÃO ---
 	var movX = Input.get_axis("movimento_esquerda", "movimento_direita")
 	var movZ = Input.get_axis("movimento_frente", "movimento_tras")
