@@ -22,7 +22,7 @@ func check_for_interaction() -> void:
 		return
 
 	if Input.is_action_just_pressed("interacao"):
-		print("teste")
+		print("testeewe")
 		interaction_shapecast.force_shapecast_update()
 
 		if interaction_shapecast.is_colliding():
