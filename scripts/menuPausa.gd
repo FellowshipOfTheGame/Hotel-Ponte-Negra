@@ -25,4 +25,4 @@ func sair() -> void:
 
 
 func opcoes() -> void:
-	self.replace_by(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
+	replace_by(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
