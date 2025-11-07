@@ -18,7 +18,7 @@ func _on_vision_area_body_exited(body: Node3D) -> void:
 		can_see_player = false
 
 func _physics_process(delta: float) -> void:
-	_update_vision_status()
+	#_update_vision_status()
 	isPlayerClose()
 	
 	if can_attack:
@@ -67,6 +67,9 @@ func isPlayerClose() -> void:
 			
 func attack(target):
 	print("Inimigo detectou ", target.name, " com um BOXCAST e atacou!")
+	if target.is_in_group("Player"):
+		get_tree().reload_current_scene()
+		return
 	can_attack = false
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true

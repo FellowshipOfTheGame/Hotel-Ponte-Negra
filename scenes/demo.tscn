@@ -1,4 +1,4 @@
-[gd_scene load_steps=304 format=4 uid="uid://cs2t17fuwhu36"]
+[gd_scene load_steps=306 format=4 uid="uid://cs2t17fuwhu36"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_b0nem"]
 [ext_resource type="Texture2D" uid="uid://c4y1f7wlys53d" path="res://assets/3D_models/scenario/quarto_redtex.jpg" id="4_vephn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="5_x0xbu"]
 [ext_resource type="PackedScene" uid="uid://b2q3bfgj1ykyc" path="res://scenes/components/interactable_component.tscn" id="6_e66cg"]
 [ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/objects/triggers/world_trigger.gd" id="7_7qr1p"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="8_e66cg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qhph"]
 resource_name = "Wall interior"
@@ -4782,6 +4783,12 @@ size = Vector3(1, 2.5118408, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qr1p"]
 size = Vector3(4.031494, 5.805176, 3.9039307)
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_5fme1"]
+vertices = PackedVector3Array(-0.4625311, 4.4858446, -27.00314, 0.2874689, 4.4858446, -26.50314, 0.2874689, 4.4858446, -27.00314, -0.9625311, 0.48584437, -26.00314, -2.212531, 0.48584437, -26.25314, -2.962531, 0.48584437, -26.00314, -1.2125311, 0.48584437, -22.00314, -1.2125311, 0.48584437, -11.7531395, -0.7125311, 0.48584437, -13.2531395, -1.2125311, 0.48584437, -14.0031395, -1.2125311, 0.48584437, -19.75314, -0.7125311, 0.48584437, -21.25314, -2.712531, 0.48584437, -3.5031395, -1.2125311, 0.48584437, -3.5031395, -0.7125311, 0.48584437, -4.7531395, -1.2125311, 0.48584437, -6.0031395, -0.21253109, 4.4858446, -23.25314, -0.21253109, 4.4858446, -22.50314, 0.2874689, 4.4858446, -22.50314, 0.2874689, 4.4858446, -23.25314, -0.21253109, 4.4858446, -19.25314, -0.21253109, 4.4858446, -18.50314, 0.2874689, 4.4858446, -18.50314, 0.2874689, 4.4858446, -19.25314, -0.21253109, 4.4858446, -15.2531395, -0.21253109, 4.4858446, -14.5031395, 0.2874689, 4.4858446, -14.5031395, 0.2874689, 4.4858446, -15.2531395, -0.21253109, 4.4858446, -11.2531395, -0.21253109, 4.4858446, -10.5031395, 0.2874689, 4.4858446, -10.5031395, 0.2874689, 4.4858446, -11.2531395, -0.21253109, 4.4858446, -7.2531395, -0.21253109, 4.4858446, -6.5031395, 0.2874689, 4.4858446, -6.5031395, 0.2874689, 4.4858446, -7.2531395, -0.9625311, 0.48584437, 11.4968605, 0.03746891, 0.48584437, 10.9968605, -0.7125311, 0.48584437, 10.9968605, -1.2125311, 0.48584437, 9.9968605, -2.462531, 0.48584437, 18.99686, -1.9625311, 0.48584437, 19.99686, -0.9625311, 0.48584437, 19.99686, -1.2125311, 0.48584437, 12.2468605, -1.2125311, 0.48584437, 8.2468605, -0.4625311, 0.48584437, 7.9968605, -0.4625311, 0.48584437, 6.2468605, -1.2125311, 0.48584437, 5.9968605, -2.962531, 0.48584437, 18.99686, -0.7125311, 0.48584437, 2.7468605, -1.2125311, 0.48584437, 1.9968605, -0.21253109, 4.4858446, -3.2531395, -0.21253109, 4.4858446, -2.5031395, 0.2874689, 4.4858446, -2.5031395, 0.2874689, 4.4858446, -3.2531395, -0.21253109, 4.4858446, 0.7468605, -0.21253109, 4.4858446, 1.4968605, 0.2874689, 4.4858446, 1.4968605, 0.2874689, 4.4858446, 0.7468605, -0.21253109, 4.4858446, 4.7468605, 0.03746891, 4.4858446, 5.4968605, 0.5374689, 4.4858446, 5.2468605, 9.037469, 0.48584437, 9.7468605, 10.787469, 0.48584437, 9.2468605, 8.037469, 0.48584437, 8.7468605, 1.2874689, 0.48584437, 9.9968605, 0.7874689, 0.48584437, 10.7468605, 1.0374689, 0.48584437, 11.9968605, 9.037469, 0.48584437, 11.9968605, 8.037469, 0.48584437, 6.2468605, 1.0374689, 0.48584437, 5.9968605, 9.037469, 1.4858444, 6.2468605, 9.037469, 1.2358444, 7.9968605, 11.037469, 1.2358444, 7.9968605, 11.037469, 1.4858444, 6.2468605, -0.21253109, 4.4858446, 8.9968605, -0.21253109, 4.4858446, 9.4968605, 0.2874689, 4.4858446, 9.4968605, 0.2874689, 4.4858446, 8.7468605, -0.21253109, 4.4858446, 12.7468605, -0.21253109, 4.4858446, 13.4968605, 0.5374689, 4.4858446, 13.2468605, -0.21253109, 4.4858446, 16.74686, -0.21253109, 4.4858446, 17.49686, 0.2874689, 4.4858446, 17.49686, 0.2874689, 4.4858446, 16.74686)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(9, 8, 7), PackedInt32Array(6, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 12), PackedInt32Array(10, 9, 5), PackedInt32Array(5, 9, 12), PackedInt32Array(9, 7, 12), PackedInt32Array(5, 6, 10), PackedInt32Array(7, 15, 12), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(38, 37, 36), PackedInt32Array(36, 39, 38), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(39, 36, 43), PackedInt32Array(44, 39, 48), PackedInt32Array(50, 49, 47), PackedInt32Array(12, 13, 50), PackedInt32Array(12, 50, 47), PackedInt32Array(40, 48, 43), PackedInt32Array(43, 48, 39), PackedInt32Array(47, 44, 12), PackedInt32Array(12, 44, 48), PackedInt32Array(54, 53, 51), PackedInt32Array(51, 53, 52), PackedInt32Array(58, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(61, 60, 59), PackedInt32Array(64, 63, 62), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 64), PackedInt32Array(67, 64, 62), PackedInt32Array(67, 62, 68), PackedInt32Array(69, 64, 70), PackedInt32Array(70, 64, 65), PackedInt32Array(74, 73, 71), PackedInt32Array(71, 73, 72), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 78), PackedInt32Array(81, 80, 79), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 84, 83)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"Cenario"
+
 [node name="Demo" type="Node3D"]
 script = ExtResource("1_b0nem")
 
@@ -4793,7 +4800,7 @@ alvo_jogador = NodePath("../Player")
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("5_x0xbu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2387257, 1.3803871, 0)
 
-[node name="quarto" type="Node3D" parent="."]
+[node name="quarto" type="Node3D" parent="." groups=["Cenario"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0056706667, 0, 0.05678892)
 
 [node name="Wall_012" type="MeshInstance3D" parent="quarto"]
@@ -5216,7 +5223,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="quarto/Comoda/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8o7qt")
 
-[node name="scenario" type="Node3D" parent="."]
+[node name="scenario" type="Node3D" parent="." groups=["Cenario"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2387257, 1.3803871, 0)
 
 [node name="corredorchao" type="Node3D" parent="scenario"]
@@ -6824,5 +6831,11 @@ script = ExtResource("7_7qr1p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22619629, 1.1623421, -0.043151855)
 shape = SubResource("BoxShape3D_7qr1p")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_5fme1")
+
+[node name="Enemy" parent="." instance=ExtResource("8_e66cg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1173725, 0, 17.979916)
 
 [connection signal="body_entered" from="WorldTrigger" to="WorldTrigger" method="_on_body_entered"]

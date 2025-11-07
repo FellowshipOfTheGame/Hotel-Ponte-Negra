@@ -27,7 +27,6 @@ shape = SubResource("CapsuleShape3D_1w50h")
 
 [node name="ActionComponent" parent="." instance=ExtResource("3_nwhyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, 1.0988836)
-visible = false
 
 [node name="VisionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1202852, 0)
@@ -39,7 +38,7 @@ shape = SubResource("CylinderShape3D_ihb4b")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qj54i")
-initial_state = NodePath("RoamingState")
+initial_state = NodePath("ChasingState")
 metadata/_custom_type_script = "uid://bec2av6d5j3lu"
 
 [node name="RoamingState" type="Node" parent="StateMachine"]
@@ -48,6 +47,7 @@ metadata/_custom_type_script = "uid://dkpphgix76225"
 
 [node name="ChasingState" type="Node" parent="StateMachine"]
 script = ExtResource("5_ihb4b")
+speed = 3.0
 metadata/_custom_type_script = "uid://dmg3j7vmg73y5"
 
 [connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
