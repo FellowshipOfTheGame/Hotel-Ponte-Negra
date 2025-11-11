@@ -26,11 +26,11 @@ func _physics_process(delta: float) -> void:
 	if move_input != 0:
 		move = Vector3(sin(rad)*move_input, 0, cos(rad)*move_input).normalized()*velocidade
 		if move_input < 0:
-			move *= 0.3 
+			move *= 0.3
 		move.y = 0
 		velocity.x = move.x
 		velocity.z = move.z
 	else:
 		velocity.x = move_toward(velocity.x, 0, velocidade*delta*3)
 		velocity.z = move_toward(velocity.z, 0, velocidade*delta*3)
-	move_and_slide() 
+	move_and_slide()

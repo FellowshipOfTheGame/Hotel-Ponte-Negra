@@ -6,6 +6,6 @@ func jogar() -> void:
 func sair() -> void:
 	get_tree().quit()
 
-func opcoes() -> void:pass
-	#add_child(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
-	#$Container.visible=false
+func opcoes() -> void:
+	add_child(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
+	$Container.visible=false

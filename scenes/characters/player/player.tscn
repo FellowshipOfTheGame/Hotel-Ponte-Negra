@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/moveTankPlayer.gd" id="1_t61fv"]
-[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/cameraController.gd" id="2_t61fv"]
+[ext_resource type="Script" path="res://scripts/cameraController.gd" id="2_t61fv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
 
@@ -14,7 +14,7 @@ script = ExtResource("1_t61fv")
 script = ExtResource("2_t61fv")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 6, 7)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 7)
 projection = 1
 size = 13.0
 far = 2747.22
