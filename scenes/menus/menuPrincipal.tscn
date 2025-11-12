@@ -43,5 +43,6 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Opcoes")
 text = "Sair"
 
-[connection signal="pressed" from="Container/Jogar" to="." method="_on_jogar_pressed"]
-[connection signal="pressed" from="Container/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="Container/Jogar" to="." method="jogar"]
+[connection signal="pressed" from="Container/Opcoes" to="." method="opcoes"]
+[connection signal="pressed" from="Container/Sair" to="." method="sair"]

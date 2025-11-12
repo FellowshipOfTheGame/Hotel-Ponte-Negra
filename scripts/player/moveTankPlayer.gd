@@ -12,7 +12,7 @@ func modulo(rad:float)->float:
 	return rad
 
 func _physics_process(delta: float) -> void:
-	var movA:int = int(Input.is_action_pressed("ui_left")) - int(Input.is_action_pressed("ui_right"))
+	var movA:int = int(Input.is_action_pressed("mover_esquerda")) - int(Input.is_action_pressed("mover_direita"))
 	rad += movA * delta * vel_ang
 	rad = modulo(rad)
 	if movA:
@@ -29,4 +29,4 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, velocidade*delta*3)
 		velocity.z = move_toward(velocity.z, 0, velocidade*delta*3)
-	move_and_slide() 
+	move_and_slide()
