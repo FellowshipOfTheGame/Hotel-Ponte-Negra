@@ -1,4 +1,4 @@
-[gd_scene load_steps=309 format=4 uid="uid://cs2t17fuwhu36"]
+[gd_scene load_steps=310 format=4 uid="uid://cs2t17fuwhu36"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_b0nem"]
 [ext_resource type="Texture2D" uid="uid://c4y1f7wlys53d" path="res://assets/3D_models/scenario/quarto_redtex.jpg" id="4_vephn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b2q3bfgj1ykyc" path="res://scenes/components/interactable_component.tscn" id="6_e66cg"]
 [ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/objects/triggers/world_trigger.gd" id="7_7qr1p"]
 [ext_resource type="Script" uid="uid://dtwjp6db06vry" path="res://scripts/objects/chave.gd" id="8_e66cg"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="9_5fme1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qhph"]
 resource_name = "Wall interior"
@@ -6878,5 +6879,16 @@ shape = SubResource("BoxShape3D_e66cg")
 [node name="Chave" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("ArrayMesh_afrp5")
 skeleton = NodePath("")
+
+[node name="Enemy" parent="." groups=["Enemy"] instance=ExtResource("9_5fme1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0412228, 0, 17.811068)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -2.2137566, 8.099541, 21.18491)
+light_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+light_energy = 0.8
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.041, -0.538, 17.811)
 
 [connection signal="body_entered" from="WorldTrigger" to="WorldTrigger" method="_on_body_entered"]
