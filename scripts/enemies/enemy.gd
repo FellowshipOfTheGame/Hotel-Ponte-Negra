@@ -17,7 +17,7 @@ func _on_vision_area_body_exited(body: Node3D) -> void:
 		player_target = null
 		can_see_player = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#_update_vision_status()
 	isPlayerClose()
 	

@@ -29,6 +29,4 @@ func Physics_Update(_delta: float):
 		Transitioned.emit(self, "playeridle")
 		return
 	
-	print(player.velocity.x)
-	print(player.velocity.z)
 	player.move_and_slide()
