@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://s4b4h6snax40"]
+[gd_scene load_steps=8 format=3 uid="uid://s4b4h6snax40"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_xtaed"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="2_hk10m"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="3_2bmp8"]
+[ext_resource type="PackedScene" uid="uid://c64hwfk4osl6r" path="res://scenes/Inventory/InventoryMenu.tscn" id="5_40w10"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="5_t4ki5"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
@@ -18,14 +19,14 @@ transparency = 1
 script = ExtResource("1_xtaed")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador")]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -10.25, 27.26974, 25.507826)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -10.25, 27.2697, 25.5078)
 script = ExtResource("2_hk10m")
 alvo_jogador = NodePath("../Player")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_2bmp8")]
 
 [node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("5_t4ki5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6711674, -0.25369763, -4.9404106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67117, -0.253698, -4.94041)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 0, 9.18064, 0)
@@ -34,7 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 
 environment = SubResource("Environment_pvqg0")
 
 [node name="Ground" type="CSGBox3D" parent="."]
-transform = Transform3D(0.99999994, -0.0002443461, 0, 0.0002443461, 0.99999994, 0, 0, 0, 1, 0.027899265, -1.395859, 0.5424385)
+transform = Transform3D(1, -0.000244346, 0, 0.000244346, 1, 0, 0, 0, 1, 0.0278993, -1.39586, 0.542439)
 use_collision = true
 collision_mask = 3
 size = Vector3(50, 0.1, 50)
@@ -50,7 +51,7 @@ polygon = PackedVector2Array(0, 0, 30, 0, 30, 5, 5, 5)
 depth = 4.0
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, -0.9, 11)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, -0.9, 11)
 polygon = PackedVector2Array(0, 0, 30, 0, 30, 5, 0, 5)
 depth = 4.0
 
@@ -58,3 +59,20 @@ depth = 4.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.1, 0)
 operation = 2
 size = Vector3(4.1, 3, 3)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryMenu" parent="UI/InventoryInterface" instance=ExtResource("5_40w10")]
+position = Vector2(-80, 467)
+scale = Vector2(0.3, 0.3)
+
+[editable path="Player"]

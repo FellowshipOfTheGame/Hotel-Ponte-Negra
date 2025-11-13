@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b050vjjnacsnd"]
+
+[ext_resource type="Script" uid="uid://w0xf2ljtu1yh" path="res://scripts/Inventory/item/item_data.gd" id="1_ry3bg"]
+[ext_resource type="Texture2D" uid="uid://crsjilx88w54o" path="res://scripts/Inventory/item/#1 - Transparent Icons.png" id="2_oqxvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sfk1"]
+atlas = ExtResource("2_oqxvd")
+region = Rect2(64, 384, 32, 32)
+
+[resource]
+script = ExtResource("1_ry3bg")
+name = "Raiz"
+description = "Sou uma raiz"
+stackable = true
+texture = SubResource("AtlasTexture_1sfk1")
+metadata/_custom_type_script = "uid://w0xf2ljtu1yh"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c64hwfk4osl6r"]
+
+[ext_resource type="Script" uid="uid://dioqeagyi74kw" path="res://scripts/inventory/CarouselScript.gd" id="1_4b6y5"]
+
+[node name="InventoryMenu" type="Node2D"]
+position = Vector2(-1, 0)
+
+[node name="CarouselContainer" type="Node2D" parent="."]
+position = Vector2(588, 91)
+script = ExtResource("1_4b6y5")
+
+[node name="Control" type="Control" parent="CarouselContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 251.0
+offset_bottom = 251.0
+size_flags_horizontal = 4
+size_flags_vertical = 4

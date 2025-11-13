@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	check_for_interaction()
+	check_for_toggle_inventory()
 
 func check_for_interaction() -> void:
 	if Input.is_action_just_pressed("interacao"):
@@ -34,3 +35,8 @@ func check_for_interaction() -> void:
 			if collider is Interactable:
 				print("Player interagiu com: ", collider.name)
 				collider._on_interact(self)
+
+func check_for_toggle_inventory() -> void:
+	if Input.is_action_just_pressed("Inventário"):
+		print("Apertei TAB")
+	

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://be84ausahmytk"]
+
+[ext_resource type="Script" uid="uid://w0xf2ljtu1yh" path="res://scripts/Inventory/item/item_data.gd" id="1_eywmk"]
+[ext_resource type="Texture2D" uid="uid://crsjilx88w54o" path="res://scripts/Inventory/item/#1 - Transparent Icons.png" id="2_rb0ir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrbj4"]
+atlas = ExtResource("2_rb0ir")
+region = Rect2(0, 448, 32, 32)
+
+[resource]
+script = ExtResource("1_eywmk")
+name = "Maçã"
+description = "Sou uma maçã"
+stackable = true
+texture = SubResource("AtlasTexture_wrbj4")
+metadata/_custom_type_script = "uid://w0xf2ljtu1yh"

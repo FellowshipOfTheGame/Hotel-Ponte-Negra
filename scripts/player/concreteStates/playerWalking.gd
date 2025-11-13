@@ -51,3 +51,4 @@ func check_for_interaction() -> void:
 			if collider is Interactable:
 				print("Player interagiu com: ", collider.name)
 				collider._on_interact(player)
+				

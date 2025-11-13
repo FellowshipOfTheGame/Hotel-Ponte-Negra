@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://bl4kalbb655ah" path="res://scripts/player/concreteStates/playerIdle.gd" id="5_qd3e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
-height = 2.8588867
+height = 2.85889
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61fv"]
-albedo_color = Color(0, 1, 0.023529412, 1)
+albedo_color = Color(0, 1, 0.0235294, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_686vu"]
 material = SubResource("StandardMaterial3D_t61fv")
@@ -20,7 +20,7 @@ size = Vector3(0.3, 0.3, 0.3)
 collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.699995, -0.00263893, 0, 0.00263893, 0.699995, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_686vu")
 
 [node name="Protagonista" type="MeshInstance3D" parent="."]
@@ -32,7 +32,7 @@ mesh = SubResource("BoxMesh_686vu")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="ActionComponent" parent="." instance=ExtResource("4_hss88")]
-transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.546548, -0.90077)
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qd3e3")
