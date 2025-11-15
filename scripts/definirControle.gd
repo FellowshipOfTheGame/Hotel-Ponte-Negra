@@ -1,7 +1,7 @@
 extends Button
 
 
-func _gui_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventKey:if has_focus():
 		text=OS.get_keycode_string(event.keycode)
 		release_focus()

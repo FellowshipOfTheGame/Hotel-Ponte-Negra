@@ -20,7 +20,7 @@ offset_right = 126.0
 offset_bottom = 58.0
 text = "voltar"
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,94 +30,77 @@ anchor_bottom = 0.5
 offset_left = -153.0
 offset_top = -103.0
 offset_right = 153.0
-offset_bottom = 103.0
+offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 2
 
-[node name="HBoxContainer1" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer1"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 2
 text = "Andar para frente"
+vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer1"]
+[node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 2
+focus_mode = 1
+text = "nao definido"
+script = ExtResource("2_56qx3")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Andar para a esquerda"
+vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer1"]
+[node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 2
+focus_mode = 1
+text = "nao definido"
+script = ExtResource("2_56qx3")
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Andar para tras"
+vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer1"]
+[node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 2
+focus_mode = 1
+text = "nao definido"
+script = ExtResource("2_56qx3")
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Andar para a direita"
+vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer1"]
+[node name="Button4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 2
+focus_mode = 1
+text = "nao definido"
+script = ExtResource("2_56qx3")
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Correr"
+vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer1"]
+[node name="Button5" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 2
+focus_mode = 1
+text = "nao definido"
+script = ExtResource("2_56qx3")
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Agachar"
+vertical_alignment = 1
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-text = "nao definido"
-script = ExtResource("2_56qx3")
-
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-text = "nao definido"
-script = ExtResource("2_56qx3")
-
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-text = "nao definido"
-script = ExtResource("2_56qx3")
-
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-text = "nao definido"
-script = ExtResource("2_56qx3")
-
-[node name="Button5" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-text = "nao definido"
-script = ExtResource("2_56qx3")
-
-[node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(125, 0)
+[node name="Button6" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
