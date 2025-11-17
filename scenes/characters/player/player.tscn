@@ -1,29 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=11 format=3 uid="uid://csmmjcndfe1ns"]
 
-[ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/moveTankPlayer.gd" id="1_t61fv"]
-[ext_resource type="Script" path="res://scripts/cameraController.gd" id="2_t61fv"]
+[ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
+[ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
+[ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="4_hss88"]
+[ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
+[ext_resource type="Script" uid="uid://cyw1x178o8j75" path="res://scripts/objects/concreteStates/playerWalking.gd" id="5_6avc5"]
+[ext_resource type="Script" uid="uid://bl4kalbb655ah" path="res://scripts/objects/concreteStates/playerIdle.gd" id="5_qd3e3"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcx1r"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
+height = 2.8588867
 
-[sub_resource type="BoxMesh" id="BoxMesh_t61fv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61fv"]
+albedo_color = Color(0, 1, 0.023529412, 1)
 
-[node name="Node3D" type="CharacterBody3D"]
-script = ExtResource("1_t61fv")
+[sub_resource type="BoxMesh" id="BoxMesh_686vu"]
+material = SubResource("StandardMaterial3D_t61fv")
+size = Vector3(0.3, 0.3, 0.3)
 
-[node name="CameraPivot" type="Node3D" parent="."]
-script = ExtResource("2_t61fv")
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6avc5"]
+height = 10.0
+radius = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 7)
-projection = 1
-size = 13.0
-far = 2747.22
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_6avc5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_bcx1r")
+transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
+shape = SubResource("CapsuleShape3D_686vu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_t61fv")
+[node name="FrontMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+mesh = SubResource("BoxMesh_686vu")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="Protagonista" parent="." instance=ExtResource("2_6avc5")]
+
+[node name="Alarm" type="Node3D" parent="."]
+
+[node name="AlarmArea" type="Area3D" parent="Alarm"]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alarm/AlarmArea"]
+shape = SubResource("CylinderShape3D_6avc5")
+
+[node name="InteractionShapecast" parent="." instance=ExtResource("4_hss88")]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_qd3e3")
+initial_state = NodePath("PlayerIdle")
+
+[node name="PlayerIdle" type="Node" parent="State Machine"]
+script = ExtResource("5_qd3e3")
+metadata/_custom_type_script = "uid://bl4kalbb655ah"
+
+[node name="PlayerWalking" type="Node" parent="State Machine"]
+script = ExtResource("5_6avc5")
+velocidade = 2.0
+metadata/_custom_type_script = "uid://cyw1x178o8j75"
+
+[connection signal="body_entered" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_entered"]
+[connection signal="body_exited" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_exited"]

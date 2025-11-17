@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5by58ehjsdfy"]
+
+[ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_5d1nh"]
+
+[node name="GravityTest" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_5d1nh")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_mask = 3
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+size = Vector3(20, 0.1, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.85732, -0.51478374, 0, 0.51478374, 0.85732, 5.180417, 2.4185567, 1.5308722)
+size = Vector3(1, 2.5439453, 13.725586)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 9.502473, 12.152927)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 0, 9.18064, 0)

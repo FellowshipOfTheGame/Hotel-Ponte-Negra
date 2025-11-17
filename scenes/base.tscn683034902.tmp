@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbwpri8lubdq6"]
+
+[ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_pvqg0"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="2_baglu"]
+[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/cameraController.gd" id="3_t45w4"]
+[ext_resource type="Script" uid="uid://bnt50i4hlhfx4" path="res://scripts/obstacle.gd" id="4_h5ip5"]
+
+[sub_resource type="Environment" id="Environment_pvqg0"]
+background_mode = 1
+background_color = Color(0.186325, 2.40654e-05, 0.186323, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.41278, 0.429387, 0.366938, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t45w4"]
+transparency = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_h5ip5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5ip5"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_pvqg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.708665, 0.23477244, 3.2110949)
+
+[node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("2_baglu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.885885, -0.25369763, -4.9404106)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 9)
+script = ExtResource("3_t45w4")
+alvo_jogador = NodePath("../Player")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027899265, -1.395859, 0.5424385)
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.840614, 0.541635, 0, -0.541635, 0.840614, 0, 9.18064, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pvqg0")
+
+[node name="TestWall" type="StaticBody3D" parent="."]
+script = ExtResource("4_h5ip5")
+metadata/_custom_type_script = "uid://bnt50i4hlhfx4"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestWall"]
+transform = Transform3D(1, 0, 0, 0, 2.752378, 0, 0, 0, 10.575853, 0, 1.3754704, 0)
+material_override = SubResource("StandardMaterial3D_t45w4")
+mesh = SubResource("BoxMesh_h5ip5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestWall"]
+transform = Transform3D(1, 0, 0, 0, 2.75, 0, 0, 0, 10, 0, 1.375, 0)
+shape = SubResource("BoxShape3D_h5ip5")
