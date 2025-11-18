@@ -17,6 +17,7 @@ func voltar() -> void:
 func menuPrincipal() -> void:
 	get_tree().paused=false
 	get_tree().change_scene_to_file("res://scenes/menus/menuPrincipal.tscn")
+	queue_free()
 
 func opcoes() -> void:
 	add_child(preload("res://scenes/menus/menuOpcoes.tscn").instantiate())
