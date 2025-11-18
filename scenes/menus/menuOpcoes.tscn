@@ -46,7 +46,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 script = ExtResource("2_56qx3")
-acao = "mover_frente"
+acao = "movimento_frente"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -59,7 +59,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 script = ExtResource("2_56qx3")
-acao = "mover_esquerda"
+acao = "movimento_esquerda"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -72,7 +72,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 script = ExtResource("2_56qx3")
-acao = "mover_tras"
+acao = "movimento_tras"
 
 [node name="Label4" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -85,11 +85,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 script = ExtResource("2_56qx3")
-acao = "mover_direita"
+acao = "movimento_direita"
 
 [node name="Label5" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Correr"
+text = "Interagir"
 vertical_alignment = 1
 
 [node name="Button5" type="Button" parent="VBoxContainer"]
@@ -98,14 +98,27 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 script = ExtResource("2_56qx3")
-acao = "correr"
+acao = "Interacao"
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Correr"
+vertical_alignment = 1
+
+[node name="Button6" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+script = ExtResource("2_56qx3")
+acao = "correr"
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Agachar"
 vertical_alignment = 1
 
-[node name="Button6" type="Button" parent="VBoxContainer"]
+[node name="Button7" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3
