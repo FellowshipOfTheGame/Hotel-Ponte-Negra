@@ -20,7 +20,7 @@ offset_right = 126.0
 offset_bottom = 58.0
 text = "voltar"
 
-[node name="VBoxContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,12 +35,12 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Andar para frente"
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -48,12 +48,12 @@ focus_mode = 1
 script = ExtResource("2_56qx3")
 acao = "movimento_frente"
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Andar para a esquerda"
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -61,12 +61,12 @@ focus_mode = 1
 script = ExtResource("2_56qx3")
 acao = "movimento_esquerda"
 
-[node name="Label3" type="Label" parent="VBoxContainer"]
+[node name="Label3" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Andar para tras"
 vertical_alignment = 1
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -74,12 +74,12 @@ focus_mode = 1
 script = ExtResource("2_56qx3")
 acao = "movimento_tras"
 
-[node name="Label4" type="Label" parent="VBoxContainer"]
+[node name="Label4" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Andar para a direita"
 vertical_alignment = 1
 
-[node name="Button4" type="Button" parent="VBoxContainer"]
+[node name="Button4" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -87,12 +87,12 @@ focus_mode = 1
 script = ExtResource("2_56qx3")
 acao = "movimento_direita"
 
-[node name="Label5" type="Label" parent="VBoxContainer"]
+[node name="Label5" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Interagir"
 vertical_alignment = 1
 
-[node name="Button5" type="Button" parent="VBoxContainer"]
+[node name="Button5" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -100,12 +100,12 @@ focus_mode = 1
 script = ExtResource("2_56qx3")
 acao = "interacao"
 
-[node name="Label6" type="Label" parent="VBoxContainer"]
+[node name="Label6" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Correr"
 vertical_alignment = 1
 
-[node name="Button6" type="Button" parent="VBoxContainer"]
+[node name="Button6" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -113,12 +113,12 @@ focus_mode = 1
 script = ExtResource("2_56qx3")
 acao = "correr"
 
-[node name="Label7" type="Label" parent="VBoxContainer"]
+[node name="Label7" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Agachar"
 vertical_alignment = 1
 
-[node name="Button7" type="Button" parent="VBoxContainer"]
+[node name="Button7" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 3

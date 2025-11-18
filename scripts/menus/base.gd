@@ -1,6 +1,6 @@
 extends Node3D
 
-var pausa:PackedScene=preload("res://scenes/menus/menuPausa.tscn")
+const pausa:PackedScene=preload("res://scenes/menus/menuPausa.tscn")
 
 
 func _input(event: InputEvent) -> void:
