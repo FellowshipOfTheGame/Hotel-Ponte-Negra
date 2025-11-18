@@ -11,9 +11,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void: if has_focus():
-	if!InputMap.has_action(acao):return
-	InputMap.action_erase_events(acao)
-	InputMap.action_add_event(acao,event)
+	if InputMap.has_action(acao):
+		InputMap.action_erase_events(acao)
+		InputMap.action_add_event(acao,event)
 	if event is InputEventKey:
 		text = event.as_text()
 		release_focus()

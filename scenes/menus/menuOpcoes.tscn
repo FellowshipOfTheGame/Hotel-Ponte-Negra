@@ -98,7 +98,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 script = ExtResource("2_56qx3")
-acao = "Interacao"
+acao = "interacao"
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
 layout_mode = 2

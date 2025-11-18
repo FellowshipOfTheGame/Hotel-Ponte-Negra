@@ -1,7 +1,7 @@
 extends Control
 
 func jogar() -> void:
-	get_tree().change_scene_to_file("res://scenes/base.tscn")
+	get_tree().change_scene_to_file("res://scenes/demo.tscn")
 
 func sair() -> void:
 	get_tree().quit()
