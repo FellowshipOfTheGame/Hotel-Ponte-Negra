@@ -1,9 +1,9 @@
 extends Control
 
-@export_file_path("*.tscn") var inicio:String
+@export var inicio:PackedScene
 
 func jogar() -> void:
-	get_tree().change_scene_to_file(inicio)
+	get_tree().change_scene_to_file(inicio.resource_path)
 
 func sair() -> void:
 	get_tree().quit()
