@@ -13,7 +13,7 @@ func _init() -> void:
 		button.custom_minimum_size=Vector2(0,31)
 		button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 		button.set_script(preload(\"res://scripts/definirControle.gd\"))
-		button.acao=acao
+		button.name=acao
 "
 
 [node name="MenuOpcoes" type="Control"]
