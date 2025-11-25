@@ -8,7 +8,7 @@ func _input(event: InputEvent) -> void:
 		voltar()
 
 func voltar() -> void:
-	var conf = ConfigFile.new()
+	var conf := ConfigFile.new()
 	conf.load(confPath)
 	for acao in InputMap.get_actions():
 		if!(InputMap.action_get_events(acao).is_empty()
