@@ -1,5 +1,6 @@
 extends Control
 
+const confPath = "user://config"
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -7,7 +8,6 @@ func _input(event: InputEvent) -> void:
 		voltar()
 
 func voltar() -> void:
-	const  confPath = "user://config"
 	var conf = ConfigFile.new()
 	conf.load(confPath)
 	for acao in InputMap.get_actions():
