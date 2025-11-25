@@ -1,7 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://153kgjv4215n"]
 
 [ext_resource type="Script" uid="uid://bdbfdlosn56dd" path="res://scripts/menus/menuOpcoes.gd" id="1_3wmgr"]
-[ext_resource type="Script" uid="uid://c24y8xouyl60y" path="res://scripts/definirControle.gd" id="2_56qx3"]
+
+[sub_resource type="GDScript" id="GDScript_56qx3"]
+script/source = "extends GridContainer
+
+func _init() -> void:
+	for acao in InputMap.get_actions():if!acao.begins_with(\"ui_\"):
+		var label := Label.new();var button := Button.new()
+		add_child(label);add_child(button)
+		label.text=acao.replace(\"_\",\" \").replace(\"movimento\",\"mover para\")
+		button.custom_minimum_size=Vector2(0,31)
+		button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+		button.set_script(preload(\"res://scripts/definirControle.gd\"))
+		button.acao=acao
+"
 
 [node name="MenuOpcoes" type="Control"]
 layout_mode = 3
@@ -34,96 +47,6 @@ offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
-
-[node name="Label" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Andar para frente"
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-script = ExtResource("2_56qx3")
-acao = "movimento_frente"
-
-[node name="Label2" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Andar para a esquerda"
-vertical_alignment = 1
-
-[node name="Button2" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-script = ExtResource("2_56qx3")
-acao = "movimento_esquerda"
-
-[node name="Label3" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Andar para tras"
-vertical_alignment = 1
-
-[node name="Button3" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-script = ExtResource("2_56qx3")
-acao = "movimento_tras"
-
-[node name="Label4" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Andar para a direita"
-vertical_alignment = 1
-
-[node name="Button4" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-script = ExtResource("2_56qx3")
-acao = "movimento_direita"
-
-[node name="Label5" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Interagir"
-vertical_alignment = 1
-
-[node name="Button5" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-script = ExtResource("2_56qx3")
-acao = "interacao"
-
-[node name="Label6" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Correr"
-vertical_alignment = 1
-
-[node name="Button6" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-script = ExtResource("2_56qx3")
-acao = "correr"
-
-[node name="Label7" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Agachar"
-vertical_alignment = 1
-
-[node name="Button7" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
-script = ExtResource("2_56qx3")
-acao = "agachar"
+script = SubResource("GDScript_56qx3")
 
 [connection signal="pressed" from="Button" to="." method="voltar"]
