@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://153kgjv4215n"]
 
-[ext_resource type="Script" uid="uid://bdbfdlosn56dd" path="res://scripts/menuOpcoes.gd" id="1_3wmgr"]
-[ext_resource type="Script" uid="uid://crtk5dwolv2c8" path="res://scripts/definirControle.gd" id="2_56qx3"]
+[ext_resource type="Script" uid="uid://bdbfdlosn56dd" path="res://scripts/menus/menuOpcoes.gd" id="1_3wmgr"]
+[ext_resource type="Script" uid="uid://c24y8xouyl60y" path="res://scripts/definirControle.gd" id="2_56qx3"]
 
 [node name="MenuOpcoes" type="Control"]
 layout_mode = 3

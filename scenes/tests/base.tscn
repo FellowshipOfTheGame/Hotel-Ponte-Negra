@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvf3fihpibwbo"]
 
-[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_baglu"]
+[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_baglu"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_pvqg0"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="2_baglu"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="3_40w10"]

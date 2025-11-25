@@ -1,6 +1,6 @@
 [gd_scene load_steps=310 format=4 uid="uid://cs2t17fuwhu36"]
 
-[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_b0nem"]
+[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_b0nem"]
 [ext_resource type="Texture2D" uid="uid://c4y1f7wlys53d" path="res://assets/3D_models/scenario/quarto_redtex.jpg" id="4_vephn"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/porta.gd" id="5_7qr1p"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="5_b0nem"]
