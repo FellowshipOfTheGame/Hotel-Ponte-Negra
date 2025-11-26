@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	#if Input.is_key_pressed(KEY_CTRL):
 		#awaiting_rebind = "movimento_frente"
 		# #set_new_key("movimento_frente", KEY_Z)
-	
+
 func check_for_interaction() -> void:
 	if not interaction_shapecast:
 		return
@@ -48,7 +48,7 @@ func update_alarm_status():
 		print("No monster around!")
 	else:
 		print("Monsters detected!")
-		
+
 func set_new_key(action_name: String, new_keycode: Key):
 	var event := InputEventKey.new()
 	event.physical_keycode = new_keycode
