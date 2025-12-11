@@ -5,17 +5,28 @@ extends CharacterBody3D
 
 var monsters_nearby := {}
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var stamina_bar_max : float
 
-#var awaiting_rebind := ""
+signal player_stamina_changed(stamina_current : float) #mesmo objetivo de stamina_changed, porém reencaminha para a árvore da cena
+
+func _ready() -> void:
+	for child in $"State Machine".get_children(): #conectando o sinal que indica a mudança do valor da stamina
+		if child is PlayerState:
+			stamina_bar_max = child.stamina_max
+			child.stamina_changed.connect(stamina_changed_from_child)
+
+func get_stamina_max():
+	return stamina_bar_max
+
+func stamina_changed_from_child(stamina_current : float): #recaminhando sinal de mudança da stamina
+	player_stamina_changed.emit(stamina_current)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	
 	move_and_slide()
 	check_for_interaction()
-	#if Input.is_key_pressed(KEY_CTRL):
-		#awaiting_rebind = "movimento_frente"
-		# #set_new_key("movimento_frente", KEY_Z)
 	
 func check_for_interaction() -> void:
 	if not interaction_shapecast:

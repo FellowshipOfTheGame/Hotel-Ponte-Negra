@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=12 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
 [ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="4_hss88"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
-[ext_resource type="Script" uid="uid://cyw1x178o8j75" path="res://scripts/objects/concreteStates/playerWalking.gd" id="5_6avc5"]
-[ext_resource type="Script" uid="uid://bl4kalbb655ah" path="res://scripts/objects/concreteStates/playerIdle.gd" id="5_qd3e3"]
+[ext_resource type="Script" uid="uid://bbw0tvlkg30nd" path="res://scripts/player/concreteStates/PlayerWalking.gd" id="5_mk55u"]
+[ext_resource type="Script" uid="uid://cto422qdn3ifa" path="res://scripts/player/concreteStates/PlayerRunning.gd" id="6_xuses"]
+[ext_resource type="Script" uid="uid://degicpqoumd2u" path="res://scripts/player/concreteStates/PlayerIdle.gd" id="7_42irl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -49,18 +50,17 @@ shape = SubResource("CylinderShape3D_6avc5")
 [node name="InteractionShapecast" parent="." instance=ExtResource("4_hss88")]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="State Machine" type="Node" parent="."]
 script = ExtResource("4_qd3e3")
-initial_state = NodePath("PlayerIdle")
-
-[node name="PlayerIdle" type="Node" parent="State Machine"]
-script = ExtResource("5_qd3e3")
-metadata/_custom_type_script = "uid://bl4kalbb655ah"
 
 [node name="PlayerWalking" type="Node" parent="State Machine"]
-script = ExtResource("5_6avc5")
-velocidade = 2.0
-metadata/_custom_type_script = "uid://cyw1x178o8j75"
+script = ExtResource("5_mk55u")
+
+[node name="PlayerRunning" type="Node" parent="State Machine"]
+script = ExtResource("6_xuses")
+
+[node name="PlayerIdle" type="Node" parent="State Machine"]
+script = ExtResource("7_42irl")
 
 [connection signal="body_entered" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_entered"]
 [connection signal="body_exited" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_exited"]

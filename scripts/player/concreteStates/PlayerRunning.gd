@@ -1,0 +1,26 @@
+extends PlayerMoving
+
+class_name PlayerRunning
+
+@export_category("Running")
+@export var velocity : float = 9
+
+func Physics_Update(delta: float):
+	running = Input.is_action_pressed("correr")
+	
+	if tired || !running:
+		Transitioned.emit(self, "playerWalking")
+	
+	move(velocity)
+	
+	print("Stamina:",stamina,"; ColdDown:",cold_down_run)
+	#player.move_and_slide() #Já está no script principal do player
+
+func Update(delta : float):
+	dec_stamina(delta)
+	if stamina == 0:
+		tired = true
+
+
+func Exit():
+	cold_down_run = cold_down_run_max
