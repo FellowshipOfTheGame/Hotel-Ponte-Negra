@@ -7,7 +7,8 @@ var monsters_nearby := {}
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var stamina_bar_max : float
 
-signal player_stamina_changed(stamina_current : float) #mesmo objetivo de stamina_changed, porém reencaminha para a árvore da cena
+signal player_stamina_changed(stamina_current : float, status_tired : bool) #mesmo objetivo de stamina_changed, porém reencaminha para a árvore da cena
+signal spacial_monster_nearby
 
 func _ready() -> void:
 	for child in $"State Machine".get_children(): #conectando o sinal que indica a mudança do valor da stamina
@@ -18,8 +19,8 @@ func _ready() -> void:
 func get_stamina_max():
 	return stamina_bar_max
 
-func stamina_changed_from_child(stamina_current : float): #recaminhando sinal de mudança da stamina
-	player_stamina_changed.emit(stamina_current)
+func stamina_changed_from_child(stamina_current : float, status_tired : bool): #recaminhando sinal de mudança da stamina
+	player_stamina_changed.emit(stamina_current, status_tired)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -43,6 +44,8 @@ func check_for_interaction() -> void:
 
 func _on_alarm_area_body_entered(body: Node3D) -> void:
 	monsters_nearby[body.get_instance_id()] = body
+	if body is Special_Enemy:
+		spacial_monster_nearby.emit()
 	print("Monster entered: ", body.name)
 	update_alarm_status()
 

@@ -21,5 +21,3 @@ func Update(delta : float): #A lógica da stamina deve estar aqui, pois o physic
 		dec_coldDown(delta)
 	if stamina < stamina_max:
 		inc_stamina(delta/2)
-	if stamina == stamina_max:
-		tired = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=14 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bbw0tvlkg30nd" path="res://scripts/player/concreteStates/PlayerWalking.gd" id="5_mk55u"]
 [ext_resource type="Script" uid="uid://cto422qdn3ifa" path="res://scripts/player/concreteStates/PlayerRunning.gd" id="6_xuses"]
 [ext_resource type="Script" uid="uid://degicpqoumd2u" path="res://scripts/player/concreteStates/PlayerIdle.gd" id="7_42irl"]
+[ext_resource type="Script" uid="uid://chpe2ax50ecyo" path="res://scenes/characters/player/flashlight.gd" id="8_xuses"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -21,6 +22,10 @@ size = Vector3(0.3, 0.3, 0.3)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6avc5"]
 height = 10.0
 radius = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_xuses"]
+radius = 0.05
+height = 0.1
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -61,6 +66,19 @@ script = ExtResource("6_xuses")
 
 [node name="PlayerIdle" type="Node" parent="State Machine"]
 script = ExtResource("7_42irl")
+
+[node name="FlashLight" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8558005, -0.18013275)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="FlashLight"]
+light_size = 1.0
+spot_range = 6.1378765
+spot_angle = 37.36012
+script = ExtResource("8_xuses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FlashLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0014372766)
+mesh = SubResource("SphereMesh_xuses")
 
 [connection signal="body_entered" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_entered"]
 [connection signal="body_exited" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_exited"]

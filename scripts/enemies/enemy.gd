@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Special_Enemy
 
 var player_target: Node3D = null
 var can_see_player: bool = false

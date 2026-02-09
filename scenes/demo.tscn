@@ -4826,19 +4826,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gdwgc")
 
-[sub_resource type="Gradient" id="Gradient_5fme1"]
-colors = PackedColorArray(0.95422655, 0.90139383, 0.94513017, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_h5dly"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5dly"]
-gradient = SubResource("Gradient_5fme1")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nwon6"]
+gradient = SubResource("Gradient_h5dly")
 fill_from = Vector2(1, 0)
 
-[sub_resource type="Gradient" id="Gradient_nwon6"]
-colors = PackedColorArray(0.21960784, 0.90588236, 0.015686275, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_6gsge"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6gsge"]
-gradient = SubResource("Gradient_nwon6")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3vvr"]
+gradient = SubResource("Gradient_6gsge")
 fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 0.004950495)
 
 [node name="Demo" type="Node3D"]
 script = ExtResource("1_b0nem")
@@ -6867,12 +6868,6 @@ light_color = Color(1, 0.7647059, 0.42745098, 1)
 light_energy = 8.0
 light_size = 1.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 2.7, 6.1)
-light_color = Color(1, 0.7647059, 0.42745098, 1)
-light_energy = 8.0
-light_size = 1.0
-
 [node name="WorldTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9691131, 0, 11.008346)
 collision_layer = 16
@@ -6912,8 +6907,9 @@ offset_bottom = 37.0
 step = 0.01
 value = 50.0
 nine_patch_stretch = true
-texture_under = SubResource("GradientTexture2D_h5dly")
-texture_progress = SubResource("GradientTexture2D_6gsge")
+texture_under = SubResource("GradientTexture2D_nwon6")
+texture_progress = SubResource("GradientTexture2D_s3vvr")
+tint_progress = Color(0.4854067, 0.85046303, 1.1551381e-06, 1)
 script = ExtResource("10_h5dly")
 
 [connection signal="body_entered" from="WorldTrigger" to="WorldTrigger" method="_on_body_entered"]

@@ -17,10 +17,7 @@ func Physics_Update(delta: float):
 	#player.move_and_slide() #Já está no script principal do player
 
 func Update(delta : float):
-	dec_stamina(delta)
-	if stamina == 0:
-		tired = true
-
+	dec_stamina(delta) #Se stamina é 0, sai do estado running e por isso não necessário nenhuma conferência
 
 func Exit():
 	cold_down_run = cold_down_run_max
