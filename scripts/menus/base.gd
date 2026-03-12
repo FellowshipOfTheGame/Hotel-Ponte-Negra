@@ -4,8 +4,14 @@ extends Node3D
 @onready var stamina = $Stamina
 
 func _ready() -> void:
-	stamina.max_value = player.stamina_bar_max #setando o valor máximo e inicial da stamina
-	player.player_stamina_changed.connect(stamina.value_changed)
+	# 1. Define o valor máximo (usando a função que você criou no Player)
+	stamina.max_value = player.get_stamina_max()
+	
+	# 2. Conecta o sinal filtrando os argumentos
+	# Criamos uma função rápida que recebe (current, tired) e só usa o current
+	player.player_stamina_changed.connect(func(current, _tired): 
+		stamina.value = current
+	)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

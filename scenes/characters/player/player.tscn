@@ -55,8 +55,9 @@ shape = SubResource("CylinderShape3D_6avc5")
 [node name="InteractionShapecast" parent="." instance=ExtResource("4_hss88")]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
 
-[node name="State Machine" type="Node" parent="."]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qd3e3")
+initial_state = NodePath("PlayerIdle")
 
 [node name="PlayerWalking" type="Node" parent="State Machine"]
 script = ExtResource("5_mk55u")

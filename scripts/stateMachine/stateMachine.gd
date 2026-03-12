@@ -8,7 +8,6 @@ var current_state : State
 var states : Dictionary = {}
 
 func _ready():
-	initial_state = $"./PlayerIdle"
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
@@ -16,6 +15,8 @@ func _ready():
 	if initial_state:
 		initial_state.Enter()
 		current_state = initial_state
+	else:
+		push_warning("Aviso: A StateMachine não tem um initial_state definido no Inspector!")
 			
 func _process(delta):
 	if current_state:

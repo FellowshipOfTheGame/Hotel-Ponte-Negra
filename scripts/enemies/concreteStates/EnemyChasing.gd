@@ -1,5 +1,5 @@
 extends State
-class_name ChasingState
+class_name EnemyChasing
 
 @export var speed: float = 5.0
 @export var rotation_speed: float = 5.0 
@@ -20,10 +20,13 @@ func Enter():
 func Physics_Update(_delta: float):
 	if player == null or nav_agent == null or enemy == null:
 		return
+		
 	nav_agent.target_position = player.global_position
-	
 	var next_path_pos := nav_agent.get_next_path_position()
+	
 	var direction := enemy.global_position.direction_to(next_path_pos)
+
+	direction.y = 0 
 	
 	if direction.length() < 0.01:
 		enemy.velocity = Vector3.ZERO 
@@ -31,6 +34,7 @@ func Physics_Update(_delta: float):
 		return
 
 	direction = direction.normalized()
+	
 	enemy.velocity = direction * speed
 	
 	var target_rotation := direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)

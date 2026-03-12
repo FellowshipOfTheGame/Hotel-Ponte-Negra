@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bahro60x3wl2u"]
+
+[ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/objects/triggers/spawn_trigger.gd" id="1_oydo5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qr1p"]
+size = Vector3(4.031494, 5.805176, 3.9039307)
+
+[node name="SpawnTrigger" type="Area3D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_oydo5")
+
+[node name="CollisionTrigger" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22619629, 1.1623421, -0.043151855)
+shape = SubResource("BoxShape3D_7qr1p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
