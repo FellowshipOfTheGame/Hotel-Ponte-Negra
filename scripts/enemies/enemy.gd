@@ -73,3 +73,7 @@ func attack(target):
 	can_attack = false
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
+	
+func gravity_apply(delta : float):
+	var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+	self.velocity.y -= gravity * delta

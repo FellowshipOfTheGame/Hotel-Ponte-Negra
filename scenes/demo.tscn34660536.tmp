@@ -1,15 +1,15 @@
-[gd_scene load_steps=316 format=4 uid="uid://cs2t17fuwhu36"]
+[gd_scene load_steps=315 format=4 uid="uid://cs2t17fuwhu36"]
 
-[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_b0nem"]
+[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_b0nem"]
 [ext_resource type="Texture2D" uid="uid://c4y1f7wlys53d" path="res://assets/3D_models/scenario/quarto_redtex.jpg" id="4_vephn"]
-[ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/porta.gd" id="5_7qr1p"]
+[ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/porta.gd" id="5_7qr1p"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="5_b0nem"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="5_x0xbu"]
 [ext_resource type="PackedScene" uid="uid://b2q3bfgj1ykyc" path="res://scenes/components/interactable_component.tscn" id="6_e66cg"]
-[ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/components/spawn_trigger.gd" id="7_7qr1p"]
-[ext_resource type="Script" uid="uid://dtwjp6db06vry" path="res://scripts/objects/key/chave.gd" id="8_e66cg"]
-[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="8_h5dly"]
-[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/player/ui/staminaBar.gd" id="10_h5dly"]
+[ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/objects/triggers/world_trigger.gd" id="7_7qr1p"]
+[ext_resource type="Script" uid="uid://dtwjp6db06vry" path="res://scripts/objects/chave.gd" id="8_e66cg"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="9_5fme1"]
+[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/staminaBar.gd" id="10_h5dly"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qhph"]
 resource_name = "Wall interior"
@@ -4826,28 +4826,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gdwgc")
 
-[sub_resource type="Gradient" id="Gradient_h5dly"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_5fme1"]
+colors = PackedColorArray(0.95422655, 0.90139383, 0.94513017, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nwon6"]
-gradient = SubResource("Gradient_h5dly")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5dly"]
+gradient = SubResource("Gradient_5fme1")
 fill_from = Vector2(1, 0)
 
-[sub_resource type="Gradient" id="Gradient_6gsge"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_nwon6"]
+colors = PackedColorArray(0.21960784, 0.90588236, 0.015686275, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3vvr"]
-gradient = SubResource("Gradient_6gsge")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6gsge"]
+gradient = SubResource("Gradient_nwon6")
 fill_from = Vector2(1, 0)
-fill_to = Vector2(1, 0.004950495)
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_h5dly"]
-vertices = PackedVector3Array(-3.962531, 4.4858446, -27.00314, -3.962531, 4.4858446, -26.50314, -3.462531, 4.4858446, -26.75314, -0.4625311, 4.4858446, -27.00314, 0.03746891, 4.4858446, -26.50314, 0.03746891, 4.4858446, -27.00314, -0.9625311, 0.48584437, -26.00314, -2.212531, 0.48584437, -26.25314, -2.962531, 0.48584437, -26.00314, -2.712531, 0.48584437, -23.25314, -0.9625311, 0.48584437, -23.75314, -2.962531, 0.48584437, -13.2531395, -2.962531, 0.48584437, -11.7531395, -1.2125311, 0.48584437, -11.7531395, -0.7125311, 0.48584437, -13.2531395, -1.2125311, 0.48584437, -14.0031395, -2.712531, 0.48584437, -14.7531395, -1.2125311, 0.48584437, -19.75314, -0.7125311, 0.48584437, -21.25314, -1.2125311, 0.48584437, -22.00314, -2.962531, 0.48584437, -21.75314, -2.962531, 0.48584437, -20.25314, -2.712531, 0.48584437, -3.5031395, -1.2125311, 0.48584437, -3.5031395, -0.7125311, 0.48584437, -4.7531395, -1.2125311, 0.48584437, -6.0031395, -2.712531, 0.48584437, -6.2531395, -1.2125311, 0.48584437, -15.5031395, -0.9625311, 0.48584437, -17.00314, -2.962531, 0.48584437, -17.75314, -2.962531, 0.48584437, -16.25314, -1.2125311, 0.48584437, -7.5031395, -2.962531, 0.48584437, -7.7531395, -0.9625311, 0.48584437, -9.0031395, -2.962531, 0.48584437, -9.2531395, -2.462531, 0.48584437, 18.99686, -1.9625311, 0.48584437, 19.99686, -0.9625311, 0.48584437, 19.99686, -0.9625311, 0.48584437, 18.24686, -2.962531, 0.48584437, -0.5031395, -2.962531, 0.48584437, 2.2468605, -1.2125311, 0.48584437, 1.9968605, -0.9625311, 0.48584437, -0.7531395, -2.962531, 0.48584437, 18.99686, -1.2125311, 0.48584437, 16.24686, -2.712531, 0.48584437, 16.24686, -1.2125311, 0.48584437, 12.2468605, -0.4625311, 0.48584437, 11.9968605, -0.4625311, 0.48584437, 10.2468605, -1.2125311, 0.48584437, 9.9968605, -2.962531, 0.48584437, 10.4968605, -2.962531, 0.48584437, 11.9968605, -1.2125311, 0.48584437, 8.2468605, -0.4625311, 0.48584437, 7.9968605, -0.4625311, 0.48584437, 6.2468605, -1.2125311, 0.48584437, 5.9968605, -2.962531, 0.48584437, 6.4968605, -2.962531, 0.48584437, 7.9968605, -2.712531, 0.48584437, 13.4968605, -0.9625311, 0.48584437, 14.2468605, -1.2125311, 0.48584437, 4.2468605, -0.7125311, 0.48584437, 2.7468605, -2.712531, 0.48584437, 4.9968605, -2.962531, 0.48584437, -2.0031395)
-polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(8, 10, 9), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 12), PackedInt32Array(15, 12, 11), PackedInt32Array(15, 11, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 21), PackedInt32Array(19, 21, 20), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 22), PackedInt32Array(25, 22, 26), PackedInt32Array(16, 27, 15), PackedInt32Array(16, 30, 27), PackedInt32Array(27, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(25, 26, 31), PackedInt32Array(31, 26, 32), PackedInt32Array(21, 17, 29), PackedInt32Array(29, 17, 28), PackedInt32Array(31, 32, 33), PackedInt32Array(33, 32, 34), PackedInt32Array(12, 13, 34), PackedInt32Array(34, 13, 33), PackedInt32Array(20, 9, 19), PackedInt32Array(19, 9, 10), PackedInt32Array(36, 35, 37), PackedInt32Array(37, 35, 38), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 42), PackedInt32Array(35, 43, 38), PackedInt32Array(38, 43, 44), PackedInt32Array(44, 43, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(49, 46, 50), PackedInt32Array(50, 46, 51), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(55, 52, 56), PackedInt32Array(56, 52, 57), PackedInt32Array(51, 46, 58), PackedInt32Array(58, 46, 59), PackedInt32Array(52, 49, 57), PackedInt32Array(57, 49, 50), PackedInt32Array(61, 60, 41), PackedInt32Array(41, 60, 40), PackedInt32Array(40, 60, 62), PackedInt32Array(22, 23, 63), PackedInt32Array(63, 23, 39), PackedInt32Array(39, 23, 42), PackedInt32Array(56, 62, 55), PackedInt32Array(55, 62, 60), PackedInt32Array(44, 45, 59), PackedInt32Array(59, 45, 58)]
-geometry_source_geometry_mode = 1
-geometry_source_group_name = &"Cena"
-region_min_size = 1.0
-edge_max_length = 3.23
 
 [node name="Demo" type="Node3D"]
 script = ExtResource("1_b0nem")
@@ -5274,7 +5265,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_f0dyl")
 
 [node name="Comoda" type="MeshInstance3D" parent="quarto"]
-transform = Transform3D(0.65882003, 0, 0, 0, 0.65882003, 0, 0, 0, 0.65882003, 10.747081, 0.6367364, 11.017622)
+transform = Transform3D(0.65882003, 0, 0, 0, 0.65882003, 0, 0, 0, 0.65882003, 10.755408, 0.63673687, 11.004847)
 mesh = SubResource("ArrayMesh_mosx3")
 skeleton = NodePath("")
 
@@ -5283,7 +5274,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="quarto/Comoda/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8o7qt")
 
-[node name="scenario" type="Node3D" parent="." groups=["Cena"]]
+[node name="scenario" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2387257, 1.3803871, 0)
 
 [node name="corredorchao" type="Node3D" parent="scenario"]
@@ -6876,13 +6867,17 @@ light_color = Color(1, 0.7647059, 0.42745098, 1)
 light_energy = 8.0
 light_size = 1.0
 
-[node name="WorldTrigger" type="Area3D" parent="." node_paths=PackedStringArray("sp")]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 2.7, 6.1)
+light_color = Color(1, 0.7647059, 0.42745098, 1)
+light_energy = 8.0
+light_size = 1.0
+
+[node name="WorldTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9691131, 0, 11.008346)
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("7_7qr1p")
-enemy_scene = ExtResource("8_h5dly")
-sp = NodePath("../Spawnpoint")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22619629, 1.1623421, -0.043151855)
@@ -6900,6 +6895,9 @@ shape = SubResource("BoxShape3D_e66cg")
 mesh = SubResource("ArrayMesh_afrp5")
 skeleton = NodePath("")
 
+[node name="Enemy" parent="." groups=["Enemy"] instance=ExtResource("9_5fme1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0412228, 0, 17.811068)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -2.2137566, 8.099541, 21.18491)
 light_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
@@ -6908,21 +6906,14 @@ light_energy = 0.8
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.041, -0.538, 17.811)
 
-[node name="Spawnpoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.027343, 0.69191504, 17.96649)
-
 [node name="Stamina" type="TextureProgressBar" parent="."]
 offset_right = 296.0
 offset_bottom = 37.0
 step = 0.01
 value = 50.0
 nine_patch_stretch = true
-texture_under = SubResource("GradientTexture2D_nwon6")
-texture_progress = SubResource("GradientTexture2D_s3vvr")
-tint_progress = Color(0.4854067, 0.85046303, 1.1551381e-06, 1)
+texture_under = SubResource("GradientTexture2D_h5dly")
+texture_progress = SubResource("GradientTexture2D_6gsge")
 script = ExtResource("10_h5dly")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_h5dly")
 
 [connection signal="body_entered" from="WorldTrigger" to="WorldTrigger" method="_on_body_entered"]

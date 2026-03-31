@@ -1,6 +1,6 @@
 [gd_scene load_steps=316 format=4 uid="uid://cs2t17fuwhu36"]
 
-[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_b0nem"]
+[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_b0nem"]
 [ext_resource type="Texture2D" uid="uid://c4y1f7wlys53d" path="res://assets/3D_models/scenario/quarto_redtex.jpg" id="4_vephn"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/porta.gd" id="5_7qr1p"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="5_b0nem"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/components/spawn_trigger.gd" id="7_7qr1p"]
 [ext_resource type="Script" uid="uid://dtwjp6db06vry" path="res://scripts/objects/key/chave.gd" id="8_e66cg"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="8_h5dly"]
-[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/player/ui/staminaBar.gd" id="10_h5dly"]
+[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/staminaBar.gd" id="10_h5dly"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qhph"]
 resource_name = "Wall interior"

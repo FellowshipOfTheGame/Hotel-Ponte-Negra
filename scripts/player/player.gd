@@ -5,18 +5,30 @@ extends CharacterBody3D
 
 var monsters_nearby := {}
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var stamina_bar_max : float
 
-#var awaiting_rebind := ""
+signal player_stamina_changed(stamina_current : float, status_tired : bool) #mesmo objetivo de stamina_changed, porém reencaminha para a árvore da cena
+signal spacial_monster_nearby
+
+func _ready() -> void:
+	for child in $"State Machine".get_children(): #conectando o sinal que indica a mudança do valor da stamina
+		if child is PlayerState:
+			stamina_bar_max = child.stamina_max
+			child.stamina_changed.connect(stamina_changed_from_child)
+
+func get_stamina_max():
+	return stamina_bar_max
+
+func stamina_changed_from_child(stamina_current : float, status_tired : bool): #recaminhando sinal de mudança da stamina
+	player_stamina_changed.emit(stamina_current, status_tired)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	
 	move_and_slide()
 	check_for_interaction()
-	#if Input.is_key_pressed(KEY_CTRL):
-		#awaiting_rebind = "movimento_frente"
-		# #set_new_key("movimento_frente", KEY_Z)
-
+	
 func check_for_interaction() -> void:
 	if not interaction_shapecast:
 		return
@@ -30,10 +42,6 @@ func check_for_interaction() -> void:
 				print("Player interagiu com: ", collider.name)
 				collider._on_interact(self)
 
-func _on_alarm_area_body_entered(body: Node3D) -> void:
-	monsters_nearby[body.get_instance_id()] = body
-	print("Monster entered: ", body.name)
-	update_alarm_status()
 
 func _on_alarm_area_body_exited(body: Node3D) -> void:
 	var instance_id = body.get_instance_id()
@@ -48,7 +56,7 @@ func update_alarm_status():
 		print("No monster around!")
 	else:
 		print("Monsters detected!")
-
+		
 func set_new_key(action_name: String, new_keycode: Key):
 	var event := InputEventKey.new()
 	event.physical_keycode = new_keycode
