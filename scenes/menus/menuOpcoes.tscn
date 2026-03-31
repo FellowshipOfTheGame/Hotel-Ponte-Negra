@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://153kgjv4215n"]
 
-[ext_resource type="Script" uid="uid://bdbfdlosn56dd" path="res://scripts/menus/menuOpcoes.gd" id="1_3wmgr"]
+[ext_resource type="Script" uid="uid://bdbfdlosn56dd" path="res://scripts/menus/opcoes/menuOpcoes.gd" id="1_3wmgr"]
 
 [sub_resource type="GDScript" id="GDScript_56qx3"]
 script/source = "extends GridContainer

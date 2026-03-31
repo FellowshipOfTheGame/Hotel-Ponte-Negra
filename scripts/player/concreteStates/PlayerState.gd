@@ -32,12 +32,12 @@ func dec_stamina(dec : float)->void:
 	if stamina == 0:
 		tired = true
 	stamina_changed.emit(stamina, tired)
-	
+
 func inc_stamina(inc : float)->void:
 	stamina = min(stamina + inc, stamina_max)
 	if stamina == stamina_max:
 		tired = false
 	stamina_changed.emit(stamina, tired)
-	
+
 func dec_coldDown(dec : float):
 	cold_down_run = max(cold_down_run - dec, 0)

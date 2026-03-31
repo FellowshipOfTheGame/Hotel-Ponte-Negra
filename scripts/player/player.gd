@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var stamina_bar_max : float
 
 signal player_stamina_changed(stamina_current : float, status_tired : bool) #mesmo objetivo de stamina_changed, porém reencaminha para a árvore da cena
+@warning_ignore("unused_signal")
 signal spacial_monster_nearby
 
 func _ready() -> void:
@@ -25,10 +26,10 @@ func stamina_changed_from_child(stamina_current : float, status_tired : bool): #
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	
+
 	move_and_slide()
 	check_for_interaction()
-	
+
 func check_for_interaction() -> void:
 	if not interaction_shapecast:
 		return
@@ -56,7 +57,7 @@ func update_alarm_status():
 		print("No monster around!")
 	else:
 		print("Monsters detected!")
-		
+
 func set_new_key(action_name: String, new_keycode: Key):
 	var event := InputEventKey.new()
 	event.physical_keycode = new_keycode
