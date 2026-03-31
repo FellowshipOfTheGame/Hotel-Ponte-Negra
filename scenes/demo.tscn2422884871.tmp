@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/components/spawn_trigger.gd" id="7_7qr1p"]
 [ext_resource type="Script" uid="uid://dtwjp6db06vry" path="res://scripts/objects/key/chave.gd" id="8_e66cg"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="8_h5dly"]
-[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/player/ui/staminaBar.gd" id="10_h5dly"]
+[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/staminaBar.gd" id="10_h5dly"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qhph"]
 resource_name = "Wall interior"

@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfgvlhfgkrdkf"]
+[gd_scene load_steps=14 format=3 uid="uid://bfgvlhfgkrdkf"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/menus/base.gd" id="1_n54f7"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="3_bda4d"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="5_55fq4"]
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="6_0fogg"]
-[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/staminaBar.gd" id="6_bda4d"]
-[ext_resource type="Script" uid="uid://bnt50i4hlhfx4" path="res://scripts/obstacle.gd" id="6_uifnq"]
+[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/player/ui/staminaBar.gd" id="6_bda4d"]
 
 [sub_resource type="Environment" id="Environment_pvqg0"]
 background_mode = 1
@@ -60,7 +59,6 @@ use_collision = true
 polygon = PackedVector2Array(0, 0, 30, 0, 30, 5, 0, 5)
 depth = 4.0
 material = SubResource("StandardMaterial3D_bda4d")
-script = ExtResource("6_uifnq")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["Cenario"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.9, -15)
@@ -68,7 +66,6 @@ use_collision = true
 polygon = PackedVector2Array(0, 0, 30, 0, 30, 5, 5, 5)
 depth = 4.0
 material = SubResource("StandardMaterial3D_uifnq")
-script = ExtResource("6_uifnq")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_uifnq")

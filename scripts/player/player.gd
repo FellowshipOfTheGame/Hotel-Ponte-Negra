@@ -42,12 +42,6 @@ func check_for_interaction() -> void:
 				print("Player interagiu com: ", collider.name)
 				collider._on_interact(self)
 
-func _on_alarm_area_body_entered(body: Node3D) -> void:
-	monsters_nearby[body.get_instance_id()] = body
-	if body is Special_Enemy:
-		spacial_monster_nearby.emit()
-	print("Monster entered: ", body.name)
-	update_alarm_status()
 
 func _on_alarm_area_body_exited(body: Node3D) -> void:
 	var instance_id = body.get_instance_id()

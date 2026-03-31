@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hotel Ponte Negra"
-run/main_scene="uid://s4b4h6snax40"
+run/main_scene="uid://cs2t17fuwhu36"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
