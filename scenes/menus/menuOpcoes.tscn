@@ -21,8 +21,7 @@ func _input(event: InputEvent) -> void:
 
 func voltar() -> void:
 	save()
-	$'..'/Container.visible=true
-	queue_free()
+	get_parent().voltar()
 
 func save()->void:
 	var conf := ConfigFile.new();conf.load(confPath)

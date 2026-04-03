@@ -12,8 +12,7 @@ func sair() -> void:
 	get_tree().quit()
 
 func opcoes() -> void:
-	add_child(preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate())
-	$Container.visible=false
+	get_parent().mudar_menu(preload(\"res://scenes/menus/menuOpcoes.tscn\"))
 "
 
 [node name="MenuPrincipal" type="Control"]
