@@ -1,6 +1,35 @@
 [gd_scene load_steps=2 format=3 uid="uid://b13kmc0a4s1nf"]
 
-[ext_resource type="Script" uid="uid://diuqjsxcj3p1h" path="res://scripts/menus/menuPausa.gd" id="1_ghh02"]
+[sub_resource type="GDScript" id="MenuPausa"]
+script/source = "extends Control
+
+func _ready() -> void:
+	get_tree().paused=true
+	Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"_pausa\"):
+		get_viewport().set_input_as_handled()
+		voltar()
+
+func voltar() -> void:
+	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+	get_tree().paused=false
+	queue_free()
+
+func menuPrincipal() -> void:
+	get_tree().paused=false
+	get_tree().change_scene_to_file(\"res://scenes/menus/menuPrincipal.tscn\")
+	queue_free()
+
+func opcoes() -> void:
+	add_child(preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate())
+	$Container.visible=false
+
+
+func sair() -> void:
+	get_tree().quit()
+"
 
 [node name="MenuPausa" type="Control"]
 process_mode = 2
@@ -11,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-script = ExtResource("1_ghh02")
+script = SubResource("MenuPausa")
 
 [node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
