@@ -1,6 +1,6 @@
 extends Button
 
-func _ready() -> void:
+func _init() -> void:
 	var event = InputMap.action_get_events(name)[0]
 	if event is InputEventJoypadMotion:
 		text = event.as_text().get_slice("(",1).get_slice(",",0)
