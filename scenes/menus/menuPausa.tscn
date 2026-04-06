@@ -8,15 +8,20 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		voltar()
 
-func voltar():get_parent().despausar()
+func voltar():
+	get_tree().paused=false
+	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+	queue_free()
 
 func menuPrincipal() -> void:
 	get_tree().paused=false
-	get_tree().change_scene_to_file(\"res://scenes/tests/inicio.tscn\")
-	queue_free()
+	get_tree().change_scene_to_file(\"res://scenes/menus/menuPrincipal.tscn\")
 
 func opcoes() -> void:
-	get_parent().mudar_menu(preload(\"res://scenes/menus/menuOpcoes.tscn\"))
+	var menu:=preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
+	menu.prev=\"res://scenes/menus/menuPausa.tscn\"
+	get_parent().add_child(menu)
+	queue_free()
 
 
 func sair() -> void:
@@ -24,6 +29,7 @@ func sair() -> void:
 "
 
 [node name="MenuPausa" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
