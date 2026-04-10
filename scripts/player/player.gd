@@ -28,20 +28,22 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 
 	move_and_slide()
-	check_for_interaction()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interacao"):
+		check_for_interaction()
 
 func check_for_interaction() -> void:
 	if not interaction_shapecast:
 		return
 
-	if Input.is_action_just_pressed("interacao"):
-		interaction_shapecast.force_shapecast_update()
+	interaction_shapecast.force_shapecast_update()
 
-		if interaction_shapecast.is_colliding():
-			var collider = interaction_shapecast.get_collider(0)
-			if collider is Interactable:
-				print("Player interagiu com: ", collider.name)
-				collider._on_interact(self)
+	if interaction_shapecast.is_colliding():
+		var collider = interaction_shapecast.get_collider(0)
+		if collider is Interactable:
+			print("Player interagiu com: ", collider.name)
+			collider._on_interact(self)
 
 
 func _on_alarm_area_body_exited(body: Node3D) -> void:
