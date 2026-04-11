@@ -53,14 +53,17 @@ shape = SubResource("CylinderShape3D_6avc5")
 script = ExtResource("4_qd3e3")
 initial_state = NodePath("PlayerIdle")
 
-[node name="PlayerWalking" type="Node" parent="State Machine"]
+[node name="PlayerWalking" type="Node3D" parent="State Machine"]
 script = ExtResource("5_mk55u")
+metadata/_custom_type_script = "uid://c55ggn6m6b5mr"
 
-[node name="PlayerRunning" type="Node" parent="State Machine"]
+[node name="PlayerRunning" type="Node3D" parent="State Machine"]
 script = ExtResource("6_xuses")
+metadata/_custom_type_script = "uid://cto422qdn3ifa"
 
-[node name="PlayerIdle" type="Node" parent="State Machine"]
+[node name="PlayerIdle" type="Node3D" parent="State Machine"]
 script = ExtResource("7_42irl")
+metadata/_custom_type_script = "uid://degicpqoumd2u"
 
 [node name="FlashLight" parent="." instance=ExtResource("7_mk55u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8558005, -0.18013275)

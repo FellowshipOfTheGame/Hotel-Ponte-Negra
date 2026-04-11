@@ -1,5 +1,9 @@
-extends State
+extends EnemyState
 class_name EnemyIdle
+
+func Enter():
+	super.Enter()
+	start_hearing()
 
 func Update(_delta: float):
 	pass

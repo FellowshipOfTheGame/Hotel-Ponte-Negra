@@ -81,7 +81,7 @@ func handle_movement(delta):
 
 func make_noise():
 	EventBus.noise.emit(global_position, 10.0)
-	print("Emitiu som")
+	#print("Emitiu som")
 	
 
 #func _input(event):

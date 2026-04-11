@@ -25,7 +25,7 @@ func check_attack_collision() -> void:
 
 func execute_attack() -> void:
 	can_attack = false
-	print("Inimigo atacou o alvo detectado!")
+	#print("Inimigo atacou o alvo detectado!")
 	
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
