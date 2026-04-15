@@ -7,8 +7,12 @@ var enemy: CharacterBody3D
 var player: Node3D
 var nav_agent: NavigationAgent3D
 
-var hearing_base: float = 2.0
+@export var hearing_base: float = 2.0
 var raycast: RayCast3D
+
+var last_noise_pos: Vector3 = Vector3.ZERO
+var last_noise_distance: float = 0.0
+var last_noise_intensity: float = 0.0
 
 func Enter():
 	enemy = owner as CharacterBody3D
@@ -25,7 +29,7 @@ func Enter():
 		push_warning("EnemyState (%s): Falha ao encontrar dependências." % name)
 	
 #Função geral para navegação com navmesh
-func move_to_position(target_position: Vector3, speed: float, delta: float):
+func move_to_position(target_position: Vector3, base_speed: float, speed_mult: float, delta: float):
 	if not enemy or not nav_agent:
 		return
 		
@@ -41,7 +45,8 @@ func move_to_position(target_position: Vector3, speed: float, delta: float):
 		return
 
 	direction = direction.normalized()
-	enemy.velocity = direction * speed
+	var final_speed = base_speed * speed_mult	
+	enemy.velocity = direction * final_speed
 	
 	var target_rotation := direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
 	enemy.rotation.y = lerp_angle(enemy.rotation.y, target_rotation, delta * rotation_speed)
@@ -51,6 +56,10 @@ func move_to_position(target_position: Vector3, speed: float, delta: float):
 #Funcoes do sistema de detecção
 func start_hearing():
 	EventBus.noise.connect(process_noise)
+	
+func stop_hearing():
+	if EventBus.noise.is_connected(process_noise):
+		EventBus.noise.disconnect(process_noise)
 	
 func process_noise(noise_pos: Vector3, intensity: float):
 	if raycast == null:
@@ -70,6 +79,9 @@ func process_noise(noise_pos: Vector3, intensity: float):
 	
 	if noise_intensity >= distance:
 		print("Inimigo ouviu o barulho na posicao: " + str(noise_pos))
+		last_noise_pos = noise_pos
+		last_noise_distance = distance
+		last_noise_intensity = noise_intensity
 	
 	
 		

@@ -9,4 +9,4 @@ func Enter():
 func Physics_Update(delta: float):
 	if player == null:
 		return
-	move_to_position(player.global_position, speed, delta)
+	move_to_position(player.global_position, speed,1 ,delta)
