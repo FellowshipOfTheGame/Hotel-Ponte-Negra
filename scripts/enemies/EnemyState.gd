@@ -1,18 +1,16 @@
 extends State
-class_name  EnemyState
+class_name EnemyState
+
+signal noise_detected(noise_pos: Vector3, distance: float, intensity: float, attention_score: float)
 
 @export var rotation_speed: float = 5.0
+@export var hearing_base: float = 2.0
 
 var enemy: CharacterBody3D
 var player: Node3D
 var nav_agent: NavigationAgent3D
-
-@export var hearing_base: float = 2.0
 var raycast: RayCast3D
-
-var last_noise_pos: Vector3 = Vector3.ZERO
-var last_noise_distance: float = 0.0
-var last_noise_intensity: float = 0.0
+var memory: EnemyMemory
 
 func Enter():
 	enemy = owner as CharacterBody3D
@@ -21,21 +19,18 @@ func Enter():
 	if enemy:
 		nav_agent = enemy.get_node_or_null("NavigationAgent3D")
 		raycast = enemy.get_node_or_null("RayCast3D")
+		memory = enemy.get_node_or_null("EnemyMemory")
 		
 		if raycast == null:
-			print("ERRO: RayCast3D não encontrado como filho de ", enemy.name)
-		
-	if not enemy or not player or not nav_agent:
-		push_warning("EnemyState (%s): Falha ao encontrar dependências." % name)
-	
-#Função geral para navegação com navmesh
+			print("ERRO: RayCast3D não encontrado")
+		if memory == null:
+			print("ERRO: EnemyMemory não encontrado")
+
 func move_to_position(target_position: Vector3, base_speed: float, speed_mult: float, delta: float):
 	if not enemy or not nav_agent:
 		return
 		
-	nav_agent.target_position = target_position
 	var next_path_pos := nav_agent.get_next_path_position()
-	
 	var direction := enemy.global_position.direction_to(next_path_pos)
 	direction.y = 0 
 	
@@ -48,14 +43,14 @@ func move_to_position(target_position: Vector3, base_speed: float, speed_mult: f
 	var final_speed = base_speed * speed_mult	
 	enemy.velocity = direction * final_speed
 	
-	var target_rotation := direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+	var target_rotation := atan2(direction.x, direction.z)
 	enemy.rotation.y = lerp_angle(enemy.rotation.y, target_rotation, delta * rotation_speed)
 	
 	enemy.move_and_slide()
 
-#Funcoes do sistema de detecção
 func start_hearing():
-	EventBus.noise.connect(process_noise)
+	if not EventBus.noise.is_connected(process_noise):
+		EventBus.noise.connect(process_noise)
 	
 func stop_hearing():
 	if EventBus.noise.is_connected(process_noise):
@@ -64,24 +59,26 @@ func stop_hearing():
 func process_noise(noise_pos: Vector3, intensity: float):
 	if raycast == null:
 		return
+		
 	var distance = enemy.global_position.distance_to(noise_pos)
 	var noise_intensity = intensity * hearing_base
+	
 	if noise_intensity < distance:
 		return	
 		
 	raycast.target_position = raycast.to_local(noise_pos)
 	raycast.force_raycast_update()
-	print("Distancia: " + str(distance) + " Intensidade: " + str(noise_intensity))
 	
 	if raycast.is_colliding():
 		noise_intensity *= 0.5 
-		print("Intensidade reduzida por causa de obstaculo")
 	
 	if noise_intensity >= distance:
-		print("Inimigo ouviu o barulho na posicao: " + str(noise_pos))
-		last_noise_pos = noise_pos
-		last_noise_distance = distance
-		last_noise_intensity = noise_intensity
-	
-	
+		var attention_score = intensity / max(distance, 0.1)
 		
+		if memory:
+			memory.last_noise_pos = noise_pos
+			memory.last_noise_score = attention_score
+			memory.has_noise_to_investigate = true
+		
+		print("Inimigo ouviu o barulho na posicao: " + str(noise_pos) + " com score de " + str(attention_score))
+		noise_detected.emit(noise_pos, distance, intensity, attention_score)
