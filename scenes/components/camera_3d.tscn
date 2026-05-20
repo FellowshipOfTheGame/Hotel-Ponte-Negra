@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://gqoblksw86ug"]
+
+[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="1_cginj"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.87665963, 0.4811112, 0, -0.4811112, 0.87665963, 0, 0, 0)
+cull_mask = 1047553
+script = ExtResource("1_cginj")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+collide_with_areas = true
