@@ -16,18 +16,18 @@ func _ready() -> void:
 			stamina_bar_max = child.stamina_max
 			child.stamina_changed.connect(stamina_changed_from_child)
 
-func get_stamina_max():
-	return stamina_bar_max
-
-func stamina_changed_from_child(stamina_current : float, status_tired : bool): #recaminhando sinal de mudança da stamina
-	player_stamina_changed.emit(stamina_current, status_tired)
-
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
 	move_and_slide()
 	check_for_interaction()
+	
+func get_stamina_max():
+	return stamina_bar_max
+
+func stamina_changed_from_child(stamina_current : float, status_tired : bool): #recaminhando sinal de mudança da stamina
+	player_stamina_changed.emit(stamina_current, status_tired)
 	
 func check_for_interaction() -> void:
 	if not interaction_shapecast:

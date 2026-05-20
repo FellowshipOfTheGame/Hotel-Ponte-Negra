@@ -14,12 +14,9 @@ func Physics_Update(delta: float):
 	if direction != Vector3.ZERO:
 		Transitioned.emit(self, "playerwalking")
 		return
-		
-	#print("Stamina:",stamina,"; ColdDown:",cold_down_run)
 	
 	player.velocity.x = move_toward(player.velocity.x, 0, deceleration)
 	player.velocity.z = move_toward(player.velocity.z, 0, deceleration)
-	
 
 func Update(delta : float):
 	if stamina < stamina_max:

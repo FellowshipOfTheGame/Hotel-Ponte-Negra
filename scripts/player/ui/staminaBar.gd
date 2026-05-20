@@ -1,12 +1,10 @@
 extends TextureProgressBar
 
-@export var max_stamina : float = 3
 var status_tired: bool
 var alpha : float
 var flag : bool #se true, a transparência vai diminuir; se true, vai aumentar
 
 func _ready() -> void:
-	max_value = max_stamina
 	value = max_value
 	status_tired = false
 	alpha = 1

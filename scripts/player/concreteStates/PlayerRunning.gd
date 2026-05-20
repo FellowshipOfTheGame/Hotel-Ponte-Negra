@@ -13,7 +13,6 @@ func Physics_Update(delta: float):
 	
 	move(velocity)
 	
-	print("Stamina:",stamina,"; ColdDown:",cold_down_run)
 	#player.move_and_slide() #Já está no script principal do player
 
 func Update(delta : float):
