@@ -28,8 +28,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	handle_movement(delta)
-	move_and_slide()
-	check_for_interaction()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interacao"):
+		check_for_interaction()
 	
 func get_stamina_max():
 	return stamina_bar_max

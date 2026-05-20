@@ -28,11 +28,11 @@ func Physics_Update(_delta: float):
 		return
 	investigation_routine(_delta)
 
-func on_noise_detected(pos: Vector3, dist: float, intensity: float, score: float):
+func on_noise_detected(_pos: Vector3, _dist: float, _intensity: float, _score: float):
 	if memory and memory.has_noise_to_investigate:
 		if nav_agent:
 			nav_agent.target_position = memory.last_noise_pos
-		update_speed_multiplier(score)
+		update_speed_multiplier(_score)
 
 # --- NOVA FUNÇÃO ---
 func update_speed_multiplier(score: float):
