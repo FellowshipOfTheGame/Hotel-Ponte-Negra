@@ -7,11 +7,13 @@ var can_attack: bool = true
 @onready var action_cast: ShapeCast3D = $ActionComponent
 
 func _physics_process(delta: float) -> void:
+	
 	apply_gravity(delta)
 	if can_attack:
 		check_attack_collision()
 	
-	move_and_slide()
+	if is_inside_tree(): # Evita erros no restart
+		move_and_slide()
 
 func check_attack_collision() -> void:
 	action_cast.force_shapecast_update()
@@ -21,11 +23,13 @@ func check_attack_collision() -> void:
 			var collider = action_cast.get_collider(i)
 			if collider.is_in_group("Player"):
 				execute_attack()
+				collider.die()
 				break
 
 func execute_attack() -> void:
 	can_attack = false
 	#print("Inimigo atacou o alvo detectado!")
+	
 	
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true

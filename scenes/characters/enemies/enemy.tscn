@@ -33,7 +33,7 @@ collision_mask = 3
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qj54i")
-initial_state = NodePath("EnemyIdle")
+initial_state = NodePath("EnemyChasing")
 metadata/_custom_type_script = "uid://bec2av6d5j3lu"
 
 [node name="EnemyChasing" type="Node3D" parent="StateMachine"]
