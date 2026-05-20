@@ -4855,10 +4855,9 @@ script = ExtResource("1_b0nem")
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador")]
 transform = Transform3D(1, 0, 0, 0, 0.08826846, 0.9960968, 0, -0.9960968, 0.08826846, -2.0228567, 7.8093657, 2.0981443)
 script = ExtResource("5_b0nem")
-alvo_jogador = NodePath("../Player")
+alvo_jogador = NodePath("")
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("5_x0xbu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2387257, 1.3803871, 0)
+[node name="Player" parent="." instance=ExtResource("5_x0xbu")]
 
 [node name="quarto" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0056706667, 0, 0.05678892)
@@ -6839,10 +6838,10 @@ shape = SubResource("ConcavePolygonShape3D_hm0vr")
 
 [node name="porta" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.189671, 1.4159427, -26.609867)
-script = ExtResource("5_7qr1p")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="porta"]
 transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0.27873993, 0.60842323, 3.2313352)
+script = ExtResource("5_7qr1p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="porta/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fwlw8")

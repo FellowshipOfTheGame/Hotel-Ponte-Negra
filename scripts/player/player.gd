@@ -29,8 +29,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 	handle_movement(delta)
 	move_and_slide()
-	if event.is_action_pressed("interacao"):
-		check_for_interaction()
+	check_for_interaction()
 	
 func get_stamina_max():
 	return stamina_bar_max

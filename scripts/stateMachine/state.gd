@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 class_name State
 
 @warning_ignore("unused_signal")
