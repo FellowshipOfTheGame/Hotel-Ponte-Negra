@@ -5,6 +5,7 @@ signal noise_detected(noise_pos: Vector3, distance: float, intensity: float, att
 
 @export var rotation_speed: float = 5.0
 @export var hearing_base: float = 2.0
+@export var proximity_radius: float = 2.5 
 
 var enemy: CharacterBody3D
 var player: Node3D
@@ -25,6 +26,11 @@ func Enter():
 			print("ERRO: RayCast3D não encontrado")
 		if memory == null:
 			print("ERRO: EnemyMemory não encontrado")
+
+func is_player_in_proximity() -> bool:
+	if not player: 
+		return false
+	return enemy.global_position.distance_to(player.global_position) <= proximity_radius
 
 func move_to_position(target_position: Vector3, base_speed: float, speed_mult: float, delta: float):
 	if not enemy or not nav_agent:
@@ -56,29 +62,43 @@ func stop_hearing():
 	if EventBus.noise.is_connected(process_noise):
 		EventBus.noise.disconnect(process_noise)
 	
-func process_noise(noise_pos: Vector3, intensity: float):
+func process_noise(noise_pos: Vector3, base_intensity: float):
 	if raycast == null:
 		return
 		
 	var distance = enemy.global_position.distance_to(noise_pos)
-	var noise_intensity = intensity * hearing_base
+
+	var effective_intensity = base_intensity * hearing_base
 	
-	if noise_intensity < distance:
+	if effective_intensity < distance:
 		return	
 		
 	raycast.target_position = raycast.to_local(noise_pos)
 	raycast.force_raycast_update()
 	
 	if raycast.is_colliding():
-		noise_intensity *= 0.5 
+		effective_intensity *= 0.5
+
+	if effective_intensity < distance:
+		return
+		
+	var attention_score = effective_intensity / max(distance, 0.1)
 	
-	if noise_intensity >= distance:
-		var attention_score = intensity / max(distance, 0.1)
+	if memory and memory.has_noise_to_investigate:
+		var dist_to_old = memory.last_noise_pos.distance_to(noise_pos)
+		var is_close = dist_to_old < 2.0 #Talvez mudar o raio pra ver se esta perto o bastante
 		
-		if memory:
-			memory.last_noise_pos = noise_pos
-			memory.last_noise_score = attention_score
-			memory.has_noise_to_investigate = true
-		
-		print("Inimigo ouviu o barulho na posicao: " + str(noise_pos) + " com score de " + str(attention_score))
-		noise_detected.emit(noise_pos, distance, intensity, attention_score)
+		if is_close:
+			if attention_score <= (memory.last_noise_score * 1.2):
+				return 
+		else:
+			if attention_score <= memory.last_noise_score:
+				return
+	
+	if memory:
+		memory.last_noise_pos = noise_pos
+		memory.last_noise_score = attention_score
+		memory.has_noise_to_investigate = true
+
+	print("Inimigo ouviu o barulho na posicao: %s com score de %.2f" % [noise_pos, attention_score])
+	noise_detected.emit(noise_pos, distance, base_intensity, attention_score)
