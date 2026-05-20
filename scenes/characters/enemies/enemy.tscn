@@ -1,28 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd83n5sdks3b0"]
+[gd_scene load_steps=10 format=3 uid="uid://cd83n5sdks3b0"]
 
-[ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/enemies/moveEnemy.gd" id="1_blu3w"]
-[ext_resource type="ArrayMesh" uid="uid://du0lx5hk30kni" path="res://assets/3D_models/monsters/prototipo.obj" id="1_w0ky3"]
-[ext_resource type="PackedScene" uid="uid://d1wvdjrkby2k4" path="res://scenes/components/actionComponent.tscn" id="3_nwhyh"]
+[ext_resource type="Script" uid="uid://cpul5wd3uj560" path="res://scripts/enemies/enemy.gd" id="1_ihb4b"]
+[ext_resource type="PackedScene" uid="uid://chv0ww3wiepdx" path="res://assets/3D_models/monsters/wolfy1.glb" id="2_ksqmq"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qj54i"]
+[ext_resource type="Script" uid="uid://b6itv8k1b0mee" path="res://scripts/enemies/concreteStates/EnemyChasing.gd" id="5_ihb4b"]
+[ext_resource type="Script" uid="uid://cs1rjin8d444f" path="res://scripts/enemies/concreteStates/EnemyIdle.gd" id="5_ksqmq"]
+[ext_resource type="Script" uid="uid://bbo2r8j7b64m3" path="res://scripts/enemies/concreteStates/EnemyInvestigate.gd" id="6_ksqmq"]
+[ext_resource type="Script" uid="uid://dhv23fs6iq4fj" path="res://scripts/enemies/enemyMemory.gd" id="7_8e52f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1w50h"]
-height = 2.8588867
+radius = 0.95703125
+height = 2.0622559
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lx6e5"]
 
 [node name="Enemy" type="CharacterBody3D"]
-script = ExtResource("1_blu3w")
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_ihb4b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.035868406, 0)
-mesh = ExtResource("1_w0ky3")
-skeleton = NodePath("../CollisionShape3D")
+[node name="Mesh" parent="." instance=ExtResource("2_ksqmq")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9999929, -0.003769902, 0, 0.003769902, 0.9999929, 0, 1.1632295, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999929, -0.003769902, 0, 0.003769902, 0.9999929, 0, 0.9443333, -0.0015016102)
 shape = SubResource("CapsuleShape3D_1w50h")
 
-[node name="ActionComponent" parent="." instance=ExtResource("3_nwhyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5465478, -1.1166279)
+[node name="ActionComponent" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86754334, 1.0988836)
+shape = SubResource("BoxShape3D_lx6e5")
+target_position = Vector3(0, 0, 0)
+collision_mask = 3
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qj54i")
+initial_state = NodePath("EnemyChasing")
 metadata/_custom_type_script = "uid://bec2av6d5j3lu"
+
+[node name="EnemyChasing" type="Node3D" parent="StateMachine"]
+script = ExtResource("5_ihb4b")
+metadata/_custom_type_script = "uid://b6itv8k1b0mee"
+
+[node name="EnemyIdle" type="Node3D" parent="StateMachine"]
+script = ExtResource("5_ksqmq")
+metadata/_custom_type_script = "uid://cs1rjin8d444f"
+
+[node name="EnemyInvestigate" type="Node3D" parent="StateMachine"]
+script = ExtResource("6_ksqmq")
+metadata/_custom_type_script = "uid://bbo2r8j7b64m3"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1865541, 0)
+
+[node name="EnemyMemory" type="Node" parent="."]
+script = ExtResource("7_8e52f")

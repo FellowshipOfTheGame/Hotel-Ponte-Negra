@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0jpwhngn5nfl"]
+
+[ext_resource type="Texture2D" uid="uid://dhvjspmhilsqp" path="res://assets/ui_elements/BloodOverlay.png" id="1_abfth"]
+
+[node name="BloodOverlay" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.5254902)
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_abfth")
+expand_mode = 1

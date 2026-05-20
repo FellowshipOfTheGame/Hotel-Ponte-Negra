@@ -15,6 +15,8 @@ func _ready():
 	if initial_state:
 		initial_state.Enter()
 		current_state = initial_state
+	else:
+		push_warning("Aviso: A StateMachine não tem um initial_state definido no Inspector!")
 			
 func _process(delta):
 	if current_state:

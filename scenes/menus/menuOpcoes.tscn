@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://153kgjv4215n"]
+
+[sub_resource type="GDScript" id="GDScript_4lyxp"]
+script/source = "extends Control
+
+var prev:String
+
+func voltar() -> void:
+	$TabContainer/Controles.save()
+	get_parent().add_child(load(prev).instantiate())
+	queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_Controles"]
+script/source = "extends Control
+
+const confPath = \"user://config\"
+
+func _init() -> void: # funcao load()
+	if!FileAccess.file_exists(confPath):return
+	var conf := ConfigFile.new();conf.load(confPath)
+	for acao in conf.get_section_keys(\"controles\"):
+		var key :String= conf.get_value(\"controles\",acao)
+		var event:=InputMap.action_get_events(acao)[0]
+		if event is InputEventKey:
+			event.keycode=OS.find_keycode_from_string(key)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_cancel\"):
+		get_viewport().set_input_as_handled()
+		$\"../..\".voltar()
+
+func save()->void:
+	var conf := ConfigFile.new();conf.load(confPath)
+
+	for acao in InputMap.get_actions():
+		if acao.begins_with(\"ui_\"): return
+		if InputMap.action_get_events(acao).is_empty(): return
+
+		var event := InputMap.action_get_events(acao)[0]
+		var text := event.as_text()
+		if event is InputEventKey:
+			text=text.get_slice(\" \",0)
+		elif event is InputEventJoypadMotion:
+			text=text.get_slice(\"(\",1).get_slice(\",\",0)
+		conf.set_value(\"controles\",acao,text)
+	conf.save(confPath)
+"
+
+[sub_resource type="GDScript" id="GridContainer"]
+script/source = "@tool
+extends GridContainer
+
+func _init() -> void:
+	if Engine.is_editor_hint():
+		InputMap.load_from_project_settings()
+	for acao in InputMap.get_actions():if(
+			!acao.begins_with(\"ui_\")and
+			!acao.begins_with(\"_\")):
+		var label := Label.new()
+		label.text=acao.replace(\"_\",\" \").replace(\"movimento\",\"mover para\")
+		add_child(label)
+		var button := Button.new()
+		button.name=acao
+		button.set_script(preload(\"res://scripts/menus/opcoes/definirControle.gd\"))
+		button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+		button.custom_minimum_size=Vector2(0,31)
+		add_child(button)
+"
+
+[node name="MenuOpcoes" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_4lyxp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 597.0
+offset_right = 113.0
+offset_bottom = 637.0
+text = "voltar"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Controles" type="Control" parent="TabContainer"]
+layout_mode = 2
+script = SubResource("GDScript_Controles")
+metadata/_tab_index = 0
+
+[node name="Controles" type="GridContainer" parent="TabContainer/Controles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 397.0
+offset_top = 129.0
+offset_right = -412.0
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+script = SubResource("GridContainer")
+
+[connection signal="pressed" from="Button" to="." method="voltar"]

@@ -50,6 +50,7 @@ func _physics_process(delta: float):
 
 	if resultado:
 		var colisor = resultado.collider as Node
+		#print("RayCast atingiu: ", colisor.name)
 		if colisor is Obstacle:
 			if colisor != objeto_obstruindo_atualmente:
 				if objeto_obstruindo_atualmente:

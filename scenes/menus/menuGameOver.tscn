@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://cik76m1a26ovs"]
+
+[ext_resource type="Script" uid="uid://dlnbl4c2mgnyt" path="res://scripts/menus/gameOver/menu_game_over.gd" id="1_qap58"]
+
+[node name="menuGameOver" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qap58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34901962)
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.388
+anchor_top = 0.42200002
+anchor_right = 0.61200005
+anchor_bottom = 0.578
+offset_left = 0.023986816
+offset_top = 100.0
+offset_right = -0.024047852
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Tentar de Novo" type="Button" parent="Container"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Menu Principal")
+text = "Tentar de Novo"
+
+[node name="Menu Principal" type="Button" parent="Container"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Tentar de Novo")
+focus_neighbor_bottom = NodePath("../Sair")
+text = "Menu Principal"
+
+[node name="Sair" type="Button" parent="Container"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Menu Principal")
+text = "Sair"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46
+anchor_top = 0.33200002
+anchor_right = 0.54
+anchor_bottom = 0.367
+offset_left = 0.08001709
+offset_top = -0.13601685
+offset_right = -0.08001709
+offset_bottom = 0.18399048
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Container/Tentar de Novo" to="." method="reviver"]
+[connection signal="pressed" from="Container/Menu Principal" to="." method="menuPrincipal"]
+[connection signal="pressed" from="Container/Sair" to="." method="sair"]
