@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpwc8nuldgq71"]
+
+[ext_resource type="PackedScene" uid="uid://cc1hwnlx0735n" path="res://assets/3D_models/puzzle_porta/Gramofone_fullTex.glb" id="1_1iuqr"]
+
+[node name="Gramofone_fullTex" instance=ExtResource("1_1iuqr")]
