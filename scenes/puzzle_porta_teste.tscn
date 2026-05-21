@@ -1,4 +1,4 @@
-[gd_scene load_steps=692 format=4 uid="uid://bj0vs58oa837s"]
+[gd_scene load_steps=696 format=4 uid="uid://bj0vs58oa837s"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_k7h2w"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_rkfa0"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://blyxkr0cygetn" path="res://scripts/objects/wall.gd" id="6_k7h2w"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/porta.gd" id="6_ljett"]
 [ext_resource type="Script" uid="uid://dmjfk5e4priau" path="res://scenes/portaIntemedio.gd" id="7_ia1qh"]
+[ext_resource type="AudioStream" uid="uid://b0cq87w8x24km" path="res://assets/audio/background_music/Canon-in-D-Major.ogg" id="10_bvalb"]
+[ext_resource type="Script" uid="uid://dkgdm2fxnnawb" path="res://scenes/gramophone.gd" id="10_ftxj4"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="10_pbb8v"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -11698,6 +11701,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wevcj")
 
+[sub_resource type="BoxMesh" id="BoxMesh_etpq5"]
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_k7h2w")
 
@@ -13808,3 +13813,21 @@ shape = SubResource("ConcavePolygonShape3D_hxt4x")
 transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, -0.01999998)
 mesh = SubResource("ArrayMesh_4rrdb")
 skeleton = NodePath("")
+
+[node name="Enemy" parent="sala/porta/StaticBody3D" instance=ExtResource("10_pbb8v")]
+transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -218.97208, -1.9975456, 4.700928)
+
+[node name="Gramophone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7947154, 0, -14.754368)
+script = ExtResource("10_ftxj4")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Gramophone"]
+stream = ExtResource("10_bvalb")
+autoplay = true
+max_distance = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gramophone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_etpq5")
+
+[connection signal="tree_exited" from="sala/porta" to="Gramophone" method="_on_porta_tree_exited"]

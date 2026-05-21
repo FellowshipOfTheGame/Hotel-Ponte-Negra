@@ -51,10 +51,10 @@ func remove_obstacle(delta : float) -> void:
 	
 	if ray.is_colliding():
 		collider = ray.get_collider()
-		print("Colidiu com ")
+		#print("Colidiu com ")
 		
 		if collider is Obstacle:
-			print("obstacle")
+			#print("obstacle")
 			collider._ray_enter()
 			
 			if not collider in colliders:

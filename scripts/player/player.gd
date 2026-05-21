@@ -3,7 +3,6 @@ extends CharacterBody3D
 @onready var alarm_area: Area3D = $Alarm/AlarmArea
 @onready var interaction_shapecast: ShapeCast3D = $"InteractionShapecast"
 
-var monsters_nearby := {}
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var stamina_bar_max : float
 
@@ -32,6 +31,9 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interacao"):
 		check_for_interaction()
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_SPACE:
+			die()
 	
 func get_stamina_max():
 	return stamina_bar_max
@@ -50,21 +52,6 @@ func check_for_interaction() -> void:
 		if collider is Interactable:
 			print("Player interagiu com: ", collider.name)
 			collider._on_interact(self)
-
-
-func _on_alarm_area_body_exited(body: Node3D) -> void:
-	var instance_id = body.get_instance_id()
-	if monsters_nearby.has(instance_id):
-		monsters_nearby.erase(instance_id)
-		print("Monster exited: ", body.name)
-		update_alarm_status()
-
-func update_alarm_status():
-	print("Monsters nearby: ", monsters_nearby.size())
-	if monsters_nearby.is_empty():
-		print("No monster around!")
-	else:
-		print("Monsters detected!")
 
 func set_new_key(action_name: String, new_keycode: Key):
 	var event := InputEventKey.new()

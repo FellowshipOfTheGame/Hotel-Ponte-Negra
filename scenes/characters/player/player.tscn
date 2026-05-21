@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=15 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
+[ext_resource type="Script" uid="uid://but7a6i6ay0er" path="res://scenes/characters/player/alarm.gd" id="3_xuses"]
+[ext_resource type="AudioStream" uid="uid://xg7cvgfhkp4w" path="res://assets/audio/sound_effects/brvhrtz-heartbeat-01-brvhrtz-225058.ogg" id="4_42irl"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
 [ext_resource type="Script" uid="uid://c55ggn6m6b5mr" path="res://scripts/player/concreteStates/PlayerWalking.gd" id="5_mk55u"]
 [ext_resource type="Script" uid="uid://cto422qdn3ifa" path="res://scripts/player/concreteStates/PlayerRunning.gd" id="6_xuses"]
@@ -37,6 +39,7 @@ shape = SubResource("CapsuleShape3D_686vu")
 [node name="Protagonista" parent="." instance=ExtResource("2_6avc5")]
 
 [node name="Alarm" type="Node3D" parent="."]
+script = ExtResource("3_xuses")
 
 [node name="AlarmArea" type="Area3D" parent="Alarm"]
 collision_layer = 4
@@ -44,6 +47,10 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Alarm/AlarmArea"]
 shape = SubResource("CylinderShape3D_6avc5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Alarm"]
+stream = ExtResource("4_42irl")
+attenuation_model = 3
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qd3e3")
@@ -72,5 +79,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_xuses")
 }
 
-[connection signal="body_entered" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_entered"]
-[connection signal="body_exited" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_exited"]
+[connection signal="body_entered" from="Alarm/AlarmArea" to="Alarm" method="_on_alarm_area_body_entered"]
+[connection signal="body_exited" from="Alarm/AlarmArea" to="Alarm" method="_on_alarm_area_body_exited"]

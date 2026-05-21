@@ -19,8 +19,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !aberta and forca >= 10:
 		aberta = true
-		collision.queue_free()
-		mesh.queue_free()
+		#collision.queue_free()
+		#mesh.queue_free()
+		get_parent().queue_free()
 		
 		forca = 0
 		empurrando.emit(forca)
