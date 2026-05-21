@@ -5,7 +5,7 @@ signal noise_detected(noise_pos: Vector3, distance: float, intensity: float, att
 
 @export var rotation_speed: float = 5.0
 @export var hearing_base: float = 2.0
-@export var proximity_radius: float = 2.5 
+@export var proximity_radius: float = 5
 
 var enemy: CharacterBody3D
 var player: Node3D
@@ -62,43 +62,55 @@ func stop_hearing():
 	if EventBus.noise.is_connected(process_noise):
 		EventBus.noise.disconnect(process_noise)
 	
-func process_noise(noise_pos: Vector3, base_intensity: float):
-	if raycast == null:
-		return
+func process_noise(noise_pos: Vector3, base_intensity: float, emissor: String = ""):
+	if raycast == null: return
 		
 	var distance = enemy.global_position.distance_to(noise_pos)
-
 	var effective_intensity = base_intensity * hearing_base
 	
-	if effective_intensity < distance:
-		return	
+	if effective_intensity < distance: return	
 		
 	raycast.target_position = raycast.to_local(noise_pos)
 	raycast.force_raycast_update()
-	
 	if raycast.is_colliding():
 		effective_intensity *= 0.5
 
-	if effective_intensity < distance:
-		return
+	if effective_intensity < distance: return
 		
 	var attention_score = effective_intensity / max(distance, 0.1)
 	
+	if emissor == "Player" and distance <= 5.0:
+		attention_score *= 5.0 
+
+
+	#print("\n[AUDIO IN] Emissor: ", emissor, " | Score Calculado: ", step_decimals(attention_score), " | Memória Atual: ", step_decimals(memory.last_noise_score), " (", memory.last_noise_emissor, ")")
+
 	if memory and memory.has_noise_to_investigate:
+		if memory.last_noise_emissor == "Player" and emissor != "Player":
+			if attention_score <= (memory.last_noise_score * 3.0):
+				#print("   -> BLOQUEADO: Gramofone não teve força pra roubar a atenção do Player.")
+				return
+			else:
+				pass
+				#print("   -> ALERTA: Gramofone furou o escudo! Score muito alto!")
+
 		var dist_to_old = memory.last_noise_pos.distance_to(noise_pos)
-		var is_close = dist_to_old < 2.0 #Talvez mudar o raio pra ver se esta perto o bastante
+		var is_close = dist_to_old < 2.0
 		
 		if is_close:
 			if attention_score <= (memory.last_noise_score * 1.2):
+				#print("   -> BLOQUEADO: Som muito perto do antigo, não é maior que 20%.")
 				return 
 		else:
-			if attention_score <= memory.last_noise_score:
+			if attention_score <= (memory.last_noise_score * 1.3):
+				#print("   -> BLOQUEADO: Som distante, não é maior que 30%.")
 				return
 	
 	if memory:
 		memory.last_noise_pos = noise_pos
 		memory.last_noise_score = attention_score
+		memory.last_noise_emissor = emissor 
 		memory.has_noise_to_investigate = true
+		#print("   -> SUCESSO: Memória sobrescrita pelo: ", emissor)
 
-	print("Inimigo ouviu o barulho na posicao: %s com score de %.2f" % [noise_pos, attention_score])
 	noise_detected.emit(noise_pos, distance, base_intensity, attention_score)

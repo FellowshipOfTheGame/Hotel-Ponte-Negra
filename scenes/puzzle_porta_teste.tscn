@@ -1,4 +1,4 @@
-[gd_scene load_steps=723 format=4 uid="uid://bj0vs58oa837s"]
+[gd_scene load_steps=724 format=4 uid="uid://bj0vs58oa837s"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_k7h2w"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_rkfa0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dmjfk5e4priau" path="res://scenes/portaIntemedio.gd" id="7_ia1qh"]
 [ext_resource type="PackedScene" uid="uid://cc1hwnlx0735n" path="res://assets/3D_models/puzzle_porta/Gramofone_fullTex.glb" id="10_bvalb"]
 [ext_resource type="Script" uid="uid://dkgdm2fxnnawb" path="res://scenes/gramophone.gd" id="10_ftxj4"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="10_pbb8v"]
 [ext_resource type="Script" uid="uid://q2iqn4s20pbt" path="res://scripts/objects/door/abrir_porta.gd" id="11_ftxj4"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]
@@ -11994,7 +11995,7 @@ agent_radius = 0.4
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_k7h2w")
 
-[node name="Player" parent="." instance=ExtResource("1_rkfa0")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_rkfa0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.60291, 0.040524364, 9.031095)
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador") instance=ExtResource("3_yp37k")]
@@ -14856,3 +14857,5 @@ mesh = SubResource("BoxMesh_etpq5")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jnwpt")
+
+[node name="Enemy" parent="." instance=ExtResource("10_pbb8v")]
