@@ -36,22 +36,19 @@ debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qj54i")
-initial_state = NodePath("EnemyIdle")
+initial_state = NodePath("EnemyChasing")
 metadata/_custom_type_script = "uid://bec2av6d5j3lu"
 
 [node name="EnemyChasing" type="Node3D" parent="StateMachine"]
 script = ExtResource("5_ihb4b")
-speed = 1.0
 metadata/_custom_type_script = "uid://b6itv8k1b0mee"
 
 [node name="EnemyIdle" type="Node3D" parent="StateMachine"]
 script = ExtResource("5_ksqmq")
-proximity_radius = 6.0
 metadata/_custom_type_script = "uid://cs1rjin8d444f"
 
 [node name="EnemyInvestigate" type="Node3D" parent="StateMachine"]
 script = ExtResource("6_ksqmq")
-proximity_radius = 6.0
 metadata/_custom_type_script = "uid://bbo2r8j7b64m3"
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
