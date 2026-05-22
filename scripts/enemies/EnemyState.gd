@@ -85,7 +85,7 @@ func stop_hearing():
 	if EventBus.noise.is_connected(process_noise):
 		EventBus.noise.disconnect(process_noise)
 	
-func process_noise(noise_pos: Vector3, base_intensity: float):
+func process_noise(noise_pos: Vector3, base_intensity: float, source : String):
 	if raycast == null:
 		return
 		

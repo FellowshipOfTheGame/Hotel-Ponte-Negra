@@ -1,4 +1,4 @@
-[gd_scene load_steps=757 format=4 uid="uid://bj0vs58oa837s"]
+[gd_scene load_steps=760 format=4 uid="uid://bj0vs58oa837s"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_k7h2w"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_rkfa0"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://blyxkr0cygetn" path="res://scripts/objects/wall.gd" id="6_k7h2w"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/push.gd" id="6_ljett"]
 [ext_resource type="PackedScene" uid="uid://btddma3bcu1yn" path="res://assets/3D_models/scenario/props/Counter/counter.tscn" id="8_3ttaa"]
-[ext_resource type="Script" uid="uid://b3cpi8qpkchnn" path="res://scripts/objects/bell.gd" id="8_8gosm"]
+[ext_resource type="Script" uid="uid://djkkavxwjjxjt" path="res://scripts/objects/bell.gd" id="8_8gosm"]
 [ext_resource type="PackedScene" uid="uid://bxe4t54i1v71c" path="res://assets/3D_models/scenario/props/TableB/tableb.tscn" id="9_h2o0q"]
 [ext_resource type="PackedScene" uid="uid://cc1hwnlx0735n" path="res://assets/3D_models/puzzle_porta/Gramofone_fullTex.glb" id="10_bvalb"]
 [ext_resource type="Script" uid="uid://dwcrljo3wi10r" path="res://scripts/objects/door/door.gd" id="10_ecpv5"]
@@ -17,11 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://ctsme7hjm1w7d" path="res://assets/3D_models/scenario/props/Chair/chair_low_poly_forexporting.tscn" id="10_gbyju"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="10_pbb8v"]
 [ext_resource type="PackedScene" uid="uid://dsxi5u3ry24k" path="res://assets/3D_models/scenario/props/Ringbell/campainha.tscn" id="10_uxcpg"]
+[ext_resource type="AudioStream" uid="uid://c8bq42mfpdews" path="res://assets/audio/sound_effects/universfield-clear-bell-chime-487898.ogg" id="11_scq5j"]
 [ext_resource type="PackedScene" uid="uid://bkk3e823fa6qe" path="res://assets/3D_models/scenario/props/Table/tablea.tscn" id="12_irnbj"]
 [ext_resource type="PackedScene" uid="uid://byeqaphyq2np7" path="res://assets/3D_models/scenario/props/Piano/piano.tscn" id="14_ljvy5"]
+[ext_resource type="AudioStream" uid="uid://b0cq87w8x24km" path="res://assets/audio/background_music/Canon-in-D-Major.ogg" id="15_8tlo1"]
 [ext_resource type="Script" uid="uid://dtwjp6db06vry" path="res://scripts/objects/key/chave.gd" id="15_ecpv5"]
 [ext_resource type="PackedScene" uid="uid://crhcws3vd1gg0" path="res://assets/3D_models/scenario/props/Sofa/sofa.tscn" id="15_ljvy5"]
 [ext_resource type="Script" uid="uid://pvwpjrbjnmx1" path="res://scripts/objects/end_point/end_point.gd" id="16_h2o0q"]
+[ext_resource type="AudioStream" uid="uid://bfbkx8t5bl4c3" path="res://assets/audio/sound_effects/dragon-studio-impact-thud-372473.ogg" id="21_hxt4x"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -14630,6 +14633,9 @@ shape = SubResource("BoxShape3D_8gosm")
 [node name="Campainha_copper_material" parent="sala/Campainha" instance=ExtResource("10_uxcpg")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.2728877, 0)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="sala/Campainha"]
+stream = ExtResource("11_scq5j")
+
 [node name="Mesa_001" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -13)
 
@@ -14746,6 +14752,7 @@ script = ExtResource("10_ftxj4")
 transform = Transform3D(2.2981334, 0, -1.9283627, 0, 3, 0, 1.9283627, 0, 2.2981334, 0, 0.65, -0.15669632)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="sala/Gramofone"]
+stream = ExtResource("15_8tlo1")
 autoplay = true
 max_distance = 100.0
 
@@ -15422,6 +15429,11 @@ shape = SubResource("ConcavePolygonShape3D_hxt4x")
 transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1.1)
 mesh = SubResource("ArrayMesh_4rrdb")
 skeleton = NodePath("")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="sala/PortaEmperrada"]
+stream = ExtResource("21_hxt4x")
+volume_db = -10.0
+max_polyphony = 3
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jnwpt")

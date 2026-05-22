@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd3k0f4cx2ol1"
+uid="uid://b8euv7m6w5202"
 path.s3tc="res://.godot/imported/Tableb_Fabric008_128-PNG_Color.png-65fd0af24ca2244bbf540041297d729c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "31cd3b58b0411ea6f9b0dff116b1ddff"
 }
 
 [deps]
