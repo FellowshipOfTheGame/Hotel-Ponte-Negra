@@ -35,7 +35,7 @@ func position_camera(delta : float) -> void:
 	look_at(alvo_jogador.global_position)
 	
 
-func remove_obstacle(delta : float) -> void:
+func remove_obstacle(_delta : float) -> void:
 	if not ray:
 		print("Erro no ray")
 		return

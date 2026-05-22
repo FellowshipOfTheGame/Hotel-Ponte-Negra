@@ -69,7 +69,7 @@ func move_to_position(target_position: Vector3, base_speed: float, speed_mult: f
 		return
 
 	direction = direction.normalized()
-	var final_speed = base_speed * speed_mult	
+	var final_speed = base_speed * speed_mult
 	enemy.velocity = direction * final_speed
 	
 	var target_rotation := atan2(direction.x, direction.z)

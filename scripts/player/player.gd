@@ -70,7 +70,7 @@ func handle_movement(delta):
 		step_timer = 0
 
 func make_noise():
-	EventBus.noise.emit(global_position, 5.0, "Player")
+	EventBus.noise.emit(global_position, 2.0, "Player")
 	#print("Emitiu som")
 	
 func die():

@@ -1,7 +1,7 @@
 extends Interactable
 
-func _on_interact(interactor: Node):
-	EventBus.noise.emit(position, 300, "Sino")
+func _on_interact(_interactor: Node):
+	EventBus.noise.emit(position, 600, "Sino")
 	print("Emitiu som na posicao " + str(position))
 	pass
 	

@@ -8,7 +8,7 @@ func _ready() -> void:
 	visible = false
 	count_special_enemy = 0
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var input : int = Input.is_action_just_pressed("lanterna")
 	if input:
 		visible = !visible 
