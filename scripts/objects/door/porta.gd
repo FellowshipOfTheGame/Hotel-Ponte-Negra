@@ -16,7 +16,7 @@ func _ready() -> void:
 	mesh = $Mesh
 	aberta = false
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !aberta and forca >= 10:
 		aberta = true
 		#collision.queue_free()

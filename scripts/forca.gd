@@ -6,7 +6,7 @@ func _ready() -> void:
 func value_changed(current : float) -> void:
 	value = current
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if value != 0:
 		visible = true
 	else:
