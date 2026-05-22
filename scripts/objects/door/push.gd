@@ -5,6 +5,7 @@ extends Door
 var collision : CollisionShape3D
 var mesh : MeshInstance3D
 var force : float
+var sound_count : int = 0
 
 signal pushing(current : float)
 
@@ -12,6 +13,9 @@ func _on_interact(_interactor: Node):
 	if !aberta: 
 		force += 1
 		pushing.emit(force)
+		sound_count += 1
+	if sound_count % 2 == 0:
+		$AudioStreamPlayer3D.play()
 	
 func _ready() -> void:
 	init()
