@@ -7,7 +7,7 @@ var noise_timer: float = 0.0
 func _process(delta: float) -> void:
 	noise_timer -= delta
 	if noise_timer <= 0.0:
-		EventBus.noise.emit(global_position, 30.0, "Gramofone")
+		EventBus.noise.emit(global_position, 300.0, "Gramofone")
 		noise_timer = noise_interval 
 
 func _on_porta_tree_exited() -> void:

@@ -12517,7 +12517,7 @@ data = PackedVector3Array(0, -1, 0, -0.1625, -0.85069996, 0.5, 0.4253, -0.850699
 script = ExtResource("1_k7h2w")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_rkfa0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.377132, 0.040524364, 10.673533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2776423, 0.040524364, 10.673533)
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador") instance=ExtResource("3_yp37k")]
 transform = Transform3D(1, 0, 0, 0, 0.8766596, 0.48111117, 0, -0.48111117, 0.8766596, 0, 0, 0)
@@ -15431,14 +15431,13 @@ light_energy = 5.0
 [node name="Porta_001" type="AnimatableBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, 3.7398033)
 script = ExtResource("10_ecpv5")
-ang_abertura = -120.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sala/Porta_001"]
-transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.7)
+transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.7081387)
 shape = SubResource("ConcavePolygonShape3D_ls8dc")
 
 [node name="Door_004" type="MeshInstance3D" parent="sala/Porta_001"]
-transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.7)
+transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.7081387)
 mesh = SubResource("ArrayMesh_525k0")
 skeleton = NodePath("")
 
@@ -15456,16 +15455,15 @@ mesh = SubResource("ArrayMesh_525k0")
 skeleton = NodePath("")
 
 [node name="PortaEmperrada" type="StaticBody3D" parent="sala"]
-transform = Transform3D(-3.8814205e-09, 0, 0.56799203, 0, 1.0012287, 0, -0.03255971, 0, -6.7709934e-08, 1.3415635, 2, -3)
+transform = Transform3D(-3.8814205e-09, 0, 0.56799203, 0, 1.0012287, 0, -0.03255971, 0, -6.7709934e-08, 2, 2, -3)
 script = ExtResource("6_ljett")
-tempo = 0.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sala/PortaEmperrada"]
-transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1.1)
+transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, -0.01999998)
 shape = SubResource("ConcavePolygonShape3D_hxt4x")
 
 [node name="Mesh" type="MeshInstance3D" parent="sala/PortaEmperrada"]
-transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1.1)
+transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, -0.01999998)
 mesh = SubResource("ArrayMesh_4rrdb")
 skeleton = NodePath("")
 
@@ -15500,14 +15498,14 @@ transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_o83jp")
 
 [node name="porta_final" type="StaticBody3D" parent="."]
-transform = Transform3D(-3.8814205e-09, 0, 0.56799203, 0, 1.0012287, 0, -0.03255971, 0, -6.7709934e-08, -10.751044, 2, -35)
+transform = Transform3D(-3.8814205e-09, 0, 0.56799203, 0, 1.0012287, 0, -0.03255971, 0, -6.7709934e-08, -10, 2, -35)
 script = ExtResource("16_h2o0q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="porta_final"]
-transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1.3)
+transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, -0.01999998)
 shape = SubResource("ConcavePolygonShape3D_hxt4x")
 
 [node name="Mesh" type="MeshInstance3D" parent="porta_final"]
-transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1.3)
+transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, -0.01999998)
 mesh = SubResource("ArrayMesh_4rrdb")
 skeleton = NodePath("")
