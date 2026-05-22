@@ -28,9 +28,32 @@ func Enter():
 			print("ERRO: EnemyMemory não encontrado")
 
 func is_player_in_proximity() -> bool:
-	if not player: 
+	if not player or not nav_agent: 
 		return false
-	return enemy.global_position.distance_to(player.global_position) <= proximity_radius
+		
+	if raycast:
+		var target_pos = player.global_position
+		target_pos.y += 1.0 
+		
+		raycast.target_position = raycast.to_local(target_pos)
+		raycast.force_raycast_update()
+		
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if not collider.is_in_group("Player"):
+				return false 
+				
+	var map = nav_agent.get_navigation_map()
+	var path = NavigationServer3D.map_get_path(map, enemy.global_position, player.global_position, true)
+	
+	var path_distance: float = 0.0
+	for i in range(1, path.size()):
+		path_distance += path[i - 1].distance_to(path[i])
+		
+	if path_distance > proximity_radius or path.size() == 0:
+		return false
+		
+	return true
 
 func move_to_position(target_position: Vector3, base_speed: float, speed_mult: float, delta: float):
 	if not enemy or not nav_agent:
