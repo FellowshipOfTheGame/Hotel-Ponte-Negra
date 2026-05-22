@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	if can_attack:
 		check_attack_collision()
 	
-	if is_inside_tree():
+	if is_inside_tree(): # Evita erros no restart
 		move_and_slide()
 
 func check_attack_collision() -> void:
@@ -23,12 +23,15 @@ func check_attack_collision() -> void:
 			var collider = action_cast.get_collider(i)
 			if collider.is_in_group("Player"):
 				execute_attack()
-				collider.die()
+				collider.get_node("State Machine").current_state.die()
+				
 				break
 
 func execute_attack() -> void:
 	can_attack = false
 	#print("Inimigo atacou o alvo detectado!")
+	
+	
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 

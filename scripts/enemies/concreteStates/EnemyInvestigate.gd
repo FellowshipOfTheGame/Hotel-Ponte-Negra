@@ -32,9 +32,9 @@ func on_noise_detected(_pos: Vector3, _dist: float, _intensity: float, _score: f
 	if memory and memory.has_noise_to_investigate:
 		if nav_agent:
 			nav_agent.target_position = memory.last_noise_pos
-			#print("[NAV] Inimigo mudou a rota para investigar: ", memory.last_noise_emissor)
 		update_speed_multiplier(_score)
 
+# --- NOVA FUNÇÃO ---
 func update_speed_multiplier(score: float):
 	var bonus_speed = score * score_weight
 	current_speed_mult = clamp(1.0 + bonus_speed, 1.0, max_speed_mult)
