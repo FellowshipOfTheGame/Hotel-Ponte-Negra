@@ -11999,7 +11999,7 @@ agent_radius = 0.4
 script = ExtResource("1_k7h2w")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_rkfa0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.60291, 0.040524364, 9.031095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.60291, 0.040524364, 9.773391)
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador") instance=ExtResource("3_yp37k")]
 alvo_jogador = NodePath("../Player")
