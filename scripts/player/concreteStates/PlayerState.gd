@@ -41,3 +41,6 @@ func inc_stamina(inc : float)->void:
 
 func dec_coldDown(dec : float):
 	cold_down_run = max(cold_down_run - dec, 0)
+	
+func die():
+	Transitioned.emit(self, "playerDead")

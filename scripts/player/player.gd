@@ -6,10 +6,6 @@ extends CharacterBody3D
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var stamina_bar_max : float
 
-# Melhor fazer Game Manager:
-const GameOverMenu = preload("res://scenes/menus/menuGameOver.tscn")
-const BloodOverlay = preload("res://scenes/ui/blood_overlay.tscn")
-
 signal player_stamina_changed(stamina_current : float, status_tired : bool) #mesmo objetivo de stamina_changed, porém reencaminha para a árvore da cena
 @warning_ignore("unused_signal")
 signal spacial_monster_nearby
@@ -31,9 +27,6 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interacao"):
 		check_for_interaction()
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_SPACE:
-			die()
 	
 func get_stamina_max():
 	return stamina_bar_max
@@ -72,20 +65,6 @@ func handle_movement(delta):
 func make_noise():
 	EventBus.noise.emit(global_position, 10.0)
 	#print("Emitiu som")
-	
-func die():
-	print("Morreu!")
-	velocity = Vector3.ZERO
-	var blood = BloodOverlay.instantiate()
-	get_tree().current_scene.add_child(blood)
-	#dead State!
-	$AnimationPlayer.play("die")
-	GameState.has_key = false
-	await $AnimationPlayer.animation_finished
-	#Melhor colocar em Game Manager:
-	var menu = GameOverMenu.instantiate()
-	get_tree().current_scene.add_child(menu)
-	get_tree().paused = true
 
 #func _input(event):
 	#if awaiting_rebind != "" and event is InputEventKey and event.pressed and not event.echo:

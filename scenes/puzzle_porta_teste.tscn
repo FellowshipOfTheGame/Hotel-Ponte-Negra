@@ -1,4 +1,4 @@
-[gd_scene load_steps=721 format=4 uid="uid://bj0vs58oa837s"]
+[gd_scene load_steps=724 format=4 uid="uid://bj0vs58oa837s"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_k7h2w"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_rkfa0"]
@@ -9,12 +9,11 @@
 [ext_resource type="Script" uid="uid://blyxkr0cygetn" path="res://scripts/objects/wall.gd" id="6_k7h2w"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/porta.gd" id="6_ljett"]
 [ext_resource type="Script" uid="uid://dmjfk5e4priau" path="res://scenes/portaIntemedio.gd" id="7_ia1qh"]
-[ext_resource type="AudioStream" uid="uid://b0cq87w8x24km" path="res://assets/audio/background_music/Canon-in-D-Major.ogg" id="10_bvalb"]
+[ext_resource type="PackedScene" uid="uid://cc1hwnlx0735n" path="res://assets/3D_models/puzzle_porta/Gramofone_fullTex.glb" id="10_bvalb"]
 [ext_resource type="Script" uid="uid://dkgdm2fxnnawb" path="res://scenes/gramophone.gd" id="10_ftxj4"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="10_pbb8v"]
-[ext_resource type="PackedScene" uid="uid://cc1hwnlx0735n" path="res://assets/3D_models/puzzle_porta/Gramofone_fullTex.glb" id="10_bvalb"]
 [ext_resource type="Script" uid="uid://q2iqn4s20pbt" path="res://scripts/objects/door/abrir_porta.gd" id="11_ftxj4"]
-
+[ext_resource type="AudioStream" uid="uid://b0cq87w8x24km" path="res://assets/audio/background_music/Canon-in-D-Major.ogg" id="14_8gosm"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -11950,21 +11949,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_scpkx")
 
-[sub_resource type="Animation" id="Animation_pbb8v"]
-resource_name = "abrir_porta"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_ftxj4"]
 length = 0.001
 tracks/0/type = "value"
@@ -11975,6 +11959,21 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pbb8v"]
+resource_name = "abrir_porta"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
@@ -14100,20 +14099,6 @@ skeleton = NodePath("")
 [node name="Enemy" parent="sala/porta/StaticBody3D" instance=ExtResource("10_pbb8v")]
 transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -218.97208, -1.9975456, 4.700928)
 
-[node name="Gramophone" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7947154, 0, -14.754368)
-script = ExtResource("10_ftxj4")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Gramophone"]
-stream = ExtResource("10_bvalb")
-autoplay = true
-max_distance = 100.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gramophone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_etpq5")
-
-[connection signal="tree_exited" from="sala/porta" to="Gramophone" method="_on_porta_tree_exited"]
 [node name="Balcao" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.75, 8.5)
 
@@ -14824,10 +14809,13 @@ script = ExtResource("11_ftxj4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sala/Porta_001"]
 transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.7081387)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_ls8dc")
+disabled = true
 
 [node name="Door_004" type="MeshInstance3D" parent="sala/Porta_001"]
 transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.7081387)
+visible = false
 mesh = SubResource("ArrayMesh_525k0")
 skeleton = NodePath("")
 
@@ -14853,3 +14841,18 @@ skeleton = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_jnwpt")
 }
+
+[node name="Gramophone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7947154, 0, -14.754368)
+script = ExtResource("10_ftxj4")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Gramophone"]
+stream = ExtResource("14_8gosm")
+autoplay = true
+max_distance = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gramophone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_etpq5")
+
+[connection signal="tree_exited" from="sala/porta" to="Gramophone" method="_on_porta_tree_exited"]

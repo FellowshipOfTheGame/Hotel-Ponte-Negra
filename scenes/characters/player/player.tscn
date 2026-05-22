@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=16 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
@@ -16,7 +16,7 @@ height = 2.8588867
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6avc5"]
 height = 10.0
-radius = 5.0
+radius = 10.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lx6e5"]
 
