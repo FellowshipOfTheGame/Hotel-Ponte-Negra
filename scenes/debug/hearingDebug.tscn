@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://p8ci8en2bvxv"]
+
+[ext_resource type="Script" uid="uid://dgda3tj1lovxe" path="res://scripts/debug/noiseGenerator.gd" id="2_cgx8s"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="2_yovv0"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yovv0"]
+vertices = PackedVector3Array(-13.087112, 1, -0.020706177, -8.837112, 1, -0.020706177, -8.587112, 1, -1.0207062, -13.087112, 1, -7.770706, 6.6628876, 1, -0.7707062, 6.9128876, 1, -7.770706, 6.6628876, 1, -0.020706177, 11.912888, 1, -0.020706177, 11.912888, 1, -7.770706, -8.587112, 1, 1.2292938, -7.3371124, 1, 5.979294, -7.0871124, 1, 1.2292938, -13.087112, 1, 5.979294, 6.4128876, 1, 1.2292938, 4.9128876, 1, 1.2292938, 5.1628876, 1, 5.979294, 11.912888, 1, 5.979294)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 3), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 5), PackedInt32Array(7, 5, 8), PackedInt32Array(0, 1, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(10, 12, 9), PackedInt32Array(9, 12, 0), PackedInt32Array(15, 14, 13), PackedInt32Array(7, 13, 6), PackedInt32Array(7, 16, 13), PackedInt32Array(13, 16, 15), PackedInt32Array(11, 14, 10), PackedInt32Array(10, 14, 15)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"Cena"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cgeh"]
+albedo_color = Color(0.32156864, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yovv0"]
+material = SubResource("StandardMaterial3D_3cgeh")
+
+[node name="HearingDebug" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.68961954, 0.7241718, 0, -0.7241718, 0.68961954, 0.142, 15.202, 8.686)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9960967, 0.08826844, 0, -0.08826844, 0.9960967, 2.0228567, -1.9547857, -0.38382435)
+light_energy = 0.505
+
+[node name="Parede" type="CSGBox3D" parent="." groups=["Cena"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0337982, 2.252041, 0)
+use_collision = true
+size = Vector3(14.269745, 3.5335999, 1)
+
+[node name="Chao" type="CSGBox3D" parent="." groups=["Cena"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6378403, 0, -0.9370804)
+use_collision = true
+size = Vector3(25.898544, 1, 14.667252)
+
+[node name="Enemy" parent="." instance=ExtResource("2_yovv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9012923, 0.6543001, -3.8381953)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_yovv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7624032, 4.8621254)
+mesh = SubResource("CapsuleMesh_yovv0")
+script = ExtResource("2_cgx8s")
+camera = NodePath("../Camera3D")

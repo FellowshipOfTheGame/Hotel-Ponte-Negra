@@ -1,17 +1,24 @@
-# ControladorCameraIsometrica.gd
 extends Camera3D
 
 @export_group("Alvo e Configurações")
 @export var alvo_jogador: Node3D
-
-@export var offset_isometrico: Vector3 = Vector3(0, 6, 3) #(0, 8, 10)
-
+@export var offset_isometrico: Vector3 = Vector3(0, 5, 3) #(0, 8, 10)
 @export var suavidade: float = 5.0
 
-@export_group("Detecção de Obstáculos")
-var objeto_obstruindo_atualmente: Node = null
+
+var shape : ShapeCast3D
+var collider
+var colliders
+
+func _ready() -> void:
+	shape = $ShapeCast3D
+	colliders = []
 
 func _physics_process(delta: float) -> void:
+	position_camera(delta)
+	remove_obstacle(delta)
+	
+func position_camera(delta : float) -> void:
 	if not alvo_jogador:
 		return
 	var posicao_desejada = alvo_jogador.global_position + offset_isometrico
@@ -22,32 +29,38 @@ func _physics_process(delta: float) -> void:
 		global_position = posicao_desejada
 
 	look_at(alvo_jogador.global_position)
-
-
-	var space_state = get_world_3d().direct_space_state
-	var inicio_raio = self.global_position
-	var fim_raio = alvo_jogador.global_position + Vector3.UP * 1.0 
 	
-	var query = PhysicsRayQueryParameters3D.create(inicio_raio, fim_raio)
-	query.exclude = [alvo_jogador]
-	
-	var resultado = space_state.intersect_ray(query)
 
-	if resultado:
-		var colisor = resultado.collider
-		#print("RayCast atingiu: ", colisor.name)
-		if colisor.has_method("tornar_transparente"):
-			if colisor != objeto_obstruindo_atualmente:
-				limpar_obstaculo_anterior() 
-				
-				colisor.tornar_transparente()
-				objeto_obstruindo_atualmente = colisor
-		else:
-			limpar_obstaculo_anterior()
-	else:
-		limpar_obstaculo_anterior()
+func remove_obstacle(_delta : float) -> void:
+	if not shape:
+		print("Erro no shape")
+		return
 		
-func limpar_obstaculo_anterior():
-	if is_instance_valid(objeto_obstruindo_atualmente) and objeto_obstruindo_atualmente.has_method("tornar_opaco"):
-		objeto_obstruindo_atualmente.tornar_opaco()
-	objeto_obstruindo_atualmente = null
+	if not alvo_jogador:
+		print("Erro no jogador")
+		return
+		
+	shape.position = position
+	shape.target_position = shape.to_local(alvo_jogador.global_position + Vector3(0,0.5,0))
+	
+	shape.force_shapecast_update()
+	
+	for i in shape.get_collision_count():
+		if shape.is_colliding():
+			collider = shape.get_collider(i)
+			#print("Colidiu com ")
+			
+			if collider is Obstacle:
+				#print("obstacle")
+				collider._shape_enter()
+				
+				if not collider in colliders:
+					colliders.push_back(collider)
+
+		else:
+			collider = null
+			
+	for c in colliders:
+		if c != collider:
+			if(c._shape_exit()):
+				colliders.erase(c)

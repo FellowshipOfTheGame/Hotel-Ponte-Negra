@@ -3,11 +3,8 @@
 [sub_resource type="GDScript" id="MenuPrincipal"]
 script/source = "extends Control
 
-const inicio:PackedScene=preload(\"res://scenes/demo.tscn\")
-
 func jogar() -> void:
-	get_tree().change_scene_to_file(inicio.resource_path)
-	queue_free()
+	get_tree().change_scene_to_file(\"res://scenes/puzzle_porta_teste.tscn\")
 
 func sair() -> void:
 	get_tree().quit()
@@ -16,7 +13,6 @@ func opcoes() -> void:
 	var menu:=preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
 	menu.prev=\"res://scenes/menus/menuPrincipal.tscn\"
 	get_parent().add_child(menu)
-	queue_free()
 "
 
 [node name="MenuPrincipal" type="Control"]

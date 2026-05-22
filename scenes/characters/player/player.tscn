@@ -1,28 +1,60 @@
-[gd_scene load_steps=13 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=17 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
+[ext_resource type="Script" uid="uid://but7a6i6ay0er" path="res://scenes/characters/player/alarm.gd" id="3_xuses"]
+[ext_resource type="AudioStream" uid="uid://xg7cvgfhkp4w" path="res://assets/audio/sound_effects/brvhrtz-heartbeat-01-brvhrtz-225058.ogg" id="4_42irl"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
 [ext_resource type="Script" uid="uid://c55ggn6m6b5mr" path="res://scripts/player/concreteStates/PlayerWalking.gd" id="5_mk55u"]
 [ext_resource type="Script" uid="uid://cto422qdn3ifa" path="res://scripts/player/concreteStates/PlayerRunning.gd" id="6_xuses"]
 [ext_resource type="Script" uid="uid://degicpqoumd2u" path="res://scripts/player/concreteStates/PlayerIdle.gd" id="7_42irl"]
 [ext_resource type="PackedScene" uid="uid://bj1hfslfoyce6" path="res://scenes/components/flash_light.tscn" id="7_mk55u"]
+[ext_resource type="Script" uid="uid://d0euqgn8htuib" path="res://scripts/player/concreteStates/playerDead.gd" id="7_xuses"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61fv"]
-albedo_color = Color(0, 1, 0.023529412, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_686vu"]
-material = SubResource("StandardMaterial3D_t61fv")
-size = Vector3(0.3, 0.3, 0.3)
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6avc5"]
 height = 10.0
-radius = 5.0
+radius = 7.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lx6e5"]
+
+[sub_resource type="Animation" id="Animation_mk55u"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Protagonista:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5707964, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3xnwo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Protagonista:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xuses"]
+_data = {
+&"RESET": SubResource("Animation_3xnwo"),
+&"die": SubResource("Animation_mk55u")
+}
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -33,14 +65,10 @@ script = ExtResource("1_6avc5")
 transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_686vu")
 
-[node name="FrontMarker" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
-mesh = SubResource("BoxMesh_686vu")
-skeleton = NodePath("../CollisionShape3D")
-
 [node name="Protagonista" parent="." instance=ExtResource("2_6avc5")]
 
 [node name="Alarm" type="Node3D" parent="."]
+script = ExtResource("3_xuses")
 
 [node name="AlarmArea" type="Area3D" parent="Alarm"]
 collision_layer = 4
@@ -48,6 +76,10 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Alarm/AlarmArea"]
 shape = SubResource("CylinderShape3D_6avc5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Alarm"]
+stream = ExtResource("4_42irl")
+attenuation_model = 3
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qd3e3")
@@ -62,6 +94,9 @@ script = ExtResource("6_xuses")
 [node name="PlayerIdle" type="Node" parent="State Machine"]
 script = ExtResource("7_42irl")
 
+[node name="PlayerDead" type="Node" parent="State Machine"]
+script = ExtResource("7_xuses")
+
 [node name="FlashLight" parent="." instance=ExtResource("7_mk55u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8558005, -0.18013275)
 
@@ -69,7 +104,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8558005, -0.18013275)
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
 shape = SubResource("BoxShape3D_lx6e5")
 target_position = Vector3(0, 0, 0)
-collision_mask = 3
+collision_mask = 4
 
-[connection signal="body_entered" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_entered"]
-[connection signal="body_exited" from="Alarm/AlarmArea" to="." method="_on_alarm_area_body_exited"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xuses")
+}
+
+[connection signal="body_entered" from="Alarm/AlarmArea" to="Alarm" method="_on_alarm_area_body_entered"]
+[connection signal="body_exited" from="Alarm/AlarmArea" to="Alarm" method="_on_alarm_area_body_exited"]

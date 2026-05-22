@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 [autoload]
 
 GameState="*res://scripts/game_state.gd"
+EventBus="*res://scripts/EventBus.gd"
 
 [file_customization]
 
@@ -25,6 +26,10 @@ folder_colors={
 "res://scenes/": "yellow",
 "res://scripts/": "purple"
 }
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

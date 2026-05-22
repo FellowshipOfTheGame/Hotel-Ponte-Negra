@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://byeqaphyq2np7"]
+
+[ext_resource type="PackedScene" uid="uid://b8agvc6seud0m" path="res://assets/3D_models/scenario/props/Piano/Piano.glb" id="1_2thp8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_obml3"]
+size = Vector3(3.251587, 3.4173431, 3.256897)
+
+[node name="Piano" instance=ExtResource("1_2thp8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10870361, 0.80249786, -0.00039672852)
+shape = SubResource("BoxShape3D_obml3")

@@ -1,6 +1,8 @@
 extends Interactable
 
+signal get_key()
+
 func _on_interact(_interactor: Node):
-	GameState.has_key = true
-	print("You got the key.")
+	print("Pegou a chave")
+	get_key.emit()
 	queue_free()
