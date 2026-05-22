@@ -8,5 +8,3 @@ cull_mask = 1047553
 script = ExtResource("1_cginj")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-collide_with_areas = true
