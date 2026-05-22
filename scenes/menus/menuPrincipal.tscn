@@ -5,6 +5,7 @@ script/source = "extends Control
 
 func jogar() -> void:
 	get_tree().change_scene_to_file(\"res://scenes/puzzle_porta_teste.tscn\")
+	queue_free()
 
 func sair() -> void:
 	get_tree().quit()
@@ -13,6 +14,7 @@ func opcoes() -> void:
 	var menu:=preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
 	menu.prev=\"res://scenes/menus/menuPrincipal.tscn\"
 	get_parent().add_child(menu)
+	queue_free()
 "
 
 [node name="MenuPrincipal" type="Control"]
