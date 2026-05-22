@@ -1,21 +1,17 @@
-# ControladorCameraIsometrica.gd
 extends Camera3D
 
 @export_group("Alvo e Configurações")
 @export var alvo_jogador: Node3D
-
 @export var offset_isometrico: Vector3 = Vector3(0, 5, 3) #(0, 8, 10)
-
 @export var suavidade: float = 5.0
 
-var ray : RayCast3D
 
+var shape : ShapeCast3D
 var collider
-
 var colliders
 
 func _ready() -> void:
-	ray = $RayCast3D
+	shape = $ShapeCast3D
 	colliders = []
 
 func _physics_process(delta: float) -> void:
@@ -36,34 +32,35 @@ func position_camera(delta : float) -> void:
 	
 
 func remove_obstacle(_delta : float) -> void:
-	if not ray:
-		print("Erro no ray")
+	if not shape:
+		print("Erro no shape")
 		return
 		
 	if not alvo_jogador:
 		print("Erro no jogador")
 		return
 		
-	ray.position = position
-	ray.target_position = ray.to_local(alvo_jogador.global_position + Vector3(0,0.5,0))
+	shape.position = position
+	shape.target_position = shape.to_local(alvo_jogador.global_position + Vector3(0,0.5,0))
 	
-	ray.force_raycast_update()
+	shape.force_shapecast_update()
 	
-	if ray.is_colliding():
-		collider = ray.get_collider()
-		#print("Colidiu com ")
-		
-		if collider is Obstacle:
-			#print("obstacle")
-			collider._ray_enter()
+	for i in shape.get_collision_count():
+		if shape.is_colliding():
+			collider = shape.get_collider(i)
+			#print("Colidiu com ")
 			
-			if not collider in colliders:
-				colliders.push_back(collider)
+			if collider is Obstacle:
+				#print("obstacle")
+				collider._shape_enter()
+				
+				if not collider in colliders:
+					colliders.push_back(collider)
 
-	else:
-		collider = null
+		else:
+			collider = null
 			
 	for c in colliders:
 		if c != collider:
-			if(c._ray_exit()):
+			if(c._shape_exit()):
 				colliders.erase(c)
