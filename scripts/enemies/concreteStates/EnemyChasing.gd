@@ -3,18 +3,17 @@ class_name EnemyChasing
 
 @export var speed: float = 6.0
 @export var lose_interest_time: float = 3.0 
+@export var attack_range: float = 1.8 
+
 var time_without_stimulus: float = 0.0
 
 func Enter():
 	super.Enter() 
 	time_without_stimulus = 0.0
-	print("Sentiu o jogador! Entrou em chasing")
-	
-	if not noise_detected.is_connected(on_noise_detected):
-		noise_detected.connect(on_noise_detected)
+	print("Entrou em chasing")
 
 func Physics_Update(delta: float):
-	if not player or not memory:
+	if not player:
 		return
 		
 	var enemy_pos_flat = enemy.global_position
@@ -30,12 +29,8 @@ func Physics_Update(delta: float):
 		
 	if path_distance <= 10.0:
 		time_without_stimulus = 0.0 
-		memory.last_noise_pos = player.global_position 
-		memory.has_noise_to_investigate = true
 	else:
 		time_without_stimulus += delta
-
-	move_to_position(memory.last_noise_pos, speed, 1.0, delta)
 
 	if time_without_stimulus >= lose_interest_time:
 		print("Perdeu o rastro! Caminho ficou muito longo.")
@@ -65,6 +60,4 @@ func Physics_Update(delta: float):
 			var target_rotation := atan2(look_dir.x, look_dir.z)
 			enemy.rotation.y = lerp_angle(enemy.rotation.y, target_rotation, delta * 12.0)
 
-func Exit():
-	if noise_detected.is_connected(on_noise_detected):
-		noise_detected.disconnect(on_noise_detected)
+	enemy.move_and_slide()

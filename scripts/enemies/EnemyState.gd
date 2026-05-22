@@ -123,5 +123,5 @@ func process_noise(noise_pos: Vector3, base_intensity: float):
 		memory.last_noise_score = attention_score
 		memory.has_noise_to_investigate = true
 
-	print("Inimigo ouviu o barulho na posicao: %s com score de %.2f" % [noise_pos, attention_score])
+	#print("Inimigo ouviu o barulho na posicao: %s com score de %.2f" % [noise_pos, attention_score])
 	noise_detected.emit(noise_pos, distance, base_intensity, attention_score)
