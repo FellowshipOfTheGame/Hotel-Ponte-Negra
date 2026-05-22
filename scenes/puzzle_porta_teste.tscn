@@ -1,4 +1,4 @@
-[gd_scene load_steps=724 format=4 uid="uid://bj0vs58oa837s"]
+[gd_scene load_steps=726 format=4 uid="uid://bj0vs58oa837s"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_k7h2w"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_rkfa0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://blyxkr0cygetn" path="res://scripts/objects/wall.gd" id="6_k7h2w"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/porta.gd" id="6_ljett"]
 [ext_resource type="Script" uid="uid://dmjfk5e4priau" path="res://scenes/portaIntemedio.gd" id="7_ia1qh"]
+[ext_resource type="Script" uid="uid://b3cpi8qpkchnn" path="res://scripts/objects/bell.gd" id="8_8gosm"]
 [ext_resource type="PackedScene" uid="uid://cc1hwnlx0735n" path="res://assets/3D_models/puzzle_porta/Gramofone_fullTex.glb" id="10_bvalb"]
 [ext_resource type="Script" uid="uid://dkgdm2fxnnawb" path="res://scenes/gramophone.gd" id="10_ftxj4"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="10_pbb8v"]
@@ -11676,6 +11677,8 @@ radius = 0.2
 height = 0.2
 is_hemisphere = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8gosm"]
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_etpq5"]
 top_radius = 1.0
 bottom_radius = 1.0
@@ -14099,9 +14102,14 @@ mesh = SubResource("BoxMesh_bvalb")
 
 [node name="Campainha" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, 8.5)
+script = ExtResource("8_8gosm")
+metadata/_custom_type_script = "uid://c5ecer3tx5pv8"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Campainha"]
 mesh = SubResource("SphereMesh_pbb8v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sala/Campainha"]
+shape = SubResource("BoxShape3D_8gosm")
 
 [node name="Mesa_001" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -13)

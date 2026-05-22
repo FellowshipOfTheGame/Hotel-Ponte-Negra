@@ -30,7 +30,34 @@ func Enter():
 func is_player_in_proximity() -> bool:
 	if not player: 
 		return false
-	return enemy.global_position.distance_to(player.global_position) <= proximity_radius
+		
+	# 1. Checagem de distância plana (como já fazíamos)
+	var enemy_pos_flat = enemy.global_position
+	var player_pos_flat = player.global_position
+	enemy_pos_flat.y = 0
+	player_pos_flat.y = 0
+	
+	if enemy_pos_flat.distance_to(player_pos_flat) > proximity_radius:
+		return false # Está muito longe
+		
+	# 2. Checagem de Parede (Line of Sight)
+	if raycast:
+		# Aponta o raio para a posição do jogador
+		# Somamos +1.0 no Y para mirar no peito do jogador e o raio não raspar no chão
+		var target_pos = player.global_position
+		target_pos.y += 1.0 
+		
+		raycast.target_position = raycast.to_local(target_pos)
+		raycast.force_raycast_update()
+		
+		# Se o raio bateu em alguma coisa...
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			# Se bateu numa parede, porta, caixa (qualquer coisa que NÃO seja o Player)
+			if not collider.is_in_group("Player"):
+				return false # O inimigo "vê" a parede, então finge que o player não está ali
+
+	return true # Está perto E tem linha de visão livre!
 
 func move_to_position(target_position: Vector3, base_speed: float, speed_mult: float, delta: float):
 	if not enemy or not nav_agent:
