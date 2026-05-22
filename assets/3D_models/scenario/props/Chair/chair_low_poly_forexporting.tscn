@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctsme7hjm1w7d"]
+
+[ext_resource type="PackedScene" uid="uid://nbrqavrcef5u" path="res://assets/3D_models/scenario/props/Chair/Chair-LowPoly-forexporting.glb" id="1_qveqy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vorma"]
+size = Vector3(1.7362976, 3.2109985, 2.25708)
+
+[node name="Chair-LowPoly-forexporting" instance=ExtResource("1_qveqy")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0029754615, -0.34072876, -1.2869873)
+shape = SubResource("BoxShape3D_vorma")

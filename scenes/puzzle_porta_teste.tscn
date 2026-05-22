@@ -9,10 +9,14 @@
 [ext_resource type="Script" uid="uid://blyxkr0cygetn" path="res://scripts/objects/wall.gd" id="6_k7h2w"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/push.gd" id="6_ljett"]
 [ext_resource type="Script" uid="uid://b3cpi8qpkchnn" path="res://scripts/objects/bell.gd" id="8_8gosm"]
+[ext_resource type="PackedScene" uid="uid://bxe4t54i1v71c" path="res://assets/3D_models/scenario/props/TableB/tableb.tscn" id="9_h2o0q"]
 [ext_resource type="PackedScene" uid="uid://cc1hwnlx0735n" path="res://assets/3D_models/puzzle_porta/Gramofone_fullTex.glb" id="10_bvalb"]
 [ext_resource type="Script" uid="uid://dwcrljo3wi10r" path="res://scripts/objects/door/door.gd" id="10_ecpv5"]
 [ext_resource type="Script" uid="uid://dkgdm2fxnnawb" path="res://scenes/gramophone.gd" id="10_ftxj4"]
+[ext_resource type="PackedScene" uid="uid://ctsme7hjm1w7d" path="res://assets/3D_models/scenario/props/Chair/chair_low_poly_forexporting.tscn" id="10_gbyju"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="10_pbb8v"]
+[ext_resource type="PackedScene" uid="uid://bkk3e823fa6qe" path="res://assets/3D_models/scenario/props/Table/tablea.tscn" id="12_irnbj"]
+[ext_resource type="PackedScene" uid="uid://byeqaphyq2np7" path="res://assets/3D_models/scenario/props/Piano/piano.tscn" id="14_ljvy5"]
 [ext_resource type="Script" uid="uid://dtwjp6db06vry" path="res://scripts/objects/key/chave.gd" id="15_ecpv5"]
 [ext_resource type="Script" uid="uid://pvwpjrbjnmx1" path="res://scripts/objects/end_point/end_point.gd" id="16_h2o0q"]
 
@@ -11806,22 +11810,6 @@ is_hemisphere = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gosm"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_etpq5"]
-top_radius = 1.0
-bottom_radius = 1.0
-height = 1.0
-
-[sub_resource type="PrismMesh" id="PrismMesh_bvalb"]
-size = Vector3(1, 2, 0.75)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_pbb8v"]
-top_radius = 1.0
-bottom_radius = 1.0
-height = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_jnwpt"]
-size = Vector3(3, 2.5, 5)
-
 [sub_resource type="PrismMesh" id="PrismMesh_jnwpt"]
 size = Vector3(2, 2, 4)
 
@@ -14663,149 +14651,130 @@ shape = SubResource("BoxShape3D_8gosm")
 [node name="Mesa_001" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -13)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Mesa_001"]
-mesh = SubResource("CylinderMesh_etpq5")
+[node name="Tableb" parent="sala/Mesa_001" instance=ExtResource("9_h2o0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5014453, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sala/Mesa_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting" parent="sala/Mesa_001" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, -1.9805995, 0.26428938, 0)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="sala/Mesa_001"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting2" parent="sala/Mesa_001" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.264, -1.983818)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="sala/Mesa_001"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting3" parent="sala/Mesa_001" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.9462652, 0.264, 0)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="sala/Mesa_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting4" parent="sala/Mesa_001" instance=ExtResource("10_gbyju")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.264, 2.0184278)
 
 [node name="Mesa_002" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -13)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Mesa_002"]
-mesh = SubResource("CylinderMesh_etpq5")
+[node name="Tableb" parent="sala/Mesa_002" instance=ExtResource("9_h2o0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sala/Mesa_002"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting" parent="sala/Mesa_002" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, -1.9805995, 0.26428938, 0)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="sala/Mesa_002"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting2" parent="sala/Mesa_002" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.264, -1.983818)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="sala/Mesa_002"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting3" parent="sala/Mesa_002" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.9462652, 0.264, 0)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="sala/Mesa_002"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting4" parent="sala/Mesa_002" instance=ExtResource("10_gbyju")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.264, 2.0184278)
 
 [node name="Mesa_003" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -23)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Mesa_003"]
-mesh = SubResource("CylinderMesh_etpq5")
+[node name="Tableb" parent="sala/Mesa_003" instance=ExtResource("9_h2o0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sala/Mesa_003"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting" parent="sala/Mesa_003" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, -1.9805995, 0.26428938, 0)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="sala/Mesa_003"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting2" parent="sala/Mesa_003" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.264, -1.983818)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="sala/Mesa_003"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting3" parent="sala/Mesa_003" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.9462652, 0.264, 0)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="sala/Mesa_003"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting4" parent="sala/Mesa_003" instance=ExtResource("10_gbyju")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.264, 2.0184278)
 
 [node name="Mesa_004" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -15)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Mesa_004"]
-mesh = SubResource("CylinderMesh_etpq5")
+[node name="Tableb" parent="sala/Mesa_004" instance=ExtResource("9_h2o0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sala/Mesa_004"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting" parent="sala/Mesa_004" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, -1.9805995, 0.26428938, 0)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="sala/Mesa_004"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting2" parent="sala/Mesa_004" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.264, -1.983818)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="sala/Mesa_004"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting3" parent="sala/Mesa_004" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.9462652, 0.264, 0)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="sala/Mesa_004"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting4" parent="sala/Mesa_004" instance=ExtResource("10_gbyju")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.264, 2.0184278)
 
 [node name="Mesa_005" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -28)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Mesa_005"]
-mesh = SubResource("CylinderMesh_etpq5")
+[node name="Tableb" parent="sala/Mesa_005" instance=ExtResource("9_h2o0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sala/Mesa_005"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting" parent="sala/Mesa_005" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, -1.9805995, 0.26428938, 0)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="sala/Mesa_005"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting2" parent="sala/Mesa_005" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.264, -1.983818)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="sala/Mesa_005"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting3" parent="sala/Mesa_005" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.9462652, 0.264, 0)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="sala/Mesa_005"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting4" parent="sala/Mesa_005" instance=ExtResource("10_gbyju")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.264, 2.0184278)
 
 [node name="Mesa_006" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -23)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Mesa_006"]
-mesh = SubResource("CylinderMesh_etpq5")
+[node name="Tableb" parent="sala/Mesa_006" instance=ExtResource("9_h2o0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sala/Mesa_006"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting" parent="sala/Mesa_006" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, -1.9805995, 0.26428938, 0)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="sala/Mesa_006"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting2" parent="sala/Mesa_006" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.264, -1.983818)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="sala/Mesa_006"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.5)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting3" parent="sala/Mesa_006" instance=ExtResource("10_gbyju")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.9462652, 0.264, 0)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="sala/Mesa_006"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-mesh = SubResource("PrismMesh_bvalb")
+[node name="Chair-LowPoly-forexporting4" parent="sala/Mesa_006" instance=ExtResource("10_gbyju")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.264, 2.0184278)
 
 [node name="Gramofone" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.898, 0.5, -31.148)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sala/Gramofone"]
-mesh = SubResource("CylinderMesh_pbb8v")
+script = ExtResource("10_ftxj4")
 
 [node name="Gramofone_fullTex" parent="sala/Gramofone" instance=ExtResource("10_bvalb")]
 transform = Transform3D(2.2981334, 0, -1.9283627, 0, 3, 0, 1.9283627, 0, 2.2981334, 0, 0.65, -0.15669632)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="sala/Gramofone"]
+autoplay = true
+max_distance = 100.0
+
+[node name="Tablea" parent="sala/Gramofone" instance=ExtResource("12_irnbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
+
 [node name="Piano" type="StaticBody3D" parent="sala"]
 transform = Transform3D(0.76604444, 0, 0.6427876, 0, 1, 0, -0.6427876, 0, 0.76604444, 11, 1.25, -30)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sala/Piano"]
-mesh = SubResource("BoxMesh_jnwpt")
+[node name="Piano" parent="sala/Piano" instance=ExtResource("14_ljvy5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.501, 0)
 
 [node name="Sofa" type="StaticBody3D" parent="sala"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.5, 3)
@@ -15468,18 +15437,6 @@ shape = SubResource("ConcavePolygonShape3D_hxt4x")
 transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1.1)
 mesh = SubResource("ArrayMesh_4rrdb")
 skeleton = NodePath("")
-
-[node name="Gramophone" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7947154, 0, -14.754368)
-script = ExtResource("10_ftxj4")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Gramophone"]
-autoplay = true
-max_distance = 100.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gramophone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_etpq5")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jnwpt")
