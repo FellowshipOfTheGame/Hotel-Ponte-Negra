@@ -13,11 +13,12 @@ func Update(_delta: float):
 
 func Physics_Update(_delta: float):
 	if is_player_in_proximity():
-		Transitioned.emit(self, "enemychasing")
+		#Transitioned.emit(self, "enemychasing")
 		return
 
 func on_noise_detected(pos: Vector3, dist: float, intensity: float, score: float):
-	Transitioned.emit(self, "enemyinvestigate")
+	#Transitioned.emit(self, "enemyinvestigate")
+	pass
 
 func Exit():
 	stop_hearing()

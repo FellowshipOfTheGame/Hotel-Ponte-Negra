@@ -8,14 +8,12 @@ extends Camera3D
 
 @export var suavidade: float = 5.0
 
-var ray : RayCast3D
-
+var rays
 var collider
-
 var colliders
 
 func _ready() -> void:
-	ray = $RayCast3D
+	rays = get_children()
 	colliders = []
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +34,7 @@ func position_camera(delta : float) -> void:
 	
 
 func remove_obstacle(_delta : float) -> void:
-	if not ray:
+	if not rays:
 		print("Erro no ray")
 		return
 		
@@ -44,26 +42,34 @@ func remove_obstacle(_delta : float) -> void:
 		print("Erro no jogador")
 		return
 		
-	ray.position = position
-	ray.target_position = ray.to_local(alvo_jogador.global_position + Vector3(0,0.5,0))
+	var pos_relative : float = 0
+	for r in rays:
+		r.position = position + Vector3(0, -pos_relative, 0)
+		r.target_position = r.to_local(alvo_jogador.global_position + Vector3(0, pos_relative,0))
+		pos_relative += 0.5
 	
-	ray.force_raycast_update()
-	
-	if ray.is_colliding():
-		collider = ray.get_collider()
-		#print("Colidiu com ")
+	for r in rays:
+		r.force_raycast_update()
 		
-		if collider is Obstacle:
-			#print("obstacle")
-			collider._ray_enter()
+		if r.is_colliding():
+			collider = r.get_collider()
+			#print("Colidiu com ")
 			
-			if not collider in colliders:
-				colliders.push_back(collider)
+			if collider is Obstacle:
+				#print("obstacle")
+				collider._ray_enter()
+				
+				if not (collider in colliders):
+					colliders.push_back(collider)
+					
+			else:
+				r.add_exception(collider)
 
-	else:
-		collider = null
+		else:
+			collider = null
+			continue
 			
-	for c in colliders:
-		if c != collider:
-			if(c._ray_exit()):
-				colliders.erase(c)
+		for c in colliders:
+			if c != collider:
+				if(c._ray_exit()):
+					colliders.erase(c)
