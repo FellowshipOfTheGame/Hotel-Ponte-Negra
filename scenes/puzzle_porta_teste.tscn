@@ -13132,7 +13132,6 @@ transform = Transform3D(2.0024574, 0, 0, 0, 1.0012287, 0, 0, 0, 0.25030717, -12,
 shape = SubResource("ConcavePolygonShape3D_ljvy5")
 
 [node name="Parede_011" type="StaticBody3D" parent="sala"]
-script = ExtResource("6_k7h2w")
 
 [node name="Column_013" type="MeshInstance3D" parent="sala/Parede_011"]
 transform = Transform3D(2.0024574, 0, 0, 0, 1.0012287, 0, 0, 0, 0.25030717, -8, 2, 5)
