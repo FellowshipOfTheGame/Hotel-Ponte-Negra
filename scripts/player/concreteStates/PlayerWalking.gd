@@ -11,7 +11,7 @@ func Physics_Update(_delta: float):
 	if !tired && running && !cold_down_run:
 		Transitioned.emit(self, "playerRunning")
 
-	move(velocity)
+	move(velocity, _delta)
 	#print("Stamina:",stamina,"; ColdDown:",cold_down_run)
 
 	#player.move_and_slide() #Já está no script principal do player
