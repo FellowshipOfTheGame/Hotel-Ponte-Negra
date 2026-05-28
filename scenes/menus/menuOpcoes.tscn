@@ -3,11 +3,14 @@
 [sub_resource type="GDScript" id="GDScript_4lyxp"]
 script/source = "extends Control
 
-var prev:String
+var menu_anterior: Control 
 
 func voltar() -> void:
 	$TabContainer/Controles.save()
-	get_parent().add_child(load(prev).instantiate())
+	
+	if menu_anterior:
+		menu_anterior.show()
+		
 	queue_free()
 "
 

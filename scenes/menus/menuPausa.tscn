@@ -8,22 +8,22 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		voltar()
 
-func voltar():
-	get_tree().paused=false
-	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+func voltar() -> void:
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	queue_free()
 
 func menuPrincipal() -> void:
-	get_tree().paused=false
+	get_tree().paused = false
 	get_tree().change_scene_to_file(\"res://scenes/menus/menuPrincipal.tscn\")
 
 func opcoes() -> void:
-	var menu:=preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
-	menu.prev=\"res://scenes/menus/menuPausa.tscn\"
+	var menu := preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
+	menu.menu_anterior = self # Passa a referência do Pause
 	get_parent().add_child(menu)
-	queue_free()
-
-
+	
+	self.hide()
+	
 func sair() -> void:
 	get_tree().quit()
 "

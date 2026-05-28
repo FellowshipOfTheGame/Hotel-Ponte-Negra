@@ -4,17 +4,18 @@
 script/source = "extends Control
 
 func jogar() -> void:
+	# O Godot gerencia a deleção da cena atual automaticamente aqui
 	get_tree().change_scene_to_file(\"res://scenes/puzzle_porta_teste.tscn\")
-	queue_free()
 
 func sair() -> void:
 	get_tree().quit()
 
 func opcoes() -> void:
-	var menu:=preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
-	menu.prev=\"res://scenes/menus/menuPrincipal.tscn\"
+	var menu := preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
+	menu.menu_anterior = self 
 	get_parent().add_child(menu)
-	queue_free()
+	
+	self.hide()
 "
 
 [node name="MenuPrincipal" type="Control"]
