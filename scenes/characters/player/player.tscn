@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=18 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://degicpqoumd2u" path="res://scripts/player/concreteStates/PlayerIdle.gd" id="7_42irl"]
 [ext_resource type="PackedScene" uid="uid://bj1hfslfoyce6" path="res://scenes/components/flash_light.tscn" id="7_mk55u"]
 [ext_resource type="Script" uid="uid://d0euqgn8htuib" path="res://scripts/player/concreteStates/playerDead.gd" id="7_xuses"]
+[ext_resource type="Script" uid="uid://cmbq3gr411v16" path="res://scripts/player/concreteStates/PlayerCrouched.gd" id="10_djydg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -97,6 +98,11 @@ script = ExtResource("7_42irl")
 
 [node name="PlayerDead" type="Node" parent="State Machine"]
 script = ExtResource("7_xuses")
+
+[node name="PlayerCrouched" type="Node" parent="State Machine"]
+script = ExtResource("10_djydg")
+noise_intensity = 0.0
+metadata/_custom_type_script = "uid://cmbq3gr411v16"
 
 [node name="FlashLight" parent="." instance=ExtResource("7_mk55u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8558005, -0.18013275)

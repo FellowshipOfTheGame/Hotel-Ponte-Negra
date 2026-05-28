@@ -2,6 +2,7 @@ extends PlayerState
 class_name PlayerMoving
 
 static var running : bool
+static var crouched : bool
 
 @export var noise_intensity: float = 5.0
 var step_delay: float = 0.5

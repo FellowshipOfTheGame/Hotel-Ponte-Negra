@@ -7,14 +7,16 @@ class_name PlayerRunning
 
 func Physics_Update(_delta: float):
 	running = Input.is_action_pressed("correr")
+	crouched = Input.is_action_pressed("agachar")
 
 	if tired || !running:
-		Transitioned.emit(self, "playerWalking")
+		if crouched: 
+			Transitioned.emit(self, "playerCrouched")
+		else:
+			Transitioned.emit(self, "playerWalking")
 
 	move(velocity, _delta)
 
-	#print("Stamina:",stamina,"; ColdDown:",cold_down_run)
-	#player.move_and_slide() #Já está no script principal do player
 
 func Update(delta : float):
 	dec_stamina(delta) #Se stamina é 0, sai do estado running e por isso não necessário nenhuma conferência
