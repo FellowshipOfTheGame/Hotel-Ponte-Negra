@@ -4,8 +4,10 @@ extends Node3D
 @onready var stamina = $Stamina
 @onready var door = $sala/PortaEmperrada
 @onready var force = $Forca
+@onready var camera = $Camera3D
 
 func _ready() -> void:
+	camera.make_current()
 	stamina.max_value = player.get_stamina_max()
 	force.max_value = door.get_force_max()
 

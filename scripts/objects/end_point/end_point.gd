@@ -29,9 +29,10 @@ func _on_interact(_interactor: Node):
 		print("oi")
 		open()
 		
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.2).timeout
 		
-		get_tree().change_scene_to_file("res://scenes/menus/menuPrincipal.tscn")
+		#get_tree().change_scene_to_file("res://scenes/menus/menuPrincipal.tscn")
+		SceneManager.carregar_fase("res://scenes/menus/menuPrincipal.tscn")
 
 	else:
 		label_text.text = "Esta porta está trancada."

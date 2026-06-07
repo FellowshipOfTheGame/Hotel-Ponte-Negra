@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 GameState="*res://scripts/game_state.gd"
 EventBus="*res://scripts/EventBus.gd"
+SceneManager="*res://scripts/scene_manager.gd"
 
 [display]
 

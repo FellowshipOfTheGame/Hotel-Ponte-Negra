@@ -14,6 +14,10 @@ func _ready() -> void:
 	shape = $ShapeCast3D
 	colliders = []
 
+	if alvo_jogador:
+		global_position = alvo_jogador.global_position + offset_isometrico
+		look_at(alvo_jogador.global_position)
+
 func _physics_process(delta: float) -> void:
 	position_camera(delta)
 	remove_obstacle(delta)
