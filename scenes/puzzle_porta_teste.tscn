@@ -1,4 +1,4 @@
-[gd_scene load_steps=760 format=4 uid="uid://bj0vs58oa837s"]
+[gd_scene load_steps=761 format=4 uid="uid://bj0vs58oa837s"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_k7h2w"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="1_rkfa0"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://crhcws3vd1gg0" path="res://assets/3D_models/scenario/props/Sofa/sofa.tscn" id="15_ljvy5"]
 [ext_resource type="Script" uid="uid://pvwpjrbjnmx1" path="res://scripts/objects/end_point/end_point.gd" id="16_h2o0q"]
 [ext_resource type="AudioStream" uid="uid://bfbkx8t5bl4c3" path="res://assets/audio/sound_effects/dragon-studio-impact-thud-372473.ogg" id="21_hxt4x"]
+[ext_resource type="AudioStream" uid="uid://b3jgacux47244" path="res://assets/audio/sound_effects/chave.mp3" id="25_5v3np"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -15465,6 +15466,10 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chave"]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.058202267, 0.050252676, -0.33887863)
 shape = SubResource("BoxShape3D_uxcpg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Chave"]
+stream = ExtResource("25_5v3np")
+volume_db = 2.0
 
 [node name="PortaFinal" type="StaticBody3D" parent="."]
 transform = Transform3D(-3.8814205e-09, 0, 0.56799203, 0, 1.0012287, 0, -0.03255971, 0, -6.7709934e-08, -10.751044, 2, -35)
