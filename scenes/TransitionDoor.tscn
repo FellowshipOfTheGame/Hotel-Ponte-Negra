@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://mj2c4xggccf"]
+[gd_scene load_steps=9 format=4 uid="uid://mj2c4xggccf"]
 
 [ext_resource type="Script" uid="uid://dlrorb3k0y0km" path="res://scenes/transition_door.gd" id="1_hpu2u"]
 [ext_resource type="Script" uid="uid://b3q1s2y4towrv" path="res://scenes/transition.gd" id="1_sy5ms"]
+[ext_resource type="AudioStream" uid="uid://co1kvlsqiobcw" path="res://assets/audio/sound_effects/dragon-studio-opening-door-sfx-454240.mp3" id="3_vewwh"]
 
 [sub_resource type="Environment" id="Environment_n0yhn"]
 background_mode = 1
@@ -61,6 +62,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
+audio_listener_enable_3d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
@@ -88,3 +90,8 @@ shape = SubResource("ConcavePolygonShape3D_hpu2u")
 transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.28)
 mesh = SubResource("ArrayMesh_sy5ms")
 skeleton = NodePath("")
+
+[node name="SomAbertura" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Porta_002"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.2817628, 0, -4.9321747)
+stream = ExtResource("3_vewwh")
+volume_db = -12.0

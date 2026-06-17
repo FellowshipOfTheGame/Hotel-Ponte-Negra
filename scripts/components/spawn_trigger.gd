@@ -2,10 +2,22 @@ extends Area3D
 
 @export var enemy_scene: PackedScene
 @export var sp: Node3D
+@export var key_node: NodePath
+
+var player_has_key := false
+
+func _ready() -> void:
+	if not key_node.is_empty():
+		var key = get_node(key_node)
+		if key:
+			key.get_key.connect(_on_key_collected)
+
+func _on_key_collected() -> void:
+	player_has_key = true
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		if GameState.has_key:
+		if player_has_key:
 			set_deferred("monitoring", false)
 			call_deferred("spawn_enemy")
 

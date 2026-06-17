@@ -19,4 +19,5 @@ script = ExtResource("1_ptsel")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0014372766)
+visible = false
 mesh = SubResource("SphereMesh_xuses")

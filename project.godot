@@ -16,7 +16,6 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
-GameState="*res://scripts/game_state.gd"
 EventBus="*res://scripts/EventBus.gd"
 SceneManager="*res://scripts/scene_manager.gd"
 
@@ -40,6 +39,20 @@ folder_colors={
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+Player=""
+Camera=""
+Canva=""
+Navmesh=""
+Chao=""
+Parede=""
+Porta=""
+Inimigo=""
+Objetos=""
+Luzes=""
+navmesh="Nós usados para dar bake corretamente no navmesh"
 
 [input]
 
