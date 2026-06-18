@@ -5,6 +5,10 @@ class_name PlayerWalking
 @export_category("Walking")
 @export var velocity : float = 5
 
+func Enter():
+	super.Enter()
+	step_delay = 0.45
+
 func Physics_Update(_delta: float):
 	running = Input.is_action_pressed("correr")
 	crouched = Input.is_action_pressed("agachar")

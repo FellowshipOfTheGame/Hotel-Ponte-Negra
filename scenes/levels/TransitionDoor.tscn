@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlrorb3k0y0km" path="res://scenes/transition_door.gd" id="1_hpu2u"]
 [ext_resource type="Script" uid="uid://b3q1s2y4towrv" path="res://scenes/transition.gd" id="1_sy5ms"]
-[ext_resource type="AudioStream" uid="uid://co1kvlsqiobcw" path="res://assets/audio/sound_effects/dragon-studio-opening-door-sfx-454240.mp3" id="3_vewwh"]
+[ext_resource type="AudioStream" uid="uid://co1kvlsqiobcw" path="res://assets/audio/door/dragon-studio-opening-door-sfx-454240.mp3" id="3_vewwh"]
 
 [sub_resource type="Environment" id="Environment_n0yhn"]
 background_mode = 1

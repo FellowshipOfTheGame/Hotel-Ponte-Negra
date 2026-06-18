@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 const inicio:PackedScene=preload("res://scenes/menus/menuPrincipal.tscn")
 

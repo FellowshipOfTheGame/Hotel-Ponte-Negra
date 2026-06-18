@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj1hfslfoyce6"]
+[gd_scene load_steps=4 format=3 uid="uid://bj1hfslfoyce6"]
 
 [ext_resource type="Script" uid="uid://chpe2ax50ecyo" path="res://scripts/components/flashlight.gd" id="1_ptsel"]
+[ext_resource type="AudioStream" uid="uid://ciyw31j5plan3" path="res://assets/audio/player/flashlight.mp3" id="2_jugta"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_xuses"]
 radius = 0.05
@@ -21,3 +22,6 @@ script = ExtResource("1_ptsel")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0014372766)
 visible = false
 mesh = SubResource("SphereMesh_xuses")
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_jugta")

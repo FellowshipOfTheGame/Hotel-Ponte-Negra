@@ -7,7 +7,7 @@ class_name PlayerCrouched
 
 func Enter():
 	super.Enter()
-	print("Entrou em agachado")
+	step_delay = 0.65
 
 func Physics_Update(_delta: float):
 	running = Input.is_action_pressed("correr")

@@ -24,6 +24,7 @@ func move(velocity: float, delta: float) -> void:
 			step_timer -= delta
 			if step_timer <= 0:
 				player.make_noise(noise_intensity)
+				player.play_footstep()  # 
 				step_timer = step_delay
 				
 	else:

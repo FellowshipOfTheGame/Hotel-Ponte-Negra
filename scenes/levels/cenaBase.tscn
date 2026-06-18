@@ -63,7 +63,7 @@ script = ExtResource("4_moi2a")
 
 [node name="Paredes" type="Node3D" parent="Cena" groups=["Parede", "navmesh"]]
 
-[node name="Objetos" type="Node3D" parent="Cena" groups=["Navmesh", "Objetos", "Obstaculo"]]
+[node name="Objetos" type="Node3D" parent="Cena" groups=["Navmesh", "Objetos", "navmesh"]]
 
 [node name="Portas" type="Node3D" parent="Cena" groups=["Porta"]]
 
@@ -76,7 +76,7 @@ collision_mask = 13
 [node name="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador") groups=["Camera"] instance=ExtResource("3_uwanw")]
 alvo_jogador = NodePath("../Player")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["Navmesh"]]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jnwpt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

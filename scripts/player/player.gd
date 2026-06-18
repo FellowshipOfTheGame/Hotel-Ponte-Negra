@@ -3,6 +3,7 @@ class_name Player
 
 @onready var alarm_area: Area3D = $Alarm/AlarmArea
 @onready var interaction_shapecast: ShapeCast3D = $"InteractionShapecast"
+@onready var footstep_audio: AudioStreamPlayer3D = $FootstepPlayer
 
 var stamina_bar_max : float
 
@@ -57,4 +58,8 @@ func set_new_key(action_name: String, new_keycode: Key):
 
 func make_noise(intensity:float):
 	EventBus.noise.emit(global_position, intensity, "Player")
-	print("Fez barulho com intensidade: " + str(intensity))
+	#print("Fez barulho com intensidade: " + str(intensity))
+
+func play_footstep() -> void:
+	footstep_audio.pitch_scale = randf_range(0.9, 1.1)
+	footstep_audio.play()  # 

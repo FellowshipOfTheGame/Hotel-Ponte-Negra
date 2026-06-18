@@ -62,4 +62,5 @@ script = ExtResource("7_8e52f")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62995684, 0)
+visible = false
 light_energy = 0.3

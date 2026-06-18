@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=23 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
 [ext_resource type="Script" uid="uid://but7a6i6ay0er" path="res://scenes/characters/player/alarm.gd" id="3_xuses"]
-[ext_resource type="AudioStream" uid="uid://xg7cvgfhkp4w" path="res://assets/audio/sound_effects/brvhrtz-heartbeat-01-brvhrtz-225058.ogg" id="4_42irl"]
+[ext_resource type="AudioStream" uid="uid://xg7cvgfhkp4w" path="res://assets/audio/player/brvhrtz-heartbeat-01-brvhrtz-225058.ogg" id="4_42irl"]
 [ext_resource type="Script" uid="uid://bec2av6d5j3lu" path="res://scripts/stateMachine/stateMachine.gd" id="4_qd3e3"]
 [ext_resource type="Script" uid="uid://c55ggn6m6b5mr" path="res://scripts/player/concreteStates/PlayerWalking.gd" id="5_mk55u"]
 [ext_resource type="Script" uid="uid://cto422qdn3ifa" path="res://scripts/player/concreteStates/PlayerRunning.gd" id="6_xuses"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://bj1hfslfoyce6" path="res://scenes/components/flash_light.tscn" id="7_mk55u"]
 [ext_resource type="Script" uid="uid://d0euqgn8htuib" path="res://scripts/player/concreteStates/playerDead.gd" id="7_xuses"]
 [ext_resource type="Script" uid="uid://cmbq3gr411v16" path="res://scripts/player/concreteStates/PlayerCrouched.gd" id="10_djydg"]
+[ext_resource type="AudioStream" uid="uid://ddrj4dlamsxu" path="res://assets/audio/player/step/step1.ogg" id="12_ykrpk"]
+[ext_resource type="AudioStream" uid="uid://dav2vcqor51oa" path="res://assets/audio/player/step/step2.ogg" id="13_i1nod"]
+[ext_resource type="AudioStream" uid="uid://cnuo3uioxtryb" path="res://assets/audio/player/step/step3.ogg" id="14_4kqyw"]
+[ext_resource type="AudioStream" uid="uid://c1wvoqplaxyio" path="res://assets/audio/player/step/step4.ogg" id="15_svuau"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -56,6 +60,13 @@ _data = {
 &"RESET": SubResource("Animation_3xnwo"),
 &"die": SubResource("Animation_mk55u")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_djydg"]
+streams_count = 4
+stream_0/stream = ExtResource("12_ykrpk")
+stream_1/stream = ExtResource("13_i1nod")
+stream_2/stream = ExtResource("14_4kqyw")
+stream_3/stream = ExtResource("15_svuau")
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -117,6 +128,10 @@ collision_mask = 4
 libraries = {
 &"": SubResource("AnimationLibrary_xuses")
 }
+
+[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_djydg")
+volume_db = -12.0
 
 [connection signal="body_entered" from="Alarm/AlarmArea" to="Alarm" method="_on_alarm_area_body_entered"]
 [connection signal="body_exited" from="Alarm/AlarmArea" to="Alarm" method="_on_alarm_area_body_exited"]

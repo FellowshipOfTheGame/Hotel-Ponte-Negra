@@ -1,6 +1,6 @@
 extends Node
 
-var cena_transicao = preload("res://scenes/TransitionDoor.tscn")
+var cena_transicao = preload("res://scenes/levels/TransitionDoor.tscn")
 
 func carregar_fase(caminho_nova_fase: String):
 	var transicao = cena_transicao.instantiate()

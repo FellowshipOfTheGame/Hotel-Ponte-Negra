@@ -45,7 +45,6 @@ import/blender/enabled=false
 Player=""
 Camera=""
 Canva=""
-Navmesh=""
 Chao=""
 Parede=""
 Porta=""
@@ -53,6 +52,7 @@ Inimigo=""
 Objetos=""
 Luzes=""
 navmesh="Nós usados para dar bake corretamente no navmesh"
+Navmesh=""
 
 [input]
 

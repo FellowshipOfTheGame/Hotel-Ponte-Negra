@@ -2,14 +2,14 @@ extends Node3D
 
 @onready var player = get_node_or_null("Player")
 @onready var stamina = get_node_or_null("CanvasLayer/Stamina")
-@onready var door = get_node_or_null("sala/PortaEmperrada")
-@onready var force = get_node_or_null("Forca")
+@onready var door = get_node_or_null("Cena/Portas/PortaEmperrada")
+@onready var force = get_node_or_null("CanvasLayer/Forca")
 @onready var camera = get_node_or_null("Camera3D")
 
 func _ready() -> void:
 	if camera:
 		camera.make_current()
-		
+	
 	if player and stamina:
 		stamina.max_value = player.get_stamina_max()
 		player.player_stamina_changed.connect(stamina.value_changed)

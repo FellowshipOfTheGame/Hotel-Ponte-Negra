@@ -7,7 +7,7 @@
 resource_name = "yellow.001"
 cull_mode = 2
 albedo_color = Color(0.55293965, 0.54901993, 0.1843136, 1)
-roughness = 0.5
+roughness = 0.7
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gdwgc"]
 _surfaces = [{
@@ -46,7 +46,7 @@ size = Vector3(102.203445, 6.0252686, 105.62802)
 
 [node name="Chave" type="StaticBody3D"]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 7
 script = ExtResource("1_b5u8v")
 
 [node name="Key_001" type="MeshInstance3D" parent="."]

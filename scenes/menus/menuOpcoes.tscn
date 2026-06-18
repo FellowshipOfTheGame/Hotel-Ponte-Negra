@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://153kgjv4215n"]
 
 [sub_resource type="GDScript" id="GDScript_4lyxp"]
-script/source = "extends Control
+script/source = "extends CanvasLayer
 
-var menu_anterior: Control 
+var menu_anterior: Node 
 
 func voltar() -> void:
-	$TabContainer/Controles.save()
+	$Control/VBoxContainer/TabContainer/Controles.save()
 	
 	if menu_anterior:
 		menu_anterior.show()
@@ -61,55 +61,75 @@ func _init() -> void:
 			!acao.begins_with(\"ui_\")and
 			!acao.begins_with(\"_\")):
 		var label := Label.new()
-		label.text=acao.replace(\"_\",\" \").replace(\"movimento\",\"mover para\")
+		label.text=acao.replace(\"_\",\" \").replace(\"movimento\",\"mover para\").capitalize()
 		add_child(label)
 		var button := Button.new()
 		button.name=acao
 		button.set_script(preload(\"res://scripts/menus/opcoes/definirControle.gd\"))
 		button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-		button.custom_minimum_size=Vector2(0,31)
+		button.custom_minimum_size=Vector2(0,50)
 		add_child(button)
 "
 
-[node name="MenuOpcoes" type="Control"]
+[node name="MenuOpcoes" type="CanvasLayer"]
 process_mode = 3
+follow_viewport_enabled = true
+script = SubResource("GDScript_4lyxp")
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_4lyxp")
 
-[node name="Button" type="Button" parent="."]
-top_level = true
+[node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 569.0
-offset_right = -1004.0
-offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Control"]
+top_level = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "voltar"
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
 current_tab = 0
 
-[node name="Controles" type="Control" parent="TabContainer"]
+[node name="Controles" type="Control" parent="Control/VBoxContainer/TabContainer"]
 layout_mode = 2
 script = SubResource("GDScript_Controles")
 metadata/_tab_index = 0
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/Controles"]
+[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/TabContainer/Controles"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,4 +143,4 @@ grow_vertical = 2
 columns = 2
 script = SubResource("GridContainer")
 
-[connection signal="pressed" from="Button" to="." method="voltar"]
+[connection signal="pressed" from="Control/Button" to="." method="voltar"]

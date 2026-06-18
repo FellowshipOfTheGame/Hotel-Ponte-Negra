@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://b13kmc0a4s1nf"]
 
 [sub_resource type="GDScript" id="MenuPausa"]
-script/source = "extends Control
+script/source = "extends CanvasLayer
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(\"_pausa\"):
@@ -28,49 +28,63 @@ func sair() -> void:
 	get_tree().quit()
 "
 
-[node name="MenuPausa" type="Control"]
+[node name="MenuPausa" type="CanvasLayer"]
 process_mode = 2
-layout_mode = 3
+follow_viewport_enabled = true
+script = SubResource("MenuPausa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_mode = 2
-script = SubResource("MenuPausa")
+color = Color(0, 0, 0, 0.3137255)
 
-[node name="Container" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -129.0
-offset_top = -50.5
-offset_right = 129.0
-offset_bottom = 50.5
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Voltar ao jogo" type="Button" parent="Container"]
+[node name="Label" type="Label" parent="CenterContainer/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Pausado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Voltar ao jogo" type="Button" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 text = "Voltar ao jogo"
 
-[node name="Opcoes" type="Button" parent="Container"]
+[node name="Opcoes" type="Button" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 text = "Opções"
 
-[node name="Menu principal" type="Button" parent="Container"]
+[node name="Menu principal" type="Button" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 text = "Menu principal"
 
-[node name="Sair" type="Button" parent="Container"]
+[node name="Sair" type="Button" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 text = "Sair"
 
-[connection signal="pressed" from="Container/Voltar ao jogo" to="." method="voltar"]
-[connection signal="pressed" from="Container/Opcoes" to="." method="opcoes"]
-[connection signal="pressed" from="Container/Menu principal" to="." method="menuPrincipal"]
-[connection signal="pressed" from="Container/Sair" to="." method="sair"]
+[connection signal="pressed" from="CenterContainer/Container/Voltar ao jogo" to="." method="voltar"]
+[connection signal="pressed" from="CenterContainer/Container/Opcoes" to="." method="opcoes"]
+[connection signal="pressed" from="CenterContainer/Container/Menu principal" to="." method="menuPrincipal"]
+[connection signal="pressed" from="CenterContainer/Container/Sair" to="." method="sair"]
