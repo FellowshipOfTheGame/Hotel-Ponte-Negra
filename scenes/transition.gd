@@ -1,4 +1,4 @@
-extends CanvasLayer # Mudou aqui
+extends CanvasLayer
 
 signal transicao_concluida
 
