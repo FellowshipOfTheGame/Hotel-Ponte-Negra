@@ -1,63 +1,76 @@
 [gd_scene load_steps=2 format=3 uid="uid://cp6aq6jmvtkos"]
 
 [sub_resource type="GDScript" id="MenuPrincipal"]
-script/source = "extends Control
+script/source = "extends CanvasLayer
 
 func jogar() -> void:
-	get_tree().change_scene_to_file(\"res://scenes/puzzle_porta_teste.tscn\")
-	queue_free()
+	get_tree().change_scene_to_file(\"res://scenes/levels/Level1.tscn\")
 
 func sair() -> void:
 	get_tree().quit()
 
 func opcoes() -> void:
-	var menu:=preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
-	menu.prev=\"res://scenes/menus/menuPrincipal.tscn\"
+	var menu := preload(\"res://scenes/menus/menuOpcoes.tscn\").instantiate()
+	menu.menu_anterior = self 
 	get_parent().add_child(menu)
-	queue_free()
+	
+	self.hide()
 "
 
-[node name="MenuPrincipal" type="Control"]
-layout_mode = 3
+[node name="MenuPrincipal" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = SubResource("MenuPrincipal")
+
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_mode = 2
-script = SubResource("MenuPrincipal")
+color = Color(0, 0, 0, 1)
 
-[node name="Container" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -129.0
-offset_top = -50.5
-offset_right = 129.0
-offset_bottom = 50.5
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Jogar" type="Button" parent="Container"]
+[node name="Label" type="Label" parent="CenterContainer/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Hotel Ponte Negra"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Jogar" type="Button" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Opcoes")
 text = "Jogar"
 
-[node name="Opcoes" type="Button" parent="Container"]
+[node name="Opcoes" type="Button" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Jogar")
 focus_neighbor_bottom = NodePath("../Sair")
 text = "Opções"
 
-[node name="Sair" type="Button" parent="Container"]
+[node name="Sair" type="Button" parent="CenterContainer/Container"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Opcoes")
 text = "Sair"
 
-[connection signal="pressed" from="Container/Jogar" to="." method="jogar"]
-[connection signal="pressed" from="Container/Opcoes" to="." method="opcoes"]
-[connection signal="pressed" from="Container/Sair" to="." method="sair"]
+[connection signal="pressed" from="CenterContainer/Container/Jogar" to="." method="jogar"]
+[connection signal="pressed" from="CenterContainer/Container/Opcoes" to="." method="opcoes"]
+[connection signal="pressed" from="CenterContainer/Container/Sair" to="." method="sair"]

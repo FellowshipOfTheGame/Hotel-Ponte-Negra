@@ -13,7 +13,7 @@ size = Vector3(0.49475098, 1.0395508, 1.6971436)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lx6e5"]
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["Inimigo"]]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_ihb4b")
@@ -62,4 +62,5 @@ script = ExtResource("7_8e52f")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62995684, 0)
+visible = false
 light_energy = 0.3
