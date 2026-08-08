@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="1_8l7e7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8l7e7"]
+radius = 0.01
 
 [node name="Camera3D" type="Camera3D"]
 script = ExtResource("1_8l7e7")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
 shape = SubResource("SphereShape3D_8l7e7")
+debug_shape_custom_color = Color(0.7300003, 0.0002855116, 0.6973381, 1)

@@ -7,6 +7,7 @@ extends Camera3D
 
 
 var shape : ShapeCast3D
+var ray : RayCast3D
 var collider
 var colliders
 
@@ -40,8 +41,8 @@ func remove_obstacle(_delta : float) -> void:
 		print("Erro no jogador")
 		return
 		
-	shape.position = position
-	shape.target_position = shape.to_local(alvo_jogador.global_position + Vector3(0,0.5,0))
+	shape.position = to_local(position)
+	shape.target_position = shape.to_local(alvo_jogador.global_position + Vector3(0, 0.5, 0))
 	
 	shape.force_shapecast_update()
 	
