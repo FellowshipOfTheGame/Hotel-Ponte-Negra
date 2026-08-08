@@ -15,8 +15,6 @@ func Enter():
 	
 	player.get_node("AnimationPlayer").play("die")
 	
-	GameState.has_key = false
-
 	await player.get_node("AnimationPlayer").animation_finished
 	
 	#Melhor colocar em Game Manager:
