@@ -96,7 +96,7 @@ attenuation_model = 3
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qd3e3")
-initial_state = NodePath("PlayerIdle")
+initial_state = NodePath("PlayerStunned")
 
 [node name="PlayerWalking" type="Node" parent="State Machine"]
 script = ExtResource("5_mk55u")

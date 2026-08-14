@@ -36,6 +36,7 @@ func get_stamina_max():
 	return stamina_bar_max
 
 func stamina_changed_from_child(stamina_current : float, status_tired : bool):
+	print("Chegou no player.gd! Stamina: ", stamina_current) 
 	player_stamina_changed.emit(stamina_current, status_tired)
 	
 func check_for_interaction() -> void:
