@@ -5,7 +5,7 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		if GameState.has_key:
+		if GameState.has_item("key"):
 			set_deferred("monitoring", false)
 			call_deferred("spawn_enemy")
 

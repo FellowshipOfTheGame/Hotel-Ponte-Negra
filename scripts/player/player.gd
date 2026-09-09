@@ -80,7 +80,7 @@ func die():
 	get_tree().current_scene.add_child(blood)
 	#dead State!
 	$AnimationPlayer.play("die")
-	GameState.has_key = false
+	GameState.clear_inventory()
 	await $AnimationPlayer.animation_finished
 	#Melhor colocar em Game Manager:
 	var menu = GameOverMenu.instantiate()
