@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://btddma3bcu1yn"]
+
+[ext_resource type="PackedScene" uid="uid://dvt538643uj65" path="res://assets/3D_models/scenario/props/Counter/counter.glb" id="1_pnxee"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbl83"]
+size = Vector3(1, 1.1708984, 4.1868286)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdcq3"]
+size = Vector3(2.9173584, 1.1201172, 1.1772461)
+
+[node name="counter" instance=ExtResource("1_pnxee")]
+transform = Transform3D(1.1, 0, 0, 0, 1.3, 0, 0, 0, 1.1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3419496, 0.08544922, 0.7035217)
+shape = SubResource("BoxShape3D_lbl83")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1606736, 0.0600586, 2.2327278)
+shape = SubResource("BoxShape3D_sdcq3")

@@ -18,6 +18,7 @@ func Physics_Update(_delta: float):
 
 func on_noise_detected(pos: Vector3, dist: float, intensity: float, score: float):
 	Transitioned.emit(self, "enemyinvestigate")
+	pass
 
 func Exit():
 	stop_hearing()

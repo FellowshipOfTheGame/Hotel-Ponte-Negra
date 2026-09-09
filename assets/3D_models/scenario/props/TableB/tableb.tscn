@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=4 uid="uid://bxe4t54i1v71c"]
+
+[ext_resource type="PackedScene" uid="uid://c70tslstao0js" path="res://assets/3D_models/scenario/props/TableB/Tableb.glb" id="1_7wvrt"]
+[ext_resource type="Texture2D" uid="uid://b8euv7m6w5202" path="res://assets/3D_models/scenario/props/TableB/Tableb_Fabric008_128-PNG_Color.png" id="2_ub6nv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xj6v4"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("2_ub6nv")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vu527"]
+_surfaces = [{
+"aabb": AABB(-1, 0.4589587, -1, 2, 0.5745365, 2),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("CwABAAIACwAMAAEADAAHAAEADQALAAIADAAGAAcACwAGAAwADQAGAAsABgAIAAcADQACAAMABgAOAAgADQAOAAYADgAKAAgAAAANAAMAAAADAAQADQAJAA4ADgAJAAoAAAAJAA0ACQAFAAoADwAAAAQAAAAPAAkADwAEAAUACQAPAAUA"),
+"lods": [0.9451404, PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUAAAAGAAEABgAHAAEABgAIAAcAAAAJAAYABgAJAAgACQAAAAUACQAKAAgACQAFAAoA")],
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("gdr//4HaAAD/fwAAAAAAAIHaAAB9JQAA//8AAP9/AACB2gAAgdoAAP9/AAD//wAAfSX//30lAAB9JQAAfSUAAAAAAAD/fwAAfSX//4HaAAB9JQAAgdoAAIHa//99JQAA/3///wAAAAD//////38AAAAA////fwAA/3//////AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1rm1s"]
+resource_name = "Tableb_Cylinder"
+_surfaces = [{
+"aabb": AABB(-1, 0.4589587, -1, 2, 0.5745365, 2),
+"attribute_data": PackedByteArray("BjMzZP9/vqL4zL6i/3++ogYzvqIGMzNkBjO+ovjMM2T4zL6i/3++ogYzM2QGM76iBjMzZAYzvqL/f76i+MwzZPjMvqL4zPjMBjP4zAYzBjP4zDNk/38zZP9/M2T/fzNk/38zZPjMBjP/fyMT2+z/fyMT/3//f9vs"),
+"format": 34896613399,
+"index_count": 66,
+"index_data": PackedByteArray("FAABAAIAFAAVAAEAFQAGAAEAFQAFAAYAFgAUAAIAFgACAAMAAAAWAAMAAAADAAQAFwAIAAkAFwAHAAgACgAXAAkACgAJAAsAGAANAA4AGAAMAA0ADwAYAA4ADwAOABAAGQATABoAGwATABkAGwAcABMAGwASABwAEQASABsAEQAdABIA"),
+"lods": [0.9451404, PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAFAAEABQAGAAEABwAIAAkACgAHAAkACgAJAAsADAANAA4ADwAMAA4ADwAOABAAEQASABMA")],
+"material": SubResource("StandardMaterial3D_xj6v4"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("gdr//4Hanq3/fwAAAAAAAIHaAAB9Jf7f//8AAP9//7+B2gAAgdr/n30l//99JVcdfSUAAH0lLQCB2v//gdpYqIHaAACB2v+f/38AAP//AIB9Jf//gdpYqH0lAACB2v+ffSX//4HakBN9JQAAgdotAAAAAAD/fwAAfSX//30leRV9JQAAfSUAAIHa//+B2q2pfSX//4Haral9Jf//fSW93oHa//99Jbne/3///wAAyBv//////3+PxP9//////8ebAAD///9/cxOB2v//fSW93v9///8AADbk//////9/kscAAP///3+Sx/9//////8ebO8c9Jf///3//fwAA/38AAP9/AABO/r9c/3///6jEqkH/fwAA/3///6rBVrv/f///1unFIf9/AAD/P/9/dessSf9/AABvwQBVANWPvtvzzqZlr54W////fyC1kBr+//9/texbNi/Z23P///9/jsHGYMbgcL7///9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vu527")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wvrt"]
+size = Vector3(2.0361023, 1.0440292, 2.0205688)
+
+[node name="Tableb" instance=ExtResource("1_7wvrt")]
+
+[node name="Cylinder" parent="." index="0"]
+mesh = SubResource("ArrayMesh_1rm1s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02784729, 0.5603523, -0.009185791)
+shape = SubResource("BoxShape3D_7wvrt")

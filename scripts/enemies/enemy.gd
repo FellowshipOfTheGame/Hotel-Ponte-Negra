@@ -23,7 +23,8 @@ func check_attack_collision() -> void:
 			var collider = action_cast.get_collider(i)
 			if collider.is_in_group("Player"):
 				execute_attack()
-				collider.die()
+				collider.get_node("State Machine").current_state.die()
+				
 				break
 
 func execute_attack() -> void:

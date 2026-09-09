@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://bklcwe1h4le5l"]
+
+[ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_maiuw"]
+[ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="2_l2ib0"]
+[ext_resource type="PackedScene" uid="uid://btinc81x7e3tm" path="res://scenes/objects/camera_3d.tscn" id="3_uwanw"]
+[ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/player/ui/staminaBar.gd" id="4_moi2a"]
+
+[sub_resource type="Gradient" id="Gradient_h5dly"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ljett"]
+gradient = SubResource("Gradient_h5dly")
+fill_from = Vector2(1, 0)
+
+[sub_resource type="Gradient" id="Gradient_6gsge"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k7h2w"]
+gradient = SubResource("Gradient_6gsge")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 0.004950495)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jnwpt"]
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"navmesh"
+cell_size = 0.1
+
+[sub_resource type="Environment" id="Environment_5v3np"]
+background_mode = 1
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.04
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_maiuw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["Canva"]]
+
+[node name="Text" type="Label" parent="CanvasLayer"]
+offset_left = 353.0
+offset_top = 515.0
+offset_right = 832.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="Stamina" type="TextureProgressBar" parent="CanvasLayer"]
+offset_right = 296.0
+offset_bottom = 37.0
+step = 0.01
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_ljett")
+texture_progress = SubResource("GradientTexture2D_k7h2w")
+tint_progress = Color(0.4854067, 0.85046303, 1.1551381e-06, 1)
+script = ExtResource("4_moi2a")
+
+[node name="Cena" type="Node3D" parent="."]
+
+[node name="Chao" type="Node3D" parent="Cena" groups=["Chao", "navmesh"]]
+
+[node name="Paredes" type="Node3D" parent="Cena" groups=["Parede", "navmesh"]]
+
+[node name="Objetos" type="Node3D" parent="Cena" groups=["Navmesh", "Objetos", "navmesh"]]
+
+[node name="Portas" type="Node3D" parent="Cena" groups=["Porta"]]
+
+[node name="Luzes" type="Node3D" parent="Cena" groups=["Luzes"]]
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_l2ib0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.377132, 0.040524364, 10.673533)
+collision_mask = 13
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador") groups=["Camera"] instance=ExtResource("3_uwanw")]
+alvo_jogador = NodePath("../Player")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_jnwpt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 16.223957, 0)
+light_energy = 0.1
+light_bake_mode = 1
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5v3np")

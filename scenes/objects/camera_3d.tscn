@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://btinc81x7e3tm"]
+
+[ext_resource type="Script" uid="uid://c1ivo2guoa08g" path="res://scripts/camera/cameraControllerStatic.gd" id="1_8l7e7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8l7e7"]
+
+[node name="Camera3D" type="Camera3D"]
+script = ExtResource("1_8l7e7")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_8l7e7")

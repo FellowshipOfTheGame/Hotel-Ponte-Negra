@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://crhcws3vd1gg0"]
+
+[ext_resource type="PackedScene" uid="uid://tt4haw4r3apj" path="res://assets/3D_models/scenario/props/Sofa/sofa4.glb" id="1_j48mp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsqwx"]
+size = Vector3(2.4377441, 1.5258179, 1.1439209)
+
+[node name="sofa4" instance=ExtResource("1_j48mp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036987305, 0.408844, -0.038391113)
+shape = SubResource("BoxShape3D_dsqwx")

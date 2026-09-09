@@ -31,6 +31,7 @@ func dec_stamina(dec : float)->void:
 	stamina = max(0, stamina - dec)
 	if stamina == 0:
 		tired = true
+	print("dec_stamina chamado, emitindo: ", stamina) 
 	stamina_changed.emit(stamina, tired)
 
 func inc_stamina(inc : float)->void:
@@ -41,3 +42,9 @@ func inc_stamina(inc : float)->void:
 
 func dec_coldDown(dec : float):
 	cold_down_run = max(cold_down_run - dec, 0)
+	
+func die():
+	Transitioned.emit(self, "playerDead")
+	
+func stun():
+	Transitioned.emit(self, "playerStunned")
