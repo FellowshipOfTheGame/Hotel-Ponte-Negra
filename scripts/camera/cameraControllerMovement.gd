@@ -1,4 +1,3 @@
-# ControladorCamera.gd
 extends Camera3D
 
 @export_group("Alvos e Referências")
@@ -18,8 +17,21 @@ extends Camera3D
 var angulo_horizontal: float = 0.0
 var objeto_obstruindo_atualmente: Obstacle = null
 
+@export_group("Shake")
+@export var shake_decay: float = 2.0
+@export var shake_max_offset: float = 0.3 
+@export var shake_max_rotation: float = 0.05 
+
+var _trauma: float = 0.0
+var _shake_noise := FastNoiseLite.new()
+var _shake_seed: float = 0.0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_shake_noise.seed = randi()
+
+func shake(amount: float) -> void:
+	_trauma = clamp(_trauma + amount, 0.0, 1.0)
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseMotion:
@@ -41,6 +53,22 @@ func _physics_process(delta: float):
 
 	self.global_position = alvo_jogador.global_position + offset
 	self.look_at(alvo_jogador.global_position)
+
+	if _trauma > 0.0:
+		var intensidade = _trauma * _trauma
+		_shake_seed += delta * 30.0
+
+		var shake_offset = Vector3(
+			_shake_noise.get_noise_2d(_shake_seed, 0.0) * shake_max_offset * intensidade,
+			_shake_noise.get_noise_2d(_shake_seed, 100.0) * shake_max_offset * intensidade,
+			0.0
+		)
+		var shake_rot = _shake_noise.get_noise_2d(_shake_seed, 200.0) * shake_max_rotation * intensidade
+
+		self.global_position += shake_offset
+		self.rotation.z += shake_rot
+
+		_trauma = max(_trauma - shake_decay * delta, 0.0)
 
 	var space_state = get_world_3d().direct_space_state
 	var inicio_raio = self.global_position
