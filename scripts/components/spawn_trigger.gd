@@ -4,9 +4,14 @@ extends Node3D
 @onready var windowBreaking = $WindowBreaking
 
 func _ready() -> void:
-	EventBus.key_collected.connect(on_key_collected)
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		player.player_item_changed.connect(on_player_item_changed)
 
-func on_key_collected() -> void:
+func on_player_item_changed(item_id: String, new_amount: int) -> void:
+	if item_id != "chave" or new_amount <= 0:
+		return
+
 	await get_tree().create_timer(0.5).timeout
 	if windowBreaking:
 		windowBreaking.play()

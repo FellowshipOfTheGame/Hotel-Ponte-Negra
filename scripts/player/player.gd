@@ -4,10 +4,12 @@ class_name Player
 @onready var alarm_area: Area3D = $Alarm/AlarmArea
 @onready var interaction_shapecast: ShapeCast3D = $"InteractionShapecast"
 @onready var footstep_audio: AudioStreamPlayer3D = $FootstepPlayer
+@onready var inventory: PlayerInventory = $Inventory
 
 var stamina_bar_max : float
 
 signal player_stamina_changed(stamina_current : float, status_tired : bool)
+signal player_item_changed(item_id : String, new_amount : int)
 @warning_ignore("unused_signal")
 signal spacial_monster_nearby
 
@@ -16,6 +18,9 @@ func _ready() -> void:
 		if child is PlayerState:
 			stamina_bar_max = child.stamina_max
 			child.stamina_changed.connect(stamina_changed_from_child)
+
+	if inventory:
+		inventory.item_changed.connect(item_changed_from_child)
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
@@ -38,6 +43,9 @@ func get_stamina_max():
 func stamina_changed_from_child(stamina_current : float, status_tired : bool):
 	print("Chegou no player.gd! Stamina: ", stamina_current) 
 	player_stamina_changed.emit(stamina_current, status_tired)
+
+func item_changed_from_child(item_id : String, new_amount : int) -> void:
+	player_item_changed.emit(item_id, new_amount)
 	
 func check_for_interaction() -> void:
 	if not interaction_shapecast:

@@ -6,8 +6,11 @@ signal get_key()
 
 func _on_interact(_interactor: Node):
 	print("Pegou a chave")
+
+	if _interactor is Player:
+		_interactor.inventory.add_item("chave")
+
 	get_key.emit()
-	EventBus.key_collected.emit()  
 	hide()
 	SomChave.play()
 	await SomChave.finished
