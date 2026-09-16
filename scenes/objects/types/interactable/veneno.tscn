@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1hnfjhyi4fac"]
+
+[ext_resource type="Script" uid="uid://c313p27km5u20" path="res://scripts/objects/veneno/veneno.gd" id="1_7kvxc"]
+[ext_resource type="AudioStream" uid="uid://b3jgacux47244" path="res://assets/audio/sound_effects/chave.mp3" id="2_eou4u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxcpg"]
+size = Vector3(102.203445, 6.0252686, 105.62802)
+
+[node name="Veneno" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_7kvxc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.058202267, 0.050252676, -0.33887863)
+shape = SubResource("BoxShape3D_uxcpg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_eou4u")
+volume_db = 2.0
