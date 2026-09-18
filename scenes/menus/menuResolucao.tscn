@@ -1,20 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://153kgjv4215n"]
+[gd_scene load_steps=2 format=3 uid="uid://c0hkgsldqiga2"]
 
-[sub_resource type="GDScript" id="GDScript_4lyxp"]
-script/source = "extends CanvasLayer
-
-var menu_anterior: Node 
-
-func voltar() -> void:
-	$Control/VBoxContainer/TabContainer/Controles.save()
-	
-	if menu_anterior:
-		menu_anterior.show()
-		
-	queue_free()
-"
-
-[sub_resource type="GDScript" id="GDScript_Controles"]
+[sub_resource type="GDScript" id="GDScript_w0nct"]
 script/source = "extends Control
 
 const confPath = \"user://config\"
@@ -50,31 +36,7 @@ func save()->void:
 	conf.save(confPath)
 "
 
-[sub_resource type="GDScript" id="GridContainer"]
-script/source = "@tool
-extends GridContainer
-
-func _init() -> void:
-	if Engine.is_editor_hint():
-		InputMap.load_from_project_settings()
-	for acao in InputMap.get_actions():if(
-			!acao.begins_with(\"ui_\")and
-			!acao.begins_with(\"_\")):
-		var label := Label.new()
-		label.text=acao.replace(\"_\",\" \").replace(\"movimento\",\"mover para\").capitalize()
-		add_child(label)
-		var button := Button.new()
-		button.name=acao
-		button.set_script(preload(\"res://scripts/menus/opcoes/definirControle.gd\"))
-		button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-		button.custom_minimum_size=Vector2(0,50)
-		add_child(button)
-"
-
-[node name="MenuOpcoes" type="CanvasLayer"]
-process_mode = 3
-follow_viewport_enabled = true
-script = SubResource("GDScript_4lyxp")
+[node name="MenuResolucao" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -126,26 +88,5 @@ current_tab = 0
 
 [node name="Controles" type="Control" parent="Control/VBoxContainer/TabContainer"]
 layout_mode = 2
-script = SubResource("GDScript_Controles")
+script = SubResource("GDScript_w0nct")
 metadata/_tab_index = 0
-
-[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/TabContainer/Controles"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 397.0
-offset_top = 129.0
-offset_right = -412.0
-offset_bottom = -177.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 2
-script = SubResource("GridContainer")
-
-[node name="Resoluções" type="Control" parent="Control/VBoxContainer/TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[connection signal="pressed" from="Control/Button" to="." method="voltar"]
