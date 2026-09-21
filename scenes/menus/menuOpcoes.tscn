@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://153kgjv4215n"]
+[gd_scene load_steps=5 format=3 uid="uid://153kgjv4215n"]
 
 [sub_resource type="GDScript" id="GDScript_4lyxp"]
 script/source = "extends CanvasLayer
@@ -69,6 +69,29 @@ func _init() -> void:
 		button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 		button.custom_minimum_size=Vector2(0,50)
 		add_child(button)
+		
+"
+
+[sub_resource type="GDScript" id="GDScript_3wmgr"]
+script/source = "@tool
+extends GridContainer
+
+const RESOLUCOES :Array[Vector2i] = [
+	Vector2i(1280, 720),
+	Vector2i(1600, 900),
+	Vector2i(1920, 1080),
+	Vector2i(2560, 1440),
+]
+
+func _init() -> void:
+	for r in RESOLUCOES:
+		var button := Button.new()
+		button.name = \"%dx%d\" % [r.x, r.y]
+		button.set_script(preload(\"res://scripts/menus/opcoes/definirResolucao.gd\"))
+		button.toggle_mode = true
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.custom_minimum_size = Vector2(0, 50)
+		add_child(button)
 "
 
 [node name="MenuOpcoes" type="CanvasLayer"]
@@ -122,9 +145,10 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 1
 
 [node name="Controles" type="Control" parent="Control/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 script = SubResource("GDScript_Controles")
 metadata/_tab_index = 0
@@ -144,8 +168,20 @@ columns = 2
 script = SubResource("GridContainer")
 
 [node name="Resoluções" type="Control" parent="Control/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/TabContainer/Resoluções"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_top = 196.0
+offset_right = -460.0
+offset_bottom = -406.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_3wmgr")
 
 [connection signal="pressed" from="Control/Button" to="." method="voltar"]
