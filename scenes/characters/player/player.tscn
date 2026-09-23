@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=26 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://b48k8jhm1y5cx" path="res://assets/3D_models/player/protag.glb" id="2_6avc5"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cnuo3uioxtryb" path="res://assets/audio/player/step/step3.ogg" id="14_4kqyw"]
 [ext_resource type="AudioStream" uid="uid://c1wvoqplaxyio" path="res://assets/audio/player/step/step4.ogg" id="15_svuau"]
 [ext_resource type="Script" uid="uid://cbjx32cui1t8n" path="res://scripts/player/playerInventory.gd" id="17_4kqyw"]
+[ext_resource type="Script" uid="uid://bmk1kfp7kjf4" path="res://scripts/effects/stunEffect.gd" id="18_svuau"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
 height = 2.8588867
@@ -70,75 +71,90 @@ stream_1/stream = ExtResource("13_i1nod")
 stream_2/stream = ExtResource("14_4kqyw")
 stream_3/stream = ExtResource("15_svuau")
 
-[node name="Player" type="CharacterBody3D" unique_id=1143125349]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_6avc5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1702108628]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StunEffect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_svuau")
+pulse_color = Color(0.6, 0, 0.8509804, 1)
+max_alpha = 0.15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_686vu")
 
-[node name="Protagonista" parent="." unique_id=358146685 instance=ExtResource("2_6avc5")]
+[node name="Protagonista" parent="." instance=ExtResource("2_6avc5")]
 
-[node name="Alarm" type="Node3D" parent="." unique_id=287829042]
+[node name="Alarm" type="Node3D" parent="."]
 script = ExtResource("3_xuses")
 
-[node name="AlarmArea" type="Area3D" parent="Alarm" unique_id=1984909233]
+[node name="AlarmArea" type="Area3D" parent="Alarm"]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Alarm/AlarmArea" unique_id=1451417660]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alarm/AlarmArea"]
 shape = SubResource("CylinderShape3D_6avc5")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Alarm" unique_id=1828294837]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Alarm"]
 stream = ExtResource("4_42irl")
 attenuation_model = 3
 
-[node name="State Machine" type="Node" parent="." unique_id=273384867 node_paths=PackedStringArray("initial_state")]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_qd3e3")
 initial_state = NodePath("PlayerIdle")
 
-[node name="PlayerWalking" type="Node" parent="State Machine" unique_id=1691178717]
+[node name="PlayerWalking" type="Node" parent="State Machine"]
 script = ExtResource("5_mk55u")
 
-[node name="PlayerRunning" type="Node" parent="State Machine" unique_id=967440288]
+[node name="PlayerRunning" type="Node" parent="State Machine"]
 script = ExtResource("6_xuses")
 noise_intensity = 10.0
 
-[node name="PlayerIdle" type="Node" parent="State Machine" unique_id=2129475520]
+[node name="PlayerIdle" type="Node" parent="State Machine"]
 script = ExtResource("7_42irl")
 
-[node name="PlayerDead" type="Node" parent="State Machine" unique_id=346324983]
+[node name="PlayerDead" type="Node" parent="State Machine"]
 script = ExtResource("7_xuses")
 
-[node name="PlayerCrouched" type="Node" parent="State Machine" unique_id=854746066]
+[node name="PlayerCrouched" type="Node" parent="State Machine"]
 script = ExtResource("10_djydg")
 noise_intensity = 0.0
 metadata/_custom_type_script = "uid://cmbq3gr411v16"
 
-[node name="PlayerStunned" type="Node" parent="State Machine" unique_id=1603888132]
+[node name="PlayerStunned" type="Node" parent="State Machine" node_paths=PackedStringArray("stun_effect")]
 script = ExtResource("11_i1nod")
+stun_effect = NodePath("../../CanvasLayer/StunEffect")
 noise_intensity = 3.0
 metadata/_custom_type_script = "uid://bgp1gt7lrpi7n"
 
-[node name="FlashLight" parent="." unique_id=1618114775 instance=ExtResource("7_mk55u")]
+[node name="FlashLight" parent="." instance=ExtResource("7_mk55u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8558005, -0.09038824)
 
-[node name="InteractionShapecast" type="ShapeCast3D" parent="." unique_id=2111094968]
+[node name="InteractionShapecast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
 shape = SubResource("BoxShape3D_lx6e5")
 target_position = Vector3(0, 0, 0)
 collision_mask = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1105251627]
-libraries/ = SubResource("AnimationLibrary_xuses")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xuses")
+}
 
-[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="." unique_id=62519714]
+[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_djydg")
 volume_db = -12.0
 
-[node name="Inventory" type="Node" parent="." unique_id=74855762]
+[node name="Inventory" type="Node" parent="."]
 script = ExtResource("17_4kqyw")
 
 [connection signal="body_entered" from="Alarm/AlarmArea" to="Alarm" method="_on_alarm_area_body_entered"]
