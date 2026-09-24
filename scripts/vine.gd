@@ -1,12 +1,10 @@
-extends StaticBody3D
+extends Area3D
 class_name Vine
 
 @export var smoke_scene: PackedScene
 
-@onready var area: Area3D = $Area3D
-
 func _ready() -> void:
-	area.body_entered.connect(_on_body_entered)
+	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is not Player:

@@ -127,6 +127,7 @@ script = ExtResource("7_xuses")
 
 [node name="PlayerCrouched" type="Node" parent="State Machine"]
 script = ExtResource("10_djydg")
+velocity = 2.0
 noise_intensity = 0.0
 metadata/_custom_type_script = "uid://cmbq3gr411v16"
 
@@ -139,7 +140,7 @@ metadata/_custom_type_script = "uid://bgp1gt7lrpi7n"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8558005, -0.09038824)
 
 [node name="InteractionShapecast" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.5465478, -0.9007698)
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.9953368, -0.9007698)
 shape = SubResource("BoxShape3D_lx6e5")
 target_position = Vector3(0, 0, 0)
 collision_mask = 4
