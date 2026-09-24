@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://bmk1kfp7kjf4" path="res://scripts/effects/stunEffect.gd" id="18_svuau"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
-height = 2.8588867
+height = 2.0240479
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6avc5"]
 height = 10.0
@@ -89,7 +89,7 @@ pulse_color = Color(0.6, 0, 0.8509804, 1)
 max_alpha = 0.15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.4, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.69999504, -0.0026389314, 0, 0.0026389314, 0.69999504, 0, 0.6921915, 0.0011015412)
 shape = SubResource("CapsuleShape3D_686vu")
 
 [node name="Protagonista" parent="." instance=ExtResource("2_6avc5")]
@@ -133,7 +133,6 @@ metadata/_custom_type_script = "uid://cmbq3gr411v16"
 [node name="PlayerStunned" type="Node" parent="State Machine" node_paths=PackedStringArray("stun_effect")]
 script = ExtResource("11_i1nod")
 stun_effect = NodePath("../../CanvasLayer/StunEffect")
-noise_intensity = 3.0
 metadata/_custom_type_script = "uid://bgp1gt7lrpi7n"
 
 [node name="FlashLight" parent="." instance=ExtResource("7_mk55u")]

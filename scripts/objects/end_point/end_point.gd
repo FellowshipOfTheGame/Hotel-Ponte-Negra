@@ -1,6 +1,7 @@
 extends Door
 
 @export var font_size : float = 30
+@export var text:String = "Esta porta está trancada."
 @export var proxima_cena: String
 
 var has_key : bool
@@ -36,7 +37,7 @@ func _on_interact(_interactor: Node):
 	else:
 		label_text.add_theme_font_size_override("font_size", font_size)
 		label_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		label_text.text = "Esta porta está trancada."
+		label_text.text = text
 		label_text.visible = true
 		
 		await get_tree().create_timer(2).timeout
