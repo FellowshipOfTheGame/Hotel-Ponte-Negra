@@ -1,13 +1,12 @@
-[gd_scene load_steps=428 format=4 uid="uid://c0xbwfbl0uisx"]
+[gd_scene load_steps=427 format=4 uid="uid://bqdkf3hlbd570"]
 
-[ext_resource type="PackedScene" uid="uid://bklcwe1h4le5l" path="res://scenes/levels/cenaBase.tscn" id="1_twaqj"]
-[ext_resource type="Script" uid="uid://dwcrljo3wi10r" path="res://scripts/objects/door/door.gd" id="2_63eb4"]
-[ext_resource type="Script" uid="uid://b77pc70d638hp" path="res://scripts/vine.gd" id="2_g0tkw"]
-[ext_resource type="Script" uid="uid://pvwpjrbjnmx1" path="res://scripts/objects/end_point/end_point.gd" id="3_53p26"]
-[ext_resource type="PackedScene" uid="uid://cxyrjnt28wmjr" path="res://scenes/effects/purple_smoke.tscn" id="3_3825t"]
-[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="6_6qpip"]
-[ext_resource type="PackedScene" uid="uid://c1hnfjhyi4fac" path="res://scenes/objects/types/interactable/herbicida.tscn" id="6_x3k3d"]
-[ext_resource type="PackedScene" uid="uid://bgu8oa7idd4d7" path="res://caule.tscn" id="7_stl8g"]
+[ext_resource type="PackedScene" uid="uid://bklcwe1h4le5l" path="res://scenes/levels/cenaBase.tscn" id="1_6ft78"]
+[ext_resource type="Script" uid="uid://b77pc70d638hp" path="res://scripts/vine.gd" id="2_1bh7k"]
+[ext_resource type="PackedScene" uid="uid://cxyrjnt28wmjr" path="res://scenes/effects/purple_smoke.tscn" id="3_qrrvt"]
+[ext_resource type="Script" uid="uid://dwcrljo3wi10r" path="res://scripts/objects/door/door.gd" id="4_w0vb6"]
+[ext_resource type="Script" uid="uid://pvwpjrbjnmx1" path="res://scripts/objects/end_point/end_point.gd" id="5_8l371"]
+[ext_resource type="PackedScene" uid="uid://c1hnfjhyi4fac" path="res://scenes/objects/types/interactable/herbicida.tscn" id="6_1bh7k"]
+[ext_resource type="PackedScene" uid="uid://bgu8oa7idd4d7" path="res://caule.tscn" id="7_qrrvt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjpin"]
 resource_name = "Wood.009"
@@ -5485,7 +5484,7 @@ geometry_source_geometry_mode = 1
 geometry_source_group_name = &"navmesh"
 cell_size = 0.1
 
-[node name="Node3D" instance=ExtResource("1_twaqj")]
+[node name="Node3D" instance=ExtResource("1_6ft78")]
 
 [node name="Plane" type="MeshInstance3D" parent="Cena/Chao" index="0"]
 transform = Transform3D(1.0012287, 0, 0, 0, 1.0012287, 0, 0, 0, 1.0012287, -2, 0.0064759254, 15)
@@ -6355,17 +6354,24 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Cena/Objetos/Vine" index="0"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("2_g0tkw")
-smoke_scene = ExtResource("3_3825t")
+script = ExtResource("2_1bh7k")
+smoke_scene = ExtResource("3_qrrvt")
 puzzle_group = "PortaFinal"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cena/Objetos/Vine/Area3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_b8jye")
 
+[node name="Herbicida" parent="Cena/Objetos" index="1" instance=ExtResource("6_1bh7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.975671, 0.2288056, -3.0351896)
+
+[node name="Caule" parent="Cena/Objetos" index="2" instance=ExtResource("7_qrrvt")]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 3, -0.26259136, 1.167032, 2.7284021)
+puzzle_group = "PortaFinal"
+
 [node name="Porta_001" type="AnimatableBody3D" parent="Cena/Portas" index="0"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.3015299, 2, 4.7410393)
 collision_layer = 5
-script = ExtResource("2_63eb4")
+script = ExtResource("4_w0vb6")
 ang_abertura = -120.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cena/Portas/Porta_001" index="0"]
@@ -6380,7 +6386,7 @@ skeleton = NodePath("")
 [node name="PortaFinal" type="StaticBody3D" parent="Cena/Portas" index="1"]
 transform = Transform3D(-3.8814205e-09, 0, 0.56799203, 0, 1.0012287, 0, -0.03255971, 0, -6.7709934e-08, -2.730812, 2, -14.890171)
 collision_layer = 5
-script = ExtResource("3_53p26")
+script = ExtResource("5_8l371")
 text = "A porta está bloqueada por vinhas."
 proxima_cena = "res://scenes/levels/obrigadoPorJogar.tscn"
 puzzle_group = "PortaFinal"
@@ -6393,13 +6399,6 @@ shape = SubResource("ConcavePolygonShape3D_i2tsv")
 transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1.3)
 mesh = SubResource("ArrayMesh_xcy88")
 skeleton = NodePath("")
-
-[node name="Herbicida" parent="Cena/Portas/PortaFinal" index="2" instance=ExtResource("6_x3k3d")]
-transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -393.1356, -1.8768152, -7.4935226)
-
-[node name="caule" parent="Cena/Portas/PortaFinal" index="3" instance=ExtResource("7_stl8g")]
-transform = Transform3D(-1.0351346e-05, 0, -30.713001, 0, 2, 0, 5, 0, -6.358418e-05, -367.96225, -1.2508228, 14.442729)
-puzzle_group = "PortaFinal"
 
 [node name="PortaBarrada" type="Node3D" parent="Cena/Portas" index="2"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.0053291, -0.038417578, 20.770075)
@@ -6438,8 +6437,5 @@ omni_range = 15.0
 [node name="Player" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4839439, 0.32217768, 18.6795)
 
-[node name="Enemy" parent="." index="3" instance=ExtResource("6_6qpip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6691117, 0.15093327, -9.200835)
-
-[node name="NavigationRegion3D" parent="." index="5"]
+[node name="NavigationRegion3D" parent="." index="4"]
 navigation_mesh = SubResource("NavigationMesh_3825t")

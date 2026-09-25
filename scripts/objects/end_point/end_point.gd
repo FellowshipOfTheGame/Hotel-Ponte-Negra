@@ -3,14 +3,17 @@ extends Door
 @export var font_size : float = 30
 @export var text:String = "Esta porta está trancada."
 @export var proxima_cena: String
+@export var puzzle_group: String = ""
 
 var has_key : bool
+var has_herbicida : bool
 var key : Interactable
 var label_text : Label
 
 func _ready() -> void:
 	init()
 	has_key = false
+	has_herbicida = false
 	
 	label_text = get_node_or_null("../../../CanvasLayer/Text")
 	key = get_node_or_null("../../Objetos/Chave")
@@ -18,16 +21,23 @@ func _ready() -> void:
 	if key: 
 		key.get_key.connect(get_key)
 	
+	EventBus.puzzle_solved.connect(_on_puzzle_solved)
+	
 func get_key():
 	print("Pegou a chave!")
 	has_key = true
+
+func _on_puzzle_solved(solved_group: String):
+	if puzzle_group != "" and solved_group == puzzle_group:
+		print("Vinhas removidas!")
+		has_herbicida = true
 
 func _on_interact(_interactor: Node):
 	if not label_text:
 		push_error("Label de texto não encontrado!")
 		return
 	
-	if has_key:
+	if has_key or has_herbicida:
 		print("Abrindo a porta...")
 		#open()
 		

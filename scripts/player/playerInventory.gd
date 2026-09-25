@@ -1,14 +1,8 @@
 extends Node
 class_name PlayerInventory
 
-## Dicionário de itens do jogador.
-## Chave (String) = id do item, ex: "chave", "bateria"
-## Valor (int)     = quantidade que o jogador possui daquele item
 var items: Dictionary = {}
 
-## Emitido toda vez que a quantidade de um item muda (adicionado, removido ou usado).
-## A UI do inventário pode escutar esse sinal para se atualizar, do mesmo jeito
-## que a stamina_bar escuta o sinal stamina_changed do PlayerState.
 signal item_changed(item_id: String, new_amount: int)
 
 func add_item(item_id: String, amount: int = 1) -> void:
