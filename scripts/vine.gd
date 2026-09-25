@@ -2,9 +2,16 @@ extends Area3D
 class_name Vine
 
 @export var smoke_scene: PackedScene
+@export var puzzle_group: String = ""
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
+	EventBus.puzzle_solved.connect(_on_puzzle_solved)
+
+func _on_puzzle_solved(solved_group: String) -> void:
+	if solved_group == puzzle_group:
+		var target := get_parent() if get_parent() else self
+		target.queue_free()
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is not Player:

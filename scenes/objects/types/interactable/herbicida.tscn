@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1hnfjhyi4fac"]
+
+[ext_resource type="Script" uid="uid://c313p27km5u20" path="res://scripts/objects/herbicida/herbicida.gd" id="1_mch12"]
+[ext_resource type="AudioStream" uid="uid://b3jgacux47244" path="res://assets/audio/sound_effects/chave.mp3" id="2_eou4u"]
+[ext_resource type="PackedScene" uid="uid://cu4uuprdqfdjo" path="res://assets/3D_models/objects/herbicida/herbicida.glb" id="3_mch12"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxcpg"]
+size = Vector3(75.84037, 27.580551, 107.87107)
+
+[node name="Herbicida" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_mch12")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.010209123, 0.020604707, -0.025069961)
+shape = SubResource("BoxShape3D_uxcpg")
+
+[node name="herbicida" parent="." instance=ExtResource("3_mch12")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_eou4u")
+volume_db = 2.0

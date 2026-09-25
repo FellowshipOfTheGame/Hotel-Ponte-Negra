@@ -5,10 +5,10 @@ signal get_veneno()
 @onready var SomVeneno = $AudioStreamPlayer3D
 
 func _on_interact(_interactor: Node):
-	print("Pegou o veneno")
+	print("Pegou o herbicida")
 
 	if _interactor is Player:
-		_interactor.inventory.add_item("veneno")
+		_interactor.inventory.add_item("herbicida")
 
 	get_veneno.emit()
 	hide()

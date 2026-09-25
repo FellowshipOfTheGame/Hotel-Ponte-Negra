@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgu8oa7idd4d7"]
+
+[ext_resource type="Script" uid="uid://c4hl020s8a2hj" path="res://scripts/root.gd" id="1_dki5a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dki5a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwp5q"]
+
+[node name="caule" type="StaticBody3D"]
+collision_layer = 5
+script = ExtResource("1_dki5a")
+metadata/_custom_type_script = "uid://c5ecer3tx5pv8"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dki5a")
+debug_color = Color(0, 0.6, 0.69803923, 0.49019608)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+mesh = SubResource("BoxMesh_hwp5q")
+skeleton = NodePath("../..")
