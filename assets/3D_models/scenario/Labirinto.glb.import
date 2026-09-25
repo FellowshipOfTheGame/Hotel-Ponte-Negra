@@ -37,6 +37,282 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Leaf": {
+"generate/physics": true
+},
+"PATH:Leaf_001": {
+"generate/physics": true
+},
+"PATH:Plane": {
+"generate/physics": true
+},
+"PATH:Plane_001": {
+"generate/physics": true
+},
+"PATH:Plane_002": {
+"generate/physics": true
+},
+"PATH:Plane_003": {
+"generate/physics": true
+},
+"PATH:Plane_004": {
+"generate/physics": true
+},
+"PATH:Plane_005": {
+"generate/physics": true
+},
+"PATH:Plane_006": {
+"generate/physics": true
+},
+"PATH:Plane_007": {
+"generate/physics": true
+},
+"PATH:Plane_008": {
+"generate/physics": true
+},
+"PATH:Plane_009": {
+"generate/physics": true
+},
+"PATH:Plane_010": {
+"generate/physics": true
+},
+"PATH:Plane_011": {
+"generate/physics": true
+},
+"PATH:Plane_012": {
+"generate/physics": true
+},
+"PATH:Plane_013": {
+"generate/physics": true
+},
+"PATH:Plane_014": {
+"generate/physics": true
+},
+"PATH:Plane_015": {
+"generate/physics": true
+},
+"PATH:Plane_016": {
+"generate/physics": true
+},
+"PATH:Plane_017": {
+"generate/physics": true
+},
+"PATH:Plane_018": {
+"generate/physics": true
+},
+"PATH:Plane_019": {
+"generate/physics": true
+},
+"PATH:Plane_020": {
+"generate/physics": true
+},
+"PATH:Plane_021": {
+"generate/physics": true
+},
+"PATH:Plane_022": {
+"generate/physics": true
+},
+"PATH:Plane_023": {
+"generate/physics": true
+},
+"PATH:Plane_024": {
+"generate/physics": true
+},
+"PATH:Plane_025": {
+"generate/physics": true
+},
+"PATH:Plane_026": {
+"generate/physics": true
+},
+"PATH:Plane_027": {
+"generate/physics": true
+},
+"PATH:Plane_028": {
+"generate/physics": true
+},
+"PATH:Plane_029": {
+"generate/physics": true
+},
+"PATH:Plane_030": {
+"generate/physics": true
+},
+"PATH:Vine": {
+"generate/physics": true
+},
+"PATH:Wall_001": {
+"generate/physics": true
+},
+"PATH:Wall_002": {
+"generate/physics": true
+},
+"PATH:Wall_003": {
+"generate/physics": true
+},
+"PATH:Wall_004": {
+"generate/physics": true
+},
+"PATH:Wall_005": {
+"generate/physics": true
+},
+"PATH:Wall_006": {
+"generate/physics": true
+},
+"PATH:Wall_007": {
+"generate/physics": true
+},
+"PATH:Wall_008": {
+"generate/physics": true
+},
+"PATH:Wall_009": {
+"generate/physics": true
+},
+"PATH:Wall_010": {
+"generate/physics": true
+},
+"PATH:Wall_011": {
+"generate/physics": true
+},
+"PATH:Wall_012": {
+"generate/physics": true
+},
+"PATH:Wall_013": {
+"generate/physics": true
+},
+"PATH:Wall_014": {
+"generate/physics": true
+},
+"PATH:Wall_015": {
+"generate/physics": true
+},
+"PATH:Wall_016": {
+"generate/physics": true
+},
+"PATH:Wall_017": {
+"generate/physics": true
+},
+"PATH:Wall_018": {
+"generate/physics": true
+},
+"PATH:Wall_019": {
+"generate/physics": true
+},
+"PATH:Wall_020": {
+"generate/physics": true
+},
+"PATH:Wall_021": {
+"generate/physics": true
+},
+"PATH:Wall_022": {
+"generate/physics": true
+},
+"PATH:Wall_023": {
+"generate/physics": true
+},
+"PATH:Wall_024": {
+"generate/physics": true
+},
+"PATH:Wall_025": {
+"generate/physics": true
+},
+"PATH:Wall_026": {
+"generate/physics": true
+},
+"PATH:Wall_027": {
+"generate/physics": true
+},
+"PATH:Wall_028": {
+"generate/physics": true
+},
+"PATH:Wall_029": {
+"generate/physics": true
+},
+"PATH:Wall_030": {
+"generate/physics": true
+},
+"PATH:Wall_031": {
+"generate/physics": true
+},
+"PATH:Wall_032": {
+"generate/physics": true
+},
+"PATH:Wall_033": {
+"generate/physics": true
+},
+"PATH:Wall_034": {
+"generate/physics": true
+},
+"PATH:Wall_035": {
+"generate/physics": true
+},
+"PATH:Wall_036": {
+"generate/physics": true
+},
+"PATH:Wall_037": {
+"generate/physics": true
+},
+"PATH:Wall_038": {
+"generate/physics": true
+},
+"PATH:Wall_039": {
+"generate/physics": true
+},
+"PATH:Wall_040": {
+"generate/physics": true
+},
+"PATH:Wall_041": {
+"generate/physics": true
+},
+"PATH:Wall_042": {
+"generate/physics": true
+},
+"PATH:Wall_043": {
+"generate/physics": true
+},
+"PATH:Wall_044": {
+"generate/physics": true
+},
+"PATH:Wall_045": {
+"generate/physics": true
+},
+"PATH:Wall_046": {
+"generate/physics": true
+},
+"PATH:Wall_047": {
+"generate/physics": true
+},
+"PATH:Wall_048": {
+"generate/physics": true
+},
+"PATH:Wall_049": {
+"generate/physics": true
+},
+"PATH:Wall_050": {
+"generate/physics": true
+},
+"PATH:Wall_051": {
+"generate/physics": true
+},
+"PATH:Wall_052": {
+"generate/physics": true
+},
+"PATH:Wall_053": {
+"generate/physics": true
+},
+"PATH:Wall_054": {
+"generate/physics": true
+},
+"PATH:Wall_055": {
+"generate/physics": true
+},
+"PATH:Wall_058": {
+"generate/physics": true
+},
+"PATH:Wall_060": {
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

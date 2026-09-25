@@ -4,16 +4,20 @@ class_name PlayerStunned
 @export_category("Stunned")
 @export var velocity : float = 1.0
 @export var stun_duration : float = 3.0
+@export var stun_effect: ColorRect
 
 func Enter():
 	super.Enter()
 	step_delay = 0.65
 	dec_stamina(stamina_max)
-	#print("Stamina após stun: ", stamina) 
 	var camera := get_viewport().get_camera_3d()
 	if camera and camera.has_method("shake"):
 		camera.shake(0.6)
+	if stun_effect:
+		stun_effect.start_pulse()
 	await get_tree().create_timer(stun_duration).timeout
+	if stun_effect:
+		stun_effect.stop_pulse()
 	if is_instance_valid(player):
 		Transitioned.emit(self, "playeridle")
 
