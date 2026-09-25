@@ -6439,7 +6439,7 @@ omni_range = 15.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4839439, 0.32217768, 18.6795)
 
 [node name="Enemy" parent="." index="3" instance=ExtResource("6_6qpip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6691117, 0.15093327, -9.200835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.175173, 0.15093327, -12.125858)
 
 [node name="NavigationRegion3D" parent="." index="5"]
 navigation_mesh = SubResource("NavigationMesh_3825t")
