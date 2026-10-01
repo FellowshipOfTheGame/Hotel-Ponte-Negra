@@ -21,10 +21,21 @@ func init():
 	if !player || !fig || !interaction_shapecast:
 		print("Error in getting Character or Mesh")
 
-func input_direction()->Vector3:
-	var movX = Input.get_axis("movimento_esquerda", "movimento_direita")
-	var movZ = Input.get_axis("movimento_frente", "movimento_tras")
-	var direction = Vector3(movX, 0, movZ)
+# Direção do input em espaço de mundo, relativa à câmera ativa
+func input_direction() -> Vector3:
+	var input := Input.get_vector(
+		"movimento_esquerda", "movimento_direita",
+		"movimento_frente", "movimento_tras"
+	)
+	if input == Vector2.ZERO:
+		return Vector3.ZERO
+
+	var direction := Vector3(input.x, 0, input.y)
+
+	var camera := get_viewport().get_camera_3d()
+	if camera:
+		direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
+
 	return direction
 
 func dec_stamina(dec : float)->void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bklcwe1h4le5l"]
+[gd_scene load_steps=12 format=3 uid="uid://bklcwe1h4le5l"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_maiuw"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="2_l2ib0"]
 [ext_resource type="PackedScene" uid="uid://btinc81x7e3tm" path="res://scenes/objects/camera_3d.tscn" id="3_uwanw"]
 [ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/player/ui/staminaBar.gd" id="4_moi2a"]
+[ext_resource type="Script" uid="uid://csqeg1j6ne17v" path="res://scripts/camera/cameraControllerMovement.gd" id="5_6pvyp"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -81,7 +82,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.377132, 0.040524364, 10.6
 collision_mask = 13
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("alvo_jogador") groups=["Camera"] instance=ExtResource("3_uwanw")]
+script = ExtResource("5_6pvyp")
 alvo_jogador = NodePath("../Player")
+altura_do_foco = 1.0
+distancia_da_camera = 8.0
+inclinacao_graus = 40.0
+suavidade_rotacao = 10.0
+suavidade_posicao = 12.0
+sensibilidade_mouse = 0.003
+sensibilidade_controle = 2.5
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jnwpt")
