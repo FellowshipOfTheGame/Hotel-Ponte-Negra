@@ -15536,6 +15536,7 @@ shadow_reverse_cull_face = true
 
 [node name="Player" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.377132, -0.014424324, 10.673533)
+safe_margin = 0.1
 
 [node name="NavigationRegion3D" parent="." index="4"]
 navigation_mesh = SubResource("NavigationMesh_uh3oe")
