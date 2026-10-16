@@ -91,6 +91,9 @@ suavidade_rotacao = 10.0
 suavidade_posicao = 12.0
 sensibilidade_mouse = 0.003
 sensibilidade_controle = 2.5
+ocluir_obstaculos = true
+mascara_obstaculos = 1
+raio_deteccao = 0.3
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jnwpt")
