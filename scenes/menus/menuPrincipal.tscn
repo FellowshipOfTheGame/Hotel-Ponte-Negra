@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp6aq6jmvtkos"]
+[gd_scene load_steps=3 format=3 uid="uid://cp6aq6jmvtkos"]
+
+[ext_resource type="PackedScene" uid="uid://dmfweinupdtn2" path="res://scenes/menus/Tela_Fundo.tscn" id="1_hi5dq"]
 
 [sub_resource type="GDScript" id="MenuPrincipal"]
 script/source = "extends CanvasLayer
 
 func jogar() -> void:
+	$Tela_Fundo.iniciar_transicao()
+	await $Tela_Fundo.transicao_concluida
 	get_tree().change_scene_to_file(\"res://scenes/levels/Level1.tscn\")
+	
 
 func sair() -> void:
 	get_tree().quit()
@@ -21,7 +26,10 @@ func opcoes() -> void:
 follow_viewport_enabled = true
 script = SubResource("MenuPrincipal")
 
+[node name="Tela_Fundo" parent="." instance=ExtResource("1_hi5dq")]
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
