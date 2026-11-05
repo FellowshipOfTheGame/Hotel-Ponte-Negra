@@ -8,6 +8,8 @@ class_name PlayerRunning
 func Enter():
 	super.Enter()
 	step_delay = 0.28
+	player.is_running = true
+	print(player.is_running)
 
 func Physics_Update(_delta: float):
 	running = Input.is_action_pressed("correr")

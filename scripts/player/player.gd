@@ -97,7 +97,6 @@ func morrer() -> void:
 	is_dead = true
 	velocity = Vector3.ZERO
 	
-	# Força a tocar a animação de morte
 	var animation_player : AnimationPlayer = get_node_or_null("AnimationPlayer")
 	if animation_player:
 		animation_player.stop()
@@ -158,6 +157,7 @@ func play_animation(anim_name : String) -> void:
 		return
 
 	animation_player.play(anim_name, anim_blend_time)
+	print(anim_name)
 
 func play_footstep() -> void:
 	footstep_audio.pitch_scale = randf_range(0.9, 1.1)
