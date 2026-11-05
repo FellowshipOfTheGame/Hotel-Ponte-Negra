@@ -103,6 +103,7 @@ func morrer() -> void:
 		animation_player.stop()
 		if animation_player.has_animation(anim_die):
 			animation_player.play(anim_die)
+			await animation_player.animation_finishe
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
