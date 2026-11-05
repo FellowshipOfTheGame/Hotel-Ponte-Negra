@@ -9,10 +9,10 @@ class_name Player
 @export_category("Animations")
 @export var anim_idle : String = "Idle/mixamo_com"
 @export var anim_walk : String = "Walking/mixamo_com"
-@export var anim_run : String = "Run Foward"
-@export var anim_crouch : String = ""
+@export var anim_run : String = "Run Forward/mixamo_com"
+@export var anim_crouch : String = "Crounch/mixamo_com"
 @export var anim_stunned : String = ""
-@export var anim_die : String = "Death"
+@export var anim_die : String = "Death/mixamo_com"
 @export var anim_blend_time : float = 0.2
 
 @onready var tank_movement: MoveTankPlayer = get_node_or_null("MoveTankPlayer")
@@ -103,7 +103,7 @@ func morrer() -> void:
 		animation_player.stop()
 		if animation_player.has_animation(anim_die):
 			animation_player.play(anim_die)
-			await animation_player.animation_finishe
+			await animation_player.animation_finished
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
