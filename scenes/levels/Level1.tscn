@@ -6747,7 +6747,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.9
 navigation_mesh = SubResource("NavigationMesh_68ib6")
 
 [node name="WorldTrigger" type="Node3D" parent="." index="7" node_paths=PackedStringArray("sp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9691131, 0, 20.081009)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9691131, 1.050483, 20.081009)
 script = ExtResource("4_68ib6")
 enemy_scene = ExtResource("5_76cw8")
 sp = NodePath("../Spawnpoint")

@@ -7,7 +7,7 @@ extends Node
 ##
 ## Uso: registrar como Autoload com o nome "AudioOcclusion". Nenhuma cena precisa mudar.
 
-const DEBUG := true
+const DEBUG := false
 
 # --- Quem bloqueia o som ---
 # Todo CollisionObject3D descendente de um nó com um destes nomes (Cena/Paredes,
@@ -19,9 +19,9 @@ const OCCLUDER_LAYER: int = 8
 # --- Efeito ---
 const MUFFLED_BUS: StringName = &"Muffled"
 const MUFFLED_SEND: StringName = &"Master"   # se você tiver uma bus de SFX, troque aqui
-const MUFFLED_CUTOFF_HZ: float = 900.0       # menor = mais abafado
-const DB_DROP_PER_WALL: float = 4.0          # queda de volume por parede
-const MAX_WALLS: int = 3
+const MUFFLED_CUTOFF_HZ: float = 2500.0      # menor = mais abafado (900 era bem forte)
+const DB_DROP_PER_WALL: float = 2.0          # queda de volume por parede
+const MAX_WALLS: int = 2                     # quantas paredes somam no volume
 const FADE_SPEED: float = 6.0                # velocidade da transição abafado <-> limpo
 
 # --- Ouvido (listener) ---
@@ -70,7 +70,7 @@ func _setup_bus() -> void:
 	
 	var lowpass := AudioEffectLowPassFilter.new()
 	lowpass.cutoff_hz = MUFFLED_CUTOFF_HZ
-	lowpass.db = AudioEffectFilter.FILTER_24DB
+	lowpass.db = AudioEffectFilter.FILTER_12DB   # 6DB = mais suave, 24DB = mais cortante
 	AudioServer.add_bus_effect(idx, lowpass)
 
 # ------------------------------------------------------------------ registro
