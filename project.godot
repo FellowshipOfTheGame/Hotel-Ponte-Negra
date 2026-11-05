@@ -22,6 +22,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 EventBus="*res://scripts/EventBus.gd"
 SceneManager="*res://scripts/scene_manager.gd"
+AudioOcclusion="*res://scripts/AudioOcclusion.gd"
 
 [display]
 

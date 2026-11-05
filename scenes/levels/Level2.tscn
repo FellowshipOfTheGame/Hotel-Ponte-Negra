@@ -14677,6 +14677,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.2728877, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cena/Objetos/Campainha" index="2"]
 stream = ExtResource("7_fpd7d")
+max_distance = 30.0
 
 [node name="Mesa_001" type="StaticBody3D" parent="Cena/Objetos" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -13)
@@ -14795,6 +14796,7 @@ transform = Transform3D(2.2981334, 0, -1.9283627, 0, 3, 0, 1.9283627, 0, 2.29813
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cena/Objetos/Gramofone" index="1"]
 stream = ExtResource("12_4ao78")
+unit_size = 4.0
 autoplay = true
 max_distance = 100.0
 
