@@ -10,9 +10,11 @@ func _ready() -> void:
 	if camera:
 		camera.make_current()
 	
-	if player and stamina:
-		stamina.max_value = player.get_stamina_max()
-		player.player_stamina_changed.connect(stamina.value_changed)
+	if player:
+			player.player_stamina_changed.connect(_on_player_stamina_changed)
+			if stamina:
+				stamina.max_value = player.get_stamina_max()
+				stamina.value = player.get_stamina_max()
 		
 	if door and force:
 		force.max_value = door.get_force_max()
@@ -24,3 +26,9 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused=true
 		Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 		get_viewport().set_input_as_handled()
+
+func _on_player_stamina_changed(stamina_current: float, status_tired: bool) -> void:
+	if stamina:
+		stamina.value = stamina_current
+		# Caso sua barra mude de cor ao ficar cansado:
+		# stamina.modulate = Color.RED if status_tired else Color.WHITE

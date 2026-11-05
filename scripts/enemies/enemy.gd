@@ -39,3 +39,7 @@ func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 		velocity.y -= gravity * delta
+
+func _on_body_entered(body):
+	if body is Player:
+		body.morrer()
