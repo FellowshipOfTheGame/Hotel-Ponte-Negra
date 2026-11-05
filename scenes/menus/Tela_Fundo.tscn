@@ -66,7 +66,6 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-own_world_3d = true
 handle_input_locally = false
 audio_listener_enable_3d = true
 size = Vector2i(1920, 1080)
@@ -79,21 +78,20 @@ environment = SubResource("Environment_n0yhn")
 current = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.276955e-08, 0, 0.025591135)
+transform = Transform3D(0.9787888, 0, 0.2048719, 0, 1, 0, -0.2048719, 0, 0.9787888, 2.4804025, 0, 0)
 light_energy = 3.0
 
 [node name="Porta_002" type="AnimatableBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 0, -3.3)
+transform = Transform3D(0.0017452986, 0, -0.99999845, 0, 1, 0, 0.99999845, 0, 0.0017452986, 2.432729, 0, -3.261621)
 collision_layer = 5
 script = ExtResource("2_6ai0a")
-ang_abertura = 120.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Porta_002"]
-transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.28)
+transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_hpu2u")
 
 [node name="Door_004" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Porta_002"]
-transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, -0.28)
+transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sy5ms")
 skeleton = NodePath("")
 
@@ -103,7 +101,7 @@ stream = ExtResource("3_t542x")
 volume_db = -12.0
 
 [node name="Chao" type="AnimatableBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3916764, -2, -3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Chao"]
 shape = SubResource("BoxShape3D_lpljq")

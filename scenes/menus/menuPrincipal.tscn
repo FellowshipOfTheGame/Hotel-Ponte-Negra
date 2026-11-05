@@ -27,6 +27,7 @@ follow_viewport_enabled = true
 script = SubResource("MenuPrincipal")
 
 [node name="Tela_Fundo" parent="." instance=ExtResource("1_hi5dq")]
+layer = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -37,48 +38,52 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Container" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
+[node name="Container" type="VBoxContainer" parent="."]
+offset_left = 393.235
+offset_top = 352.535
+offset_right = 926.2362
+offset_bottom = 725.53503
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/Container"]
+[node name="Label" type="Label" parent="Container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Hotel Ponte Negra"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CenterContainer/Container"]
-custom_minimum_size = Vector2(0, 80)
+[node name="Control" type="Control" parent="Container"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Jogar" type="Button" parent="CenterContainer/Container"]
+[node name="Jogar" type="Button" parent="Container"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Opcoes")
 text = "Jogar"
 
-[node name="Opcoes" type="Button" parent="CenterContainer/Container"]
+[node name="Opcoes" type="Button" parent="Container"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Jogar")
 focus_neighbor_bottom = NodePath("../Sair")
 text = "Opções"
 
-[node name="Sair" type="Button" parent="CenterContainer/Container"]
+[node name="Sair" type="Button" parent="Container"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Opcoes")
 text = "Sair"
 
-[connection signal="pressed" from="CenterContainer/Container/Jogar" to="." method="jogar"]
-[connection signal="pressed" from="CenterContainer/Container/Opcoes" to="." method="opcoes"]
-[connection signal="pressed" from="CenterContainer/Container/Sair" to="." method="sair"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Container/Jogar" to="." method="jogar"]
+[connection signal="pressed" from="Container/Opcoes" to="." method="opcoes"]
+[connection signal="pressed" from="Container/Sair" to="." method="sair"]
