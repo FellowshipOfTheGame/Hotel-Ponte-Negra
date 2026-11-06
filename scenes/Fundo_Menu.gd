@@ -18,7 +18,7 @@ func iniciar_transicao():
 	tween_camera.tween_interval(0.2) 
 	
 	# Move a câmera para frente dentro do mundo isolado dela
-	var posicao_final_camera = camera.position + Vector3(1.5, 0, -3.0) 
+	var posicao_final_camera = camera.position + Vector3(1.6, 0, -3.0) 
 	tween_camera.tween_property(camera, "position", posicao_final_camera, tempo_camera).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	tween_camera.tween_callback(func(): transicao_concluida.emit())

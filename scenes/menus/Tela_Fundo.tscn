@@ -66,6 +66,7 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
 handle_input_locally = false
 audio_listener_enable_3d = true
 size = Vector2i(1920, 1080)
@@ -78,11 +79,11 @@ environment = SubResource("Environment_n0yhn")
 current = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.9787888, 0, 0.2048719, 0, 1, 0, -0.2048719, 0, 0.9787888, 2.4804025, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4804025, 0, 0)
 light_energy = 3.0
 
 [node name="Porta_002" type="AnimatableBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.0017452986, 0, -0.99999845, 0, 1, 0, 0.99999845, 0, 0.0017452986, 2.432729, 0, -3.261621)
+transform = Transform3D(-0.42062426, 0, -0.9072351, 0, 1, 0, 0.9072351, 0, -0.42062426, 3.2318654, 0, -3.2449567)
 collision_layer = 5
 script = ExtResource("2_6ai0a")
 
@@ -91,7 +92,7 @@ transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0
 shape = SubResource("ConcavePolygonShape3D_hpu2u")
 
 [node name="Door_004" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Porta_002"]
-transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, 0)
+transform = Transform3D(0.032559708, 0, 0, 0, 1.0012287, 0, 0, 0, 0.567992, 0, 0, 0.73)
 mesh = SubResource("ArrayMesh_sy5ms")
 skeleton = NodePath("")
 

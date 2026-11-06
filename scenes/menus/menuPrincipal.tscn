@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp6aq6jmvtkos"]
+[gd_scene load_steps=7 format=3 uid="uid://cp6aq6jmvtkos"]
 
 [ext_resource type="PackedScene" uid="uid://dmfweinupdtn2" path="res://scenes/menus/Tela_Fundo.tscn" id="1_hi5dq"]
+[ext_resource type="FontFile" uid="uid://cvuc1cn3bdq5d" path="res://assets/fontes/Criye Demo.otf" id="2_crnf2"]
+[ext_resource type="FontFile" uid="uid://c27h716trcauh" path="res://assets/fontes/SuperRugged-4nBy9.ttf" id="3_ii664"]
 
 [sub_resource type="GDScript" id="MenuPrincipal"]
 script/source = "extends CanvasLayer
@@ -22,6 +24,12 @@ func opcoes() -> void:
 	self.hide()
 "
 
+[sub_resource type="LabelSettings" id="LabelSettings_ii664"]
+font = ExtResource("2_crnf2")
+font_size = 60
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ii664"]
+
 [node name="MenuPrincipal" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = SubResource("MenuPrincipal")
@@ -38,52 +46,58 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Container" type="VBoxContainer" parent="."]
-offset_left = 393.235
-offset_top = 352.535
-offset_right = 926.2362
-offset_bottom = 725.53503
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.407
+anchor_bottom = 1.0
+offset_right = 57.435
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="Container"]
+[node name="Label" type="Label" parent="CenterContainer/Container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Hotel Ponte Negra"
+label_settings = SubResource("LabelSettings_ii664")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="Container"]
+[node name="Control" type="Control" parent="CenterContainer/Container"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Jogar" type="Button" parent="Container"]
+[node name="Jogar" type="Button" parent="CenterContainer/Container"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Opcoes")
+theme_override_fonts/font = ExtResource("3_ii664")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ii664")
 text = "Jogar"
 
-[node name="Opcoes" type="Button" parent="Container"]
+[node name="Opcoes" type="Button" parent="CenterContainer/Container"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Jogar")
 focus_neighbor_bottom = NodePath("../Sair")
+theme_override_fonts/font = ExtResource("3_ii664")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ii664")
 text = "Opções"
 
-[node name="Sair" type="Button" parent="Container"]
+[node name="Sair" type="Button" parent="CenterContainer/Container"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Opcoes")
+theme_override_fonts/font = ExtResource("3_ii664")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ii664")
 text = "Sair"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="pressed" from="Container/Jogar" to="." method="jogar"]
-[connection signal="pressed" from="Container/Opcoes" to="." method="opcoes"]
-[connection signal="pressed" from="Container/Sair" to="." method="sair"]
+[connection signal="pressed" from="CenterContainer/Container/Jogar" to="." method="jogar"]
+[connection signal="pressed" from="CenterContainer/Container/Opcoes" to="." method="opcoes"]
+[connection signal="pressed" from="CenterContainer/Container/Sair" to="." method="sair"]
