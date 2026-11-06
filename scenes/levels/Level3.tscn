@@ -1679,3 +1679,17 @@ light_energy = 0.2
 
 [node name="Enemy" parent="." index="7" instance=ExtResource("14_4n27n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.333423)
+
+[node name="EnemyChasing" parent="Enemy/StateMachine" index="0"]
+speed = 1.5
+proximity_radius = 2.0
+
+[node name="EnemyIdle" parent="Enemy/StateMachine" index="1"]
+proximity_radius = 2.0
+
+[node name="EnemyInvestigate" parent="Enemy/StateMachine" index="2"]
+max_speed_mult = 1.1
+score_weight = 0.25
+proximity_radius = 4.0
+
+[editable path="Enemy"]

@@ -2,12 +2,13 @@ extends CharacterBody3D
 
 ## Configurações de Combate
 @export var attack_cooldown: float = 2.0
+
 var can_attack: bool = true
 
 @onready var action_cast: ShapeCast3D = $ActionComponent
+@onready var enemyChasing: Node = $EnemyChasing
 
 func _physics_process(delta: float) -> void:
-	
 	apply_gravity(delta)
 	if can_attack:
 		check_attack_collision()
