@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://c0xbwfbl0uisx"]
+[gd_scene load_steps=97 format=4 uid="uid://c0xbwfbl0uisx"]
 
 [ext_resource type="PackedScene" uid="uid://bklcwe1h4le5l" path="res://scenes/levels/cenaBase.tscn" id="1_twaqj"]
 [ext_resource type="Script" uid="uid://dwcrljo3wi10r" path="res://scripts/objects/door/door.gd" id="2_63eb4"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c1hnfjhyi4fac" path="res://scenes/objects/types/interactable/herbicida.tscn" id="6_x3k3d"]
 [ext_resource type="ArrayMesh" uid="uid://baeb3fve6tahn" path="res://assets/models/parede_porta.tres" id="7_cw4sw"]
 [ext_resource type="PackedScene" uid="uid://bgu8oa7idd4d7" path="res://caule.tscn" id="7_stl8g"]
+[ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="14_4n27n"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_h66bl"]
 _surfaces = [{
@@ -1567,12 +1568,12 @@ transform = Transform3D(1.0000001, 0, -2.2737368e-13, 0, 1, 0, 0, 0, 1.0000001, 
 mesh = SubResource("ArrayMesh_xcy88")
 skeleton = NodePath("")
 
-[node name="Herbicida" parent="Cena/Portas/PortaFinal" index="2" instance=ExtResource("6_x3k3d")]
-transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -765.4072, -1.8768148, 1.3577309)
-
-[node name="caule" parent="Cena/Portas/PortaFinal" index="3" instance=ExtResource("7_stl8g")]
+[node name="caule" parent="Cena/Portas/PortaFinal" index="2" instance=ExtResource("7_stl8g")]
 transform = Transform3D(-1.0351338e-05, 0, -30.713001, 0, 2, 0, 5, 0, -6.358418e-05, -303.47134, -0.8302008, 22.648283)
 puzzle_group = "PortaFinal"
+
+[node name="Herbicida" parent="Cena/Portas/PortaFinal" index="3" instance=ExtResource("6_x3k3d")]
+transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -763.9071, -1.8776929, 1.3113512)
 
 [node name="caule2" parent="Cena/Portas/PortaFinal" index="4" instance=ExtResource("7_stl8g")]
 transform = Transform3D(-2.1855703e-07, 0, 30.713001, 0, 2, 0, -5, 0, -1.3425079e-06, -322.15036, -0.83000004, -20.139006)
@@ -1598,3 +1599,21 @@ navigation_mesh = SubResource("NavigationMesh_3825t")
 [node name="DirectionalLight3D" parent="." index="5"]
 light_color = Color(0.9128102, 0.99823964, 1, 1)
 light_energy = 0.2
+
+[node name="Enemy" parent="." index="7" instance=ExtResource("14_4n27n")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.1754274)
+
+[node name="EnemyChasing" parent="Enemy/StateMachine" index="0"]
+speed = 1.5
+proximity_radius = 2.0
+
+[node name="EnemyIdle" parent="Enemy/StateMachine" index="1"]
+proximity_radius = 2.0
+
+[node name="EnemyInvestigate" parent="Enemy/StateMachine" index="2"]
+max_speed_mult = 1.1
+score_weight = 0.25
+proximity_radius = 4.0
+
+[editable path="Enemy"]
