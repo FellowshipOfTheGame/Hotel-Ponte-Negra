@@ -1572,11 +1572,11 @@ skeleton = NodePath("")
 transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -765.4072, -1.8768148, 1.3577309)
 
 [node name="caule" parent="Cena/Portas/PortaFinal" index="3" instance=ExtResource("7_stl8g")]
-transform = Transform3D(-1.0351343e-05, 0, -30.713001, 0, 2, 0, 5, 0, -6.358418e-05, -303.47147, -1.2508228, 23.48125)
+transform = Transform3D(-1.0351338e-05, 0, -30.713001, 0, 2, 0, 5, 0, -6.358418e-05, -303.47134, -0.8302008, 22.648283)
 puzzle_group = "PortaFinal"
 
 [node name="caule2" parent="Cena/Portas/PortaFinal" index="4" instance=ExtResource("7_stl8g")]
-transform = Transform3D(-1.035134e-05, 0, -30.713001, 0, 2, 0, 5, 0, -6.358418e-05, -303.4713, -1.2508228, -20.996262)
+transform = Transform3D(-2.1855703e-07, 0, 30.713001, 0, 2, 0, -5, 0, -1.3425079e-06, -322.15036, -0.83000004, -20.139006)
 puzzle_group = "PortaFinal"
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="Cena/Luzes" index="0"]
