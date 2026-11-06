@@ -124,7 +124,7 @@ func _find_parent_body_rid(n: Node) -> RID:
 # ------------------------------------------------------------------ loop
 
 func _process(_delta: float) -> void:
-	if not is_instance_valid(_player):
+	if not is_instance_valid(_player) or not _player.is_inside_tree():
 		_player = get_tree().get_first_node_in_group("Player") as Node3D
 		if _player == null:
 			if DEBUG and not _warned_no_player:
@@ -143,7 +143,7 @@ func _process(_delta: float) -> void:
 		_listener.global_basis = Basis(Vector3.UP, cam.global_rotation.y)
 
 func _physics_process(delta: float) -> void:
-	if _player == null:
+	if not is_instance_valid(_player) or not _player.is_inside_tree():
 		return
 	
 	var space := _listener.get_world_3d().direct_space_state
@@ -155,6 +155,8 @@ func _physics_process(delta: float) -> void:
 			continue
 		
 		var p := key as AudioStreamPlayer3D
+		if not p.is_inside_tree():
+			continue
 		var s: Source = _sources[key]
 		
 		if not p.playing:
