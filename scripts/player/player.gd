@@ -73,7 +73,7 @@ func process_stamina(delta: float) -> void:
 				stamina_atual = stamina_max
 				is_tired = false
 
-	print("Stamina Atual: " + str(stamina_atual) + " Is tired: " + str(is_tired))
+	#print("Stamina Atual: " + str(stamina_atual) + " Is tired: " + str(is_tired))
 	
 	if stamina_atual != stamina_anterior:
 		player_stamina_changed.emit(stamina_atual, is_tired)

@@ -6,7 +6,7 @@ extends CharacterBody3D
 var can_attack: bool = true
 
 @onready var action_cast: ShapeCast3D = $ActionComponent
-@onready var enemyChasing: Node = $EnemyChasing
+@onready var enemyChasing: Node = $StateMachine/EnemyChasing
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)

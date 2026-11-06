@@ -9,6 +9,7 @@ func _on_interact(_interactor: Node):
 
 	if _interactor is Player:
 		_interactor.inventory.add_item("herbicida")
+		_interactor.inventory.add_item("herbicida")
 
 	get_veneno.emit()
 	hide()
