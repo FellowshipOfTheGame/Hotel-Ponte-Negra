@@ -1,8 +1,8 @@
 [gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://baeb3fve6tahn"]
 
-[ext_resource type="Material" uid="uid://d0lg5kwk8x8ws" path="res://assets/Materials/Parede 1.tres" id="1_qicnp"]
-[ext_resource type="Material" uid="uid://01gmr7aot1t6" path="res://assets/Materials/Wall exterior.035.tres" id="2_hsc68"]
-[ext_resource type="Material" uid="uid://b2fwhg4xvren5" path="res://assets/Materials/Madeira.tres" id="3_3wo1o"]
+[ext_resource type="Material" uid="uid://d0lg5kwk8x8ws" path="res://assets/Materials/Parede 1.tres" id="1_b2or5"]
+[ext_resource type="Material" uid="uid://01gmr7aot1t6" path="res://assets/Materials/Wall exterior.035.tres" id="2_3aqe0"]
+[ext_resource type="Material" uid="uid://b2fwhg4xvren5" path="res://assets/Materials/Madeira.tres" id="3_c4eo0"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_adkte"]
 _surfaces = [{
@@ -47,7 +47,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAgAFAAQABQACAAYABQAGAAcACAAHAAYACAAJAAcACQAIAAoACQAKAAsADAAKAAgADAAIAA0A"),
-"material": ExtResource("1_qicnp"),
+"material": ExtResource("1_b2or5"),
 "name": "Parede 1",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -59,7 +59,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 228,
 "index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAgAFAAQABgAHAAgABgAJAAcACAAHAAoACAAKAAsABwAMAAoABwANAAwACwAKAA4ACwAOAA8AEAARABIAEAATABEAFAAVABYAFAAXABUAFgAYABQAFAAYABkAFAAZABoAFgAbABgAHAAbABYAHAAdABsAHgAfACAAHgAhAB8AIgAeACAAIgAgACMAJAAlACYAJAAnACUAKAApACoAKAArACkAKgApACwALQArACgALQAuACsALwAuAC0ALwAsAC4AKgAsAC8AMAAxACgAMAAoADIAKgAyACgAMwAwADIAKgA0ADMAMwAyADUAKgA1ADIAKgAzADUANgA3ADgAOQA4ADcAOQA6ADgAOwA5ADcAOwA3ADwANgA8ADcANgA7ADwANgA9ADsAOAA+ADYANgA+AD8AOABAAD4ANgA/AEEAQgBAADgAQQA/AEMAQgBDAEAAQQBDAEIARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEA"),
-"material": ExtResource("2_hsc68"),
+"material": ExtResource("2_3aqe0"),
 "name": "Wall exterior.035",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -72,7 +72,7 @@ _surfaces = [{
 "index_count": 192,
 "index_data": PackedByteArray("OAABAAIAOAAAAAEAAgADADgAAgAEAAMABQA5AAcABQAIADkACAAGADkACAAJAAYAOgASADsAOgAUABIAPAA6ADsAPAA7AD0APgA8AD0APgA9AD8AEQA+AD8AEQA/ABMACgALAAwACgBAAAsADQBAAAoADQBBAEAADwBBAA0ADwBCAEEAEABCAA8AEAAOAEIAQwAbAEQAQwBEABoAQwBFABsAQwAaABkARgBFAEMARgBDABkARgBHAEUARgAZABgASABHAEYASABGABgASABJAEcASAAYABYASgBJAEgASgBIABYASgAVAEkASgAWABcAHAAdAB4AHABLAB0AHAAfAEsAHAAgAB8ATAA2AE0ATAA1ADYANABMAE0ANAA3AEwAIQAiACMAIQBOACIAJABOACEAJAAlAE4AJgAoAE8AJgAnACgAKQBPACgAKQAqAE8AKwBQAFEAKwAsAFAALQBRAFAALQBQAC4AUgAwADEAUgAyADAAMwBSADEAMwAvAFIA"),
 "lods": [0.00086533756, PackedByteArray("AAABAAIAAgADAAAAAgAEAAMABQAGAAcABQAIAAYACAAJAAYACgALAAwADQALAAoADQAOAAsADwAOAA0AEAAOAA8AEQASABMAEQAUABIAFQAWABcAFQAYABYAFQAZABgAFQAaABkAFQAbABoAHAAdAB4AHAAfAB0AHAAgAB8AIQAiACMAJAAiACEAJAAlACIAJgAnACgAKQAmACgAKQAqACYAKwAsAC0ALQAsAC4ALwAwADEALwAyADAAMwAvADEANAA1ADYANAA3ADUA")],
-"material": ExtResource("3_3wo1o"),
+"material": ExtResource("3_c4eo0"),
 "name": "Madeira",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
