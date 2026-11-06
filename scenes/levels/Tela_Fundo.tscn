@@ -49,10 +49,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_scpkx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpljq"]
-size = Vector3(5, 0.01, 5)
+size = Vector3(10, 0.01, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6ai0a"]
-size = Vector2(5, 5)
+size = Vector2(10, 10)
 
 [node name="Tela_Fundo" type="CanvasLayer"]
 script = ExtResource("1_lpljq")
@@ -66,7 +66,6 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-own_world_3d = true
 handle_input_locally = false
 audio_listener_enable_3d = true
 size = Vector2i(1920, 1080)
@@ -79,7 +78,7 @@ environment = SubResource("Environment_n0yhn")
 current = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4804025, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.97331923, 0.22945522, 0, -0.22945522, 0.97331923, 2.4804025, 0, 0)
 light_energy = 3.0
 
 [node name="Porta_002" type="AnimatableBody3D" parent="SubViewportContainer/SubViewport"]
@@ -102,7 +101,7 @@ stream = ExtResource("3_t542x")
 volume_db = -12.0
 
 [node name="Chao" type="AnimatableBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3916764, -2, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, -3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Chao"]
 shape = SubResource("BoxShape3D_lpljq")

@@ -1,11 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp6aq6jmvtkos"]
+[gd_scene load_steps=11 format=3 uid="uid://cp6aq6jmvtkos"]
 
-[ext_resource type="PackedScene" uid="uid://dmfweinupdtn2" path="res://scenes/menus/Tela_Fundo.tscn" id="1_hi5dq"]
+[ext_resource type="PackedScene" uid="uid://dmfweinupdtn2" path="res://scenes/levels/Tela_Fundo.tscn" id="1_hi5dq"]
 [ext_resource type="FontFile" uid="uid://cvuc1cn3bdq5d" path="res://assets/fontes/Criye Demo.otf" id="2_crnf2"]
 [ext_resource type="FontFile" uid="uid://c27h716trcauh" path="res://assets/fontes/SuperRugged-4nBy9.ttf" id="3_ii664"]
 
 [sub_resource type="GDScript" id="MenuPrincipal"]
 script/source = "extends CanvasLayer
+
+@onready var audio = AudioStreamPlayer.new()
+
+func _ready() -> void:
+	add_child(audio)
+	audio.stream = preload(\"res://assets/audio/background_music/terror_ambient2.mp3\")
+	audio.stream.loop = true
+	audio.play()
+
 
 func jogar() -> void:
 	$Tela_Fundo.iniciar_transicao()
@@ -24,6 +33,24 @@ func opcoes() -> void:
 	self.hide()
 "
 
+[sub_resource type="Gradient" id="Gradient_ii664"]
+offsets = PackedFloat32Array(0, 0.7866667, 0.8466667)
+colors = PackedColorArray(0.42352942, 0, 0, 1, 0.22352941, 0, 0, 0.03529412, 0.22352941, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kaxpi"]
+gradient = SubResource("Gradient_ii664")
+fill_from = Vector2(0.10280374, 0.12616822)
+fill_to = Vector2(0.5607477, 0.3317757)
+
+[sub_resource type="Gradient" id="Gradient_kaxpi"]
+offsets = PackedFloat32Array(0, 0.62, 0.7)
+colors = PackedColorArray(0.3137255, 0, 0.023529412, 0.4509804, 0.87058824, 0.13333334, 0.17254902, 0.043137256, 0.87058824, 0.13333334, 0.17254902, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8xcsd"]
+gradient = SubResource("Gradient_kaxpi")
+fill_from = Vector2(0, 0.6682243)
+fill_to = Vector2(0.1635514, 0.5373832)
+
 [sub_resource type="LabelSettings" id="LabelSettings_ii664"]
 font = ExtResource("2_crnf2")
 font_size = 60
@@ -37,20 +64,25 @@ script = SubResource("MenuPrincipal")
 [node name="Tela_Fundo" parent="." instance=ExtResource("1_hi5dq")]
 layer = 0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 897.0
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_kaxpi")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 897.0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8xcsd")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = -1
 anchor_right = 0.407
 anchor_bottom = 1.0
-offset_right = 57.435
+offset_right = 57.434998
 grow_vertical = 2
 
 [node name="Container" type="VBoxContainer" parent="CenterContainer"]
