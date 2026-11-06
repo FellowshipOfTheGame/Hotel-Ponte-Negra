@@ -31,9 +31,9 @@ func on_child_transition(state, new_state_name):
 		return
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
+		push_warning("StateMachine: no state named '%s'" % new_state_name)
 		return
-	if current_state:
-		current_state.Exit()
-		new_state.Enter()
-		current_state = new_state
+	current_state.Exit()
+	new_state.Enter()
+	current_state = new_state
 	 
