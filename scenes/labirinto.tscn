@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvpgcn3y2j7lt"]
+
+[ext_resource type="PackedScene" uid="uid://dpliumgev8sxo" path="res://scenes/levels/Labirinto.glb" id="1_5boeq"]
+
+[node name="Labirinto" instance=ExtResource("1_5boeq")]
+
+[node name="Entry_1" parent="." index="1"]
+visible = false
+
+[node name="Entry_2" parent="." index="2"]
+visible = false
+
+[node name="Exit_1" parent="." index="3"]
+visible = false
+
+[node name="Exit_2" parent="." index="4"]
+visible = false
+
+[node name="Item_1" parent="." index="5"]
+visible = false
+
+[node name="Item_2" parent="." index="6"]
+visible = false
+
+[node name="Item_3" parent="." index="7"]
+visible = false

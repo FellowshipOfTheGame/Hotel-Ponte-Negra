@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://u0cwlsbsshd8" path="res://scripts/player/moveTankPlayer.gd" id="23_3hnlq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_686vu"]
-height = 2.0240479
+height = 2.0345001
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6avc5"]
 height = 10.0
@@ -96,7 +96,7 @@ pulse_color = Color(0.6, 0, 0.8509804, 1)
 max_alpha = 0.15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.7, 0, -1.0569707e-07, 0, 0.70000005, 0, 1.0569706e-07, 0, -0.70000005, 0, 0.6921915, 0.0011015412)
+transform = Transform3D(-0.7, 0, -1.0569707e-07, 0, 0.70000005, 0, 1.0569706e-07, 0, -0.70000005, 0, 0.6885332, 0.0011015412)
 shape = SubResource("CapsuleShape3D_686vu")
 
 [node name="Alarm" type="Node3D" parent="."]
