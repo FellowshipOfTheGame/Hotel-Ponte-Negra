@@ -8,6 +8,7 @@ class_name PlayerStunned
 
 func Enter():
 	super.Enter()
+	player.is_running = false
 	step_delay = 0.65
 	dec_stamina(stamina_max)
 	var camera := get_viewport().get_camera_3d()

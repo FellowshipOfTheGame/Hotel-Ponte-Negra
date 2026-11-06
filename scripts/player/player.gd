@@ -73,6 +73,8 @@ func process_stamina(delta: float) -> void:
 				stamina_atual = stamina_max
 				is_tired = false
 
+	print("Stamina Atual: " + str(stamina_atual) + " Is tired: " + str(is_tired))
+	
 	if stamina_atual != stamina_anterior:
 		player_stamina_changed.emit(stamina_atual, is_tired)
 
@@ -157,7 +159,6 @@ func play_animation(anim_name : String) -> void:
 		return
 
 	animation_player.play(anim_name, anim_blend_time)
-	print(anim_name)
 
 func play_footstep() -> void:
 	footstep_audio.pitch_scale = randf_range(0.9, 1.1)
