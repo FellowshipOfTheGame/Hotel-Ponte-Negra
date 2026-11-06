@@ -29,6 +29,7 @@ func get_key():
 
 func _on_puzzle_solved(solved_group: String):
 	if puzzle_group != "" and solved_group == puzzle_group:
+		$"../../Objetos/Maze_Wall_Paths".queue_free()
 		print("Vinhas removidas!")
 		has_herbicida = true
 

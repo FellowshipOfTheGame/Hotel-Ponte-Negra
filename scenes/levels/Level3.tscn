@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://c0xbwfbl0uisx"]
+[gd_scene load_steps=97 format=4 uid="uid://c0xbwfbl0uisx"]
 
 [ext_resource type="PackedScene" uid="uid://bklcwe1h4le5l" path="res://scenes/levels/cenaBase.tscn" id="1_twaqj"]
 [ext_resource type="Script" uid="uid://dwcrljo3wi10r" path="res://scripts/objects/door/door.gd" id="2_63eb4"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://c1hnfjhyi4fac" path="res://scenes/objects/types/interactable/herbicida.tscn" id="6_x3k3d"]
 [ext_resource type="ArrayMesh" uid="uid://baeb3fve6tahn" path="res://assets/models/parede_porta.tres" id="7_cw4sw"]
 [ext_resource type="PackedScene" uid="uid://bgu8oa7idd4d7" path="res://caule.tscn" id="7_stl8g"]
-[ext_resource type="PackedScene" uid="uid://dxqb1m2ubhw5t" path="res://scenes/objects/types/interactable/chave.tscn" id="11_vjdto"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="14_4n27n"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_h66bl"]
@@ -1576,10 +1575,7 @@ puzzle_group = "PortaFinal"
 [node name="Herbicida" parent="Cena/Portas/PortaFinal" index="3" instance=ExtResource("6_x3k3d")]
 transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -763.9071, -1.8776929, 1.3113512)
 
-[node name="Chave" parent="Cena/Portas/PortaFinal" index="4" instance=ExtResource("11_vjdto")]
-transform = Transform3D(-3.6612519e-06, 0, -30.712803, 0, 0.9987728, 0, 1.760588, 0, -2.0987848e-07, -456.93787, -0.79982233, 3.1829913)
-
-[node name="caule2" parent="Cena/Portas/PortaFinal" index="5" instance=ExtResource("7_stl8g")]
+[node name="caule2" parent="Cena/Portas/PortaFinal" index="4" instance=ExtResource("7_stl8g")]
 transform = Transform3D(-2.1855703e-07, 0, 30.713001, 0, 2, 0, -5, 0, -1.3425079e-06, -322.15036, -0.83000004, -20.139006)
 puzzle_group = "PortaFinal"
 
@@ -1605,6 +1601,7 @@ light_color = Color(0.9128102, 0.99823964, 1, 1)
 light_energy = 0.2
 
 [node name="Enemy" parent="." index="7" instance=ExtResource("14_4n27n")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.1754274)
 
 [node name="EnemyChasing" parent="Enemy/StateMachine" index="0"]
