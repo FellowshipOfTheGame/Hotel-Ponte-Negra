@@ -39,8 +39,6 @@ func input_direction() -> Vector3:
 	return direction
 
 func dec_stamina(dec : float)->void:
-	print("Stmina: " + str(stamina))
-	print("Dec: " + str(dec))
 	stamina = max(0, stamina - dec)
 	if stamina == 0:
 		tired = true
