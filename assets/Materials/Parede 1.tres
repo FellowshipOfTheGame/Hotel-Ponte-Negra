@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d0lg5kwk8x8ws"]
+
+[ext_resource type="Texture2D" uid="uid://pu3dgnnxfhny" path="res://scenes/levels/Labirinto_Bake_Parede_Padroes.png" id="1_t7xyl"]
+
+[resource]
+resource_name = "Parede 1"
+cull_mode = 2
+albedo_texture = ExtResource("1_t7xyl")

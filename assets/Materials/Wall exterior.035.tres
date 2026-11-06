@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://01gmr7aot1t6"]
+
+[resource]
+resource_name = "Wall exterior.035"
+cull_mode = 2
+albedo_color = Color(0.10588191, 0.09019615, 0.09019611, 1)
+roughness = 0.8454546

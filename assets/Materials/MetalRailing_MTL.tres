@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dhkm6mffgk27g"]
+
+[ext_resource type="Texture2D" uid="uid://dh1k1ajl1tvt" path="res://scenes/levels/Labirinto_Image_0.png" id="1_edpir"]
+[ext_resource type="Texture2D" uid="uid://ouw1jast4v3d" path="res://scenes/levels/Labirinto_Image_1.png" id="2_txcys"]
+[ext_resource type="Texture2D" uid="uid://dhkik1404r6tv" path="res://scenes/levels/Labirinto_Image_2.png" id="3_vp1vc"]
+
+[resource]
+resource_name = "MetalRailing_MTL"
+albedo_texture = ExtResource("1_edpir")
+metallic = 1.0
+metallic_texture = ExtResource("2_txcys")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_txcys")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_vp1vc")
