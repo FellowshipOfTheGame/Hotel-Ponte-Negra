@@ -13,11 +13,13 @@ func Physics_Update(_delta: float):
 	running = Input.is_action_pressed("correr")
 	crouched = Input.is_action_pressed("agachar")
 
-	if !crouched: 
+	if !crouched:
 		if !tired && running && !cold_down_run:
 			Transitioned.emit(self, "playerRunning")
 		else:
 			Transitioned.emit(self, "playerWalking")
+		return
+
 	move(velocity, _delta)
 
 

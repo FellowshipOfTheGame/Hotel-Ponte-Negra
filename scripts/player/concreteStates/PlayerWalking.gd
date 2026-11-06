@@ -15,10 +15,11 @@ func Physics_Update(_delta: float):
 
 	if crouched:
 		Transitioned.emit(self, "playerCrouched")
-
+		return
 	if !tired && running && !cold_down_run:
 		Transitioned.emit(self, "playerRunning")
-		
+		return
+
 	move(velocity, _delta)
 
 
