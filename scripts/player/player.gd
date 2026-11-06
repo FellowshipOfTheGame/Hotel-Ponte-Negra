@@ -9,10 +9,10 @@ class_name Player
 @export_category("Animations")
 @export var anim_idle : String = "Idle/mixamo_com"
 @export var anim_walk : String = "Walking/mixamo_com"
-@export var anim_run : String = "Run Foward"
-@export var anim_crouch : String = ""
+@export var anim_run : String = "Run Forward/mixamo_com"
+@export var anim_crouch : String = "Crounch/mixamo_com"
 @export var anim_stunned : String = ""
-@export var anim_die : String = "Death"
+@export var anim_die : String = "Death/mixamo_com"
 @export var anim_blend_time : float = 0.2
 
 @onready var tank_movement: MoveTankPlayer = get_node_or_null("MoveTankPlayer")
@@ -97,13 +97,12 @@ func morrer() -> void:
 	is_dead = true
 	velocity = Vector3.ZERO
 	
-	# Força a tocar a animação de morte
 	var animation_player : AnimationPlayer = get_node_or_null("AnimationPlayer")
 	if animation_player:
 		animation_player.stop()
 		if animation_player.has_animation(anim_die):
 			animation_player.play(anim_die)
-			await animation_player.animation_finishe
+			await animation_player.animation_finished
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -158,6 +157,7 @@ func play_animation(anim_name : String) -> void:
 		return
 
 	animation_player.play(anim_name, anim_blend_time)
+	print(anim_name)
 
 func play_footstep() -> void:
 	footstep_audio.pitch_scale = randf_range(0.9, 1.1)

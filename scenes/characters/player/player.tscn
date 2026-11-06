@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://csmmjcndfe1ns"]
+[gd_scene load_steps=32 format=3 uid="uid://csmmjcndfe1ns"]
 
 [ext_resource type="Script" uid="uid://ug1jag7rmhxf" path="res://scripts/player/player.gd" id="1_6avc5"]
 [ext_resource type="PackedScene" uid="uid://cmicemofdf6ed" path="res://assets/3D_models/player/T-Pose.fbx" id="3_svuau"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bgp1gt7lrpi7n" path="res://scripts/player/concreteStates/PlayerStunned.gd" id="11_i1nod"]
 [ext_resource type="AudioStream" uid="uid://ddrj4dlamsxu" path="res://assets/audio/player/step/step1.ogg" id="12_ykrpk"]
 [ext_resource type="AnimationLibrary" uid="uid://6kxom76xw7s2" path="res://assets/3D_models/player/Death From Right.fbx" id="13_6nfx3"]
+[ext_resource type="AnimationLibrary" uid="uid://dthvkqxh1uvvm" path="res://assets/3D_models/player/Crounch.fbx" id="13_d73qs"]
 [ext_resource type="AudioStream" uid="uid://dav2vcqor51oa" path="res://assets/audio/player/step/step2.ogg" id="13_i1nod"]
 [ext_resource type="AnimationLibrary" uid="uid://dp3taj30ddyqp" path="res://assets/3D_models/player/Breathing Idle.fbx" id="14_3hnlq"]
 [ext_resource type="AudioStream" uid="uid://cnuo3uioxtryb" path="res://assets/audio/player/step/step3.ogg" id="14_4kqyw"]
@@ -81,8 +82,6 @@ collision_layer = 2
 collision_mask = 9
 safe_margin = 0.1
 script = ExtResource("1_6avc5")
-anim_run = "Run Forward/mixamo_com"
-anim_die = "Death/mixamo_com"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -156,6 +155,7 @@ collision_mask = 4
 root_node = NodePath("../Protagonista")
 libraries = {
 &"": SubResource("AnimationLibrary_xuses"),
+&"Crounch": ExtResource("13_d73qs"),
 &"Death": ExtResource("13_6nfx3"),
 &"Idle": ExtResource("14_3hnlq"),
 &"Run Forward": ExtResource("15_d73qs"),
