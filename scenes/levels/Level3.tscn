@@ -1457,7 +1457,6 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_bun15")
 
 [node name="Maze_Wall_Paths" type="MeshInstance3D" parent="Cena/Objetos" index="0"]
-process_mode = 4
 mesh = SubResource("ArrayMesh_h8kw8")
 skeleton = NodePath("")
 
@@ -1606,7 +1605,6 @@ light_color = Color(0.9128102, 0.99823964, 1, 1)
 light_energy = 0.2
 
 [node name="Enemy" parent="." index="7" instance=ExtResource("14_4n27n")]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.1754274)
 
 [node name="EnemyChasing" parent="Enemy/StateMachine" index="0"]
