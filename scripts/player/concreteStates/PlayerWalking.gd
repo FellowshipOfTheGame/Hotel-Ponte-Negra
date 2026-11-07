@@ -15,10 +15,11 @@ func Physics_Update(_delta: float):
 
 	if crouched:
 		Transitioned.emit(self, "playerCrouched")
-
+		return
 	if !tired && running && !cold_down_run:
 		Transitioned.emit(self, "playerRunning")
-		
+		return
+
 	move(velocity, _delta)
 
 
@@ -26,4 +27,5 @@ func Update(delta : float): #A lógica da stamina deve estar aqui, pois o physic
 	if cold_down_run > 0:
 		dec_coldDown(delta)
 	if stamina < stamina_max:
-		inc_stamina(delta/2)
+		print(stamina)
+		inc_stamina(delta)

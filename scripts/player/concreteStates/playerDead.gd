@@ -9,9 +9,10 @@ func Enter():
 	player.velocity = Vector3.ZERO
 	var blood = BloodOverlay.instantiate()
 	get_tree().current_scene.add_child(blood)
-	player.get_node("AnimationPlayer").play("die")
-	await player.get_node("AnimationPlayer").animation_finished
+	#player.get_node("AnimationPlayer").play("die")
+	#await player.get_node("AnimationPlayer").animation_finished
 	#Melhor colocar em Game Manager:
+	await player.morrer()
 	var menu = GameOverMenu.instantiate()
 	get_tree().current_scene.add_child(menu)
 	get_tree().paused = true

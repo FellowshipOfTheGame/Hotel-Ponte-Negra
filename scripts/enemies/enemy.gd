@@ -2,12 +2,13 @@ extends CharacterBody3D
 
 ## Configurações de Combate
 @export var attack_cooldown: float = 2.0
+
 var can_attack: bool = true
 
 @onready var action_cast: ShapeCast3D = $ActionComponent
+@onready var enemyChasing: Node = $StateMachine/EnemyChasing
 
 func _physics_process(delta: float) -> void:
-	
 	apply_gravity(delta)
 	if can_attack:
 		check_attack_collision()
@@ -39,3 +40,7 @@ func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 		velocity.y -= gravity * delta
+
+func _on_body_entered(body):
+	if body is Player:
+		body.morrer()

@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgu8oa7idd4d7"]
 
 [ext_resource type="Script" uid="uid://c4hl020s8a2hj" path="res://scripts/root.gd" id="1_dki5a"]
+[ext_resource type="ArrayMesh" uid="uid://dtnfg6u860h50" path="res://assets/models/caule.tres" id="2_1qnp5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dki5a"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_hwp5q"]
 
 [node name="caule" type="StaticBody3D"]
 collision_layer = 5
@@ -16,6 +15,6 @@ shape = SubResource("BoxShape3D_dki5a")
 debug_color = Color(0, 0.6, 0.69803923, 0.49019608)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-mesh = SubResource("BoxMesh_hwp5q")
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = ExtResource("2_1qnp5")
 skeleton = NodePath("../..")
