@@ -26,6 +26,10 @@ var is_dead: bool = false
 var is_running: bool = false
 var is_tired: bool = false
 
+# Destaque de interactables
+var _focused_interactable: Interactable = null
+var _prompt_label: Label = null
+
 signal player_stamina_changed(stamina_current : float, status_tired : bool)
 signal player_item_changed(item_id : String, new_amount : int)
 @warning_ignore("unused_signal")
@@ -41,6 +45,8 @@ func _ready() -> void:
 	if inventory:
 		inventory.item_changed.connect(item_changed_from_child)
 
+	_create_prompt_label()
+
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
@@ -53,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	
 	process_stamina(delta)
 	update_animations()
+	_update_interaction_focus()
 	
 	if is_inside_tree():
 		move_and_slide()
@@ -98,6 +105,7 @@ func morrer() -> void:
 
 	is_dead = true
 	velocity = Vector3.ZERO
+	_clear_interaction_focus()
 	
 	var animation_player : AnimationPlayer = get_node_or_null("AnimationPlayer")
 	if animation_player:
@@ -134,6 +142,61 @@ func check_for_interaction() -> void:
 		var collider = interaction_shapecast.get_collider(0)
 		if collider is Interactable:
 			collider._on_interact(self)
+
+func _create_prompt_label() -> void:
+	var canvas: CanvasLayer = get_node_or_null("CanvasLayer")
+	if not canvas:
+		return
+
+	_prompt_label = Label.new()
+	_prompt_label.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+	_prompt_label.offset_top = -150
+	_prompt_label.offset_bottom = -100
+	_prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_prompt_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_prompt_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_prompt_label.add_theme_font_size_override("font_size", 28)
+	_prompt_label.add_theme_constant_override("outline_size", 8)
+	_prompt_label.add_theme_color_override("font_outline_color", Color.BLACK)
+	_prompt_label.visible = false
+	canvas.add_child(_prompt_label)
+
+func _update_interaction_focus() -> void:
+	var target: Interactable = null
+
+	if interaction_shapecast and interaction_shapecast.is_colliding():
+		var collider = interaction_shapecast.get_collider(0)
+		# is_visible_in_tree evita destacar objetos já coletados (hide() antes do queue_free)
+		if collider is Interactable and collider.is_visible_in_tree():
+			target = collider
+
+	if target == _focused_interactable:
+		return
+
+	_clear_interaction_focus()
+	_focused_interactable = target
+
+	if _focused_interactable:
+		_focused_interactable.set_highlighted(true)
+		if _prompt_label:
+			_prompt_label.text = "[%s] %s" % [_get_interact_key_text(), _focused_interactable.get_prompt()]
+			_prompt_label.visible = true
+
+func _clear_interaction_focus() -> void:
+	if is_instance_valid(_focused_interactable):
+		_focused_interactable.set_highlighted(false)
+	_focused_interactable = null
+	if _prompt_label:
+		_prompt_label.visible = false
+
+func _get_interact_key_text() -> String:
+	# Lê a tecla atual da ação, então funciona mesmo depois do set_new_key()
+	for ev in InputMap.action_get_events("interacao"):
+		if ev is InputEventKey:
+			if ev.physical_keycode != KEY_NONE:
+				return ev.as_text_physical_keycode()
+			return ev.as_text_keycode()
+	return "E"
 
 func set_new_key(action_name: String, new_keycode: Key) -> void:
 	var event := InputEventKey.new()
