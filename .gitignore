@@ -15,3 +15,30 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# ------------------------------------------------------------------
+# Arquivos temporários
+# ------------------------------------------------------------------
+# Saves temporários do Godot (ex.: demo.tscn2422884871.tmp)
+*.tmp
+# Backups automáticos do Blender (.blend1, .blend2, ...)
+*.blend[0-9]
+*.blend[0-9][0-9]
+# Backups/sobras de editores e merges
+*~
+*.bak
+*.orig
+*.swp
+# Lixo do sistema operacional
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ------------------------------------------------------------------
+# Assets (versionados como .zip via Git LFS)
+# ------------------------------------------------------------------
+# Pasta de assets inteira (modelos, áudio, texturas, fontes, materiais...)
+/assets/
+
+# O zip de assets NÃO é ignorado (vai pelo Git LFS)
+!/assets.zip
