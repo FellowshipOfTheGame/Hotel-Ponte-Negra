@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvpgcn3y2j7lt"]
 
-[ext_resource type="PackedScene" uid="uid://dpliumgev8sxo" path="res://scenes/levels/Labirinto.glb" id="1_5boeq"]
+[ext_resource type="PackedScene" uid="uid://dpliumgev8sxo" path="res://assets/levels/Labirinto.glb" id="1_5boeq"]
 
 [node name="Labirinto" instance=ExtResource("1_5boeq")]
 

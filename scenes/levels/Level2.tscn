@@ -23,9 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://dxqb1m2ubhw5t" path="res://scenes/objects/types/interactable/chave.tscn" id="17_hmwnr"]
 [ext_resource type="Script" uid="uid://bg6gmrld2qh5h" path="res://scripts/objects/door/push.gd" id="17_nkm7c"]
 [ext_resource type="AudioStream" uid="uid://bfbkx8t5bl4c3" path="res://assets/audio/door/dragon-studio-impact-thud-372473.ogg" id="18_uh3oe"]
-[ext_resource type="Texture2D" uid="uid://b2gje0rm50uo7" path="res://scenes/levels/teste corredor_Madeira_Bake.png" id="19_eim73"]
+[ext_resource type="Texture2D" uid="uid://b2gje0rm50uo7" path="res://assets/levels/Level1/teste corredor_Madeira_Bake.png" id="19_eim73"]
 [ext_resource type="Script" uid="uid://pvwpjrbjnmx1" path="res://scripts/objects/end_point/end_point.gd" id="19_nkm7c"]
-[ext_resource type="Texture2D" uid="uid://cseyuem6asy6" path="res://scenes/levels/teste corredor_Cama_Bake.png" id="20_d2rr3"]
+[ext_resource type="Texture2D" uid="uid://cseyuem6asy6" path="res://assets/levels/Level1/teste corredor_Cama_Bake.png" id="20_d2rr3"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="21_4p5gg"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]

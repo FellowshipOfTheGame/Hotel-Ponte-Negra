@@ -13,7 +13,7 @@
 [ext_resource type="Material" uid="uid://dhkm6mffgk27g" path="res://assets/Materials/MetalRailing_MTL.tres" id="5_stl8g"]
 [ext_resource type="PackedScene" uid="uid://c1hnfjhyi4fac" path="res://scenes/objects/types/interactable/herbicida.tscn" id="6_x3k3d"]
 [ext_resource type="ArrayMesh" uid="uid://baeb3fve6tahn" path="res://assets/models/parede_porta.tres" id="7_cw4sw"]
-[ext_resource type="PackedScene" uid="uid://bgu8oa7idd4d7" path="res://caule.tscn" id="7_stl8g"]
+[ext_resource type="PackedScene" uid="uid://bgu8oa7idd4d7" path="res://scenes/objects/caule.tscn" id="7_stl8g"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_h66bl"]
 _surfaces = [{

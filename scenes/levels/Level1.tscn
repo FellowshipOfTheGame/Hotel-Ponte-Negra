@@ -1,7 +1,7 @@
 [gd_scene load_steps=254 format=4 uid="uid://cqeosrk4npfhi"]
 
 [ext_resource type="PackedScene" uid="uid://bklcwe1h4le5l" path="res://scenes/levels/cenaBase.tscn" id="1_1pwbc"]
-[ext_resource type="Texture2D" uid="uid://b2gje0rm50uo7" path="res://scenes/levels/teste corredor_Madeira_Bake.png" id="2_7d7pp"]
+[ext_resource type="Texture2D" uid="uid://b2gje0rm50uo7" path="res://assets/levels/Level1/teste corredor_Madeira_Bake.png" id="2_7d7pp"]
 [ext_resource type="Script" uid="uid://blyxkr0cygetn" path="res://scripts/objects/wall.gd" id="2_brv20"]
 [ext_resource type="ArrayMesh" uid="uid://cy3r8c8dv1ir4" path="res://assets/models/chao.tres" id="2_j7nyf"]
 [ext_resource type="PackedScene" uid="uid://dxqb1m2ubhw5t" path="res://scenes/objects/types/interactable/chave.tscn" id="2_j08sa"]
@@ -10,9 +10,9 @@
 [ext_resource type="Script" uid="uid://bpll0l07v2ym3" path="res://scripts/components/spawn_trigger.gd" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://dwcrljo3wi10r" path="res://scripts/objects/door/door.gd" id="4_m00rq"]
 [ext_resource type="PackedScene" uid="uid://cd83n5sdks3b0" path="res://scenes/characters/enemies/enemy.tscn" id="5_76cw8"]
-[ext_resource type="Texture2D" uid="uid://cseyuem6asy6" path="res://scenes/levels/teste corredor_Cama_Bake.png" id="5_e5nfq"]
+[ext_resource type="Texture2D" uid="uid://cseyuem6asy6" path="res://assets/levels/Level1/teste corredor_Cama_Bake.png" id="5_e5nfq"]
 [ext_resource type="AudioStream" uid="uid://c6mp3hfmvtn7t" path="res://assets/audio/sound_effects/glassbreaking.mp3" id="6_76cw8"]
-[ext_resource type="Texture2D" uid="uid://dfccj8a3q7ev0" path="res://scenes/levels/teste corredor_Parede_Padroes_Bake2.png" id="8_njy47"]
+[ext_resource type="Texture2D" uid="uid://dfccj8a3q7ev0" path="res://assets/levels/Level1/teste corredor_Parede_Padroes_Bake2.png" id="8_njy47"]
 [ext_resource type="ArrayMesh" uid="uid://vmxbw5f8aaf4" path="res://assets/models/parede.tres" id="9_njy47"]
 [ext_resource type="ArrayMesh" uid="uid://baeb3fve6tahn" path="res://assets/models/parede_porta.tres" id="10_njy47"]
 
