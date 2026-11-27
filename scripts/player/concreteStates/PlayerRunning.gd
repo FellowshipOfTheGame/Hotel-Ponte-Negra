@@ -7,7 +7,7 @@ class_name PlayerRunning
 
 func Enter():
 	super.Enter()
-	step_delay = 0.28
+	step_delay = 0.25
 	player.is_running = true
 
 func Physics_Update(_delta: float):

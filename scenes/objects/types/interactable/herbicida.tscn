@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1hnfjhyi4fac"]
 
 [ext_resource type="Script" uid="uid://c313p27km5u20" path="res://scripts/objects/herbicida/herbicida.gd" id="1_mch12"]
-[ext_resource type="AudioStream" uid="uid://b3jgacux47244" path="res://assets/audio/sound_effects/chave.mp3" id="2_eou4u"]
+[ext_resource type="AudioStream" uid="uid://bs3lj7avsmar8" path="res://assets/audio/sound_effects/herbicide.ogg" id="2_mch12"]
 [ext_resource type="PackedScene" uid="uid://dwuhox8sg3acv" path="res://assets/3D_models/objects/herbicida/herbicida.glb" id="3_mch12"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxcpg"]
@@ -17,8 +17,9 @@ transform = Transform3D(0.01, 0, 0, 0, 0.03, 0, 0, 0, 0.01, 0.010209123, 0.29153
 shape = SubResource("BoxShape3D_uxcpg")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_eou4u")
-volume_db = 2.0
+stream = ExtResource("2_mch12")
+volume_db = -15.0
+pitch_scale = 1.2
 
 [node name="herbicida2" parent="." instance=ExtResource("3_mch12")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

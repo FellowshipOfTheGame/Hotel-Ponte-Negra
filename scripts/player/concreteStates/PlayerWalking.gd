@@ -7,7 +7,7 @@ class_name PlayerWalking
 
 func Enter():
 	super.Enter()
-	step_delay = 0.45
+	step_delay = 0.3
 
 func Physics_Update(_delta: float):
 	running = Input.is_action_pressed("correr")

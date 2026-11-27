@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bklcwe1h4le5l"]
+[gd_scene load_steps=13 format=3 uid="uid://bklcwe1h4le5l"]
 
 [ext_resource type="Script" uid="uid://cmqntwm37cob6" path="res://scripts/base.gd" id="1_maiuw"]
 [ext_resource type="PackedScene" uid="uid://csmmjcndfe1ns" path="res://scenes/characters/player/player.tscn" id="2_l2ib0"]
 [ext_resource type="PackedScene" uid="uid://btinc81x7e3tm" path="res://scenes/objects/camera_3d.tscn" id="3_uwanw"]
 [ext_resource type="Script" uid="uid://cqhiahgiw2w83" path="res://scripts/player/ui/staminaBar.gd" id="4_moi2a"]
 [ext_resource type="Script" uid="uid://csqeg1j6ne17v" path="res://scripts/camera/cameraControllerMovement.gd" id="5_6pvyp"]
+[ext_resource type="AudioStream" uid="uid://dxcdl1klkg53j" path="res://assets/audio/background_music/ambiente.ogg" id="6_fneno"]
 
 [sub_resource type="Gradient" id="Gradient_h5dly"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -106,3 +107,9 @@ sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5v3np")
+
+[node name="AmbientSounds" type="AudioStreamPlayer" parent="WorldEnvironment"]
+stream = ExtResource("6_fneno")
+volume_db = -10.0
+autoplay = true
+parameters/looping = false

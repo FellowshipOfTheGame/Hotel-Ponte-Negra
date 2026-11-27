@@ -5,7 +5,7 @@ static var running : bool
 static var crouched : bool
 
 @export var noise_intensity: float = 5.0
-var step_delay: float = 0.5
+var step_delay: float = 0.35
 var step_timer: float = 0.0
 
 func Enter():

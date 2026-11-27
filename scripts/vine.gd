@@ -10,6 +10,10 @@ class_name Vine
 @export var dry_duration: float = 5.0
 @export var free_after_dry: bool = false
 
+@onready var dry_sound: AudioStreamPlayer = (
+	$AudioStreamPlayer if has_node("AudioStreamPlayer") else null
+)
+
 var _dried := false
 
 func _ready() -> void:
@@ -21,6 +25,8 @@ func _on_puzzle_solved(solved_group: String) -> void:
 		return
 	_dried = true
 	set_deferred("monitoring", false)
+	if dry_sound:
+		dry_sound.play()
 	_dry_leaves()
 
 func _dry_leaves() -> void:
